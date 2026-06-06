@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-06-06T21:14:59.186777",
+  "source": "static_baseline (no real-time fetch)",
+  "teams": [
+    {
+      "team": "South Korea",
+      "decimal": 101.0,
+      "american": "+10000",
+      "implied_pct": 0.9900990099009901,
+      "my_prob_pct": 4.921746931717575,
+      "value_ratio": 4.970964401034751,
+      "ev": 3.9709644010347507,
+      "kelly": 0.03970964401034751
+    },
+    {
+      "team": "Sweden",
+      "decimal": 81.0,
+      "american": "+8000",
+      "implied_pct": 1.2345679012345678,
+      "my_prob_pct": 4.921746931717575,
+      "value_ratio": 3.9866150146912362,
+      "ev": 2.986615014691236,
+      "kelly": 0.037332687683640446
+    },
+    {
+      "team": "Switzerland",
+      "decimal": 67.0,
+      "american": "+6600",
+      "implied_pct": 1.4925373134328357,
+      "my_prob_pct": 4.934066692331094,
+      "value_ratio": 3.3058246838618337,
+      "ev": 2.3058246838618333,
+      "kelly": 0.0349367376342702
+    },
+    {
+      "team": "Turkey",
+      "decimal": 67.0,
+      "american": "+6600",
+      "implied_pct": 1.4925373134328357,
+      "my_prob_pct": 4.9094579320384,
+      "value_ratio": 3.289336814465728,
+      "ev": 2.289336814465728,
+      "kelly": 0.03468692143129891
+    },
+    {
+      "team": "Japan",
+      "decimal": 51.0,
+      "american": "+5000",
+      "implied_pct": 1.9607843137254901,
+      "my_prob_pct": 4.971211310727329,
+      "value_ratio": 2.5353177684709376,
+      "ev": 1.5353177684709376,
+      "kelly": 0.03070635536941875
+    },
+    {
+      "team": "Colombia",
+      "decimal": 51.0,
+      "american": "+5000",
+      "implied_pct": 1.9607843137254901,
+      "my_prob_pct": 4.9094579320384,
+      "value_ratio": 2.503823545339584,
+      "ev": 1.5038235453395838,
+      "kelly": 0.030076470906791677
+    },
+    {
+      "team": "Morocco",
+      "decimal": 41.0,
+      "american": "+4000",
+      "implied_pct": 2.4390243902439024,
+      "my_prob_pct": 5.008635561070561,
+      "value_ratio": 2.0535405800389297,
+      "ev": 1.0535405800389297,
+      "kelly": 0.026338514500973242
+    },
+    {
+      "team": "Norway",
+      "decimal": 41.0,
+      "american": "+4000",
+      "implied_pct": 2.4390243902439024,
+      "my_prob_pct": 4.965001178730028,
+      "value_ratio": 2.0356504832793116,
+      "ev": 1.0356504832793116,
+      "kelly": 0.02589126208198279
+    },
+    {
+      "team": "Mexico",
+      "decimal": 41.0,
+      "american": "+4000",
+      "implied_pct": 2.4390243902439024,
+      "my_prob_pct": 4.9587988045480795,
+      "value_ratio": 2.033107509864713,
+      "ev": 1.033107509864713,
+      "kelly": 0.02582768774661782
+    },
+    {
+      "team": "USA",
+      "decimal": 36.0,
+      "american": "+3500",
+      "implied_pct": 2.7777777777777777,
+      "my_prob_pct": 4.983654886993451,
+      "value_ratio": 1.7941157593176424,
+      "ev": 0.7941157593176423,
+      "kelly": 0.02268902169478978
+    },
+    {
+      "team": "Uruguay",
+      "decimal": 31.0,
+      "american": "+3000",
+      "implied_pct": 3.225806451612903,
+      "my_prob_pct": 5.002378677985848,
+      "value_ratio": 1.550737390175613,
+      "ev": 0.550737390175613,
+      "kelly": 0.018357913005853765
+    },
+    {
+      "team": "Belgium",
+      "decimal": 26.0,
+      "american": "+2500",
+      "implied_pct": 3.8461538461538463,
+      "my_prob_pct": 4.965001178730028,
+      "value_ratio": 1.2909003064698072,
+      "ev": 0.29090030646980736,
+      "kelly": 0.011636012258792294
+    },
+    {
+      "team": "Netherlands",
+      "decimal": 18.0,
+      "american": "+1700",
+      "implied_pct": 5.555555555555555,
+      "my_prob_pct": 5.021172815010844,
+      "value_ratio": 0.9038111067019519,
+      "ev": -0.09618889329804814,
+      "kelly": 0
+    },
+    {
+      "team": "Portugal",
+      "decimal": 16.0,
+      "american": "+1500",
+      "implied_pct": 6.25,
+      "my_prob_pct": 5.033741451297566,
+      "value_ratio": 0.8053986322076104,
+      "ev": -0.19460136779238957,
+      "kelly": 0
+    },
+    {
+      "team": "Germany",
+      "decimal": 12.0,
+      "american": "+1100",
+      "implied_pct": 8.333333333333332,
+      "my_prob_pct": 5.027453205455877,
+      "value_ratio": 0.6032943846547052,
+      "ev": -0.3967056153452948,
+      "kelly": 0
+    },
+    {
+      "team": "Brazil",
+      "decimal": 9.0,
+      "american": "+800",
+      "implied_pct": 11.11111111111111,
+      "my_prob_pct": 5.046341548484743,
+      "value_ratio": 0.4541707393636269,
+      "ev": -0.545829260636373,
+      "kelly": 0
+    },
+    {
+      "team": "Spain",
+      "decimal": 8.0,
+      "american": "+700",
+      "implied_pct": 12.5,
+      "my_prob_pct": 5.1034334306024345,
+      "value_ratio": 0.40827467444819476,
+      "ev": -0.5917253255518052,
+      "kelly": 0
+    },
+    {
+      "team": "England",
+      "decimal": 7.5,
+      "american": "+650",
+      "implied_pct": 13.333333333333334,
+      "my_prob_pct": 5.1034334306024345,
+      "value_ratio": 0.3827575072951826,
+      "ev": -0.6172424927048175,
+      "kelly": 0
+    },
+    {
+      "team": "France",
+      "decimal": 7.0,
+      "american": "+600",
+      "implied_pct": 14.285714285714285,
+      "my_prob_pct": 5.097058124210794,
+      "value_ratio": 0.35679406869475566,
+      "ev": -0.6432059313052444,
+      "kelly": 0
+    },
+    {
+      "team": "Argentina",
+      "decimal": 6.5,
+      "american": "+550",
+      "implied_pct": 15.384615384615385,
+      "my_prob_pct": 5.116207975706913,
+      "value_ratio": 0.3325535184209493,
+      "ev": -0.6674464815790506,
+      "kelly": 0
+    }
+  ]
+}
