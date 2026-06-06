@@ -1,0 +1,118 @@
+======================================================================
+  2026 世界杯 12 小组出线预测
+======================================================================
+
+📋 Group A  (种子: MEX)
+--------------------------------------------------
+  ✅ 1. Mexico                    实力分: 68
+  ✅ 2. South Korea               实力分: 62
+  ❌ 3. Czech Republic            实力分: 56
+  ❌ 4. South Africa              实力分: 48
+
+📋 Group B  (种子: CAN)
+--------------------------------------------------
+  ✅ 1. Canada                    实力分: 67
+  ✅ 2. Switzerland               实力分: 64
+  ❌ 3. Bosnia and Herzegovina    实力分: 54
+  ❌ 4. Qatar                     实力分: 50
+
+📋 Group C  (种子: BRA)
+--------------------------------------------------
+  ✅ 1. Brazil                    实力分: 82 ⭐
+  ✅ 2. Morocco                   实力分: 76
+  ❌ 3. Scotland                  实力分: 40
+  ❌ 4. Haiti                     实力分: 36
+
+📋 Group D  (种子: USA)
+--------------------------------------------------
+  ✅ 1. USA                       实力分: 72
+  ✅ 2. Turkey                    实力分: 60
+  ❌ 3. Paraguay                  实力分: 53
+  ❌ 4. Finland                   实力分: 48
+
+📋 Group E  (种子: GER)
+--------------------------------------------------
+  ✅ 1. Germany                   实力分: 79
+  ✅ 2. Ecuador                   实力分: 62
+  ❌ 3. Ivory Coast               实力分: 58
+  ❌ 4. Curaçao                   实力分: 38
+
+📋 Group F  (种子: NED)
+--------------------------------------------------
+  ✅ 1. Netherlands               实力分: 78
+  ✅ 2. Japan                     实力分: 70
+  ❌ 3. Sweden                    实力分: 62
+  ❌ 4. Tunisia                   实力分: 52
+
+📋 Group G  (种子: BEL)
+--------------------------------------------------
+  ✅ 1. Belgium                   实力分: 69
+  ✅ 2. Egypt                     实力分: 60
+  ❌ 3. Iran                      实力分: 55
+  ❌ 4. New Zealand               实力分: 40
+
+📋 Group H  (种子: ESP)
+--------------------------------------------------
+  ✅ 1. Spain                     实力分: 91 ⭐
+  ✅ 2. Uruguay                   实力分: 75
+  ❌ 3. Saudi Arabia              实力分: 56
+  ❌ 4. Cape Verde                实力分: 45
+
+📋 Group I  (种子: FRA)
+--------------------------------------------------
+  ✅ 1. France                    实力分: 90 ⭐
+  ✅ 2. Norway                    实力分: 69
+  ❌ 3. Senegal                   实力分: 65
+  ❌ 4. Iraq                      实力分: 48
+
+📋 Group J  (种子: ARG)
+--------------------------------------------------
+  ✅ 1. Argentina                 实力分: 93 ⭐
+  ✅ 2. Austria                   实力分: 58
+  ❌ 3. Algeria                   实力分: 54
+  ❌ 4. Jordan                    实力分: 42
+
+📋 Group K  (种子: POR)
+--------------------------------------------------
+  ✅ 1. Portugal                  实力分: 80
+  ✅ 2. Colombia                  实力分: 60
+  ❌ 3. DR Congo                  实力分: 50
+  ❌ 4. Uzbekistan                实力分: 44
+
+📋 Group L  (种子: ENG)
+--------------------------------------------------
+  ✅ 1. England                   实力分: 91 ⭐
+  ✅ 2. Croatia                   实力分: 67
+  ❌ 3. Ghana                     实力分: 52
+  ❌ 4. Panama                    实力分: 42
+
+======================================================================
+  预测 16 强（按 FIFA 16 强对阵规则：A1 vs B2, C1 vs D2, ...）
+======================================================================
+
+  A1 Mexico vs B2 Switzerland     |     A2 South Korea vs B1 Canada
+  C1 Brazil vs D2 Turkey     |     C2 Morocco vs D1 USA
+  E1 Germany vs F2 Japan     |     E2 Ecuador vs F1 Netherlands
+  G1 Belgium vs H2 Uruguay     |     G2 Egypt vs H1 Spain
+  I1 France vs J2 Austria     |     I2 Norway vs J1 Argentina
+  K1 Portugal vs L2 Croatia     |     K2 Colombia vs L1 England
+
+======================================================================
+  4 强预测（基于实力对比）
+======================================================================
+
+  1. Argentina (93)
+  2. Spain (91)
+  3. England (91)
+  4. France (90)
+  5. Brazil (82)
+  6. Portugal (80)
+  7. Germany (79)
+  8. Netherlands (78)
+
+Traceback (most recent call last):
+  File "/Work/world-cup-2026/scripts/group_predict.py", line 119, in <module>
+    main()
+  File "/Work/world-cup-2026/scripts/group_predict.py", line 100, in main
+    print("  🏆 4 强：", "  /  ".join(semés := sorted(semés if 'semés' in dir() else semis, key=lambda x: -TEAM_SCORE.get(x, 40))))
+TypeError: sequence item 0: expected str instance, tuple found

@@ -6,49 +6,88 @@
     "teams": 48,
     "matches": 104,
     "first_expansion": true,
-    "created": "2026-06-06"
+    "draw_date": "2025-12-05",
+    "draw_location": "Kennedy Center, Washington D.C.",
+    "created": "2026-06-06",
+    "last_updated": "2026-06-06",
+    "source": "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
   },
-  "tier_1": [
-    {"name": "Argentina", "code": "ARG", "fifa_rank": 1, "tier": "T1", "notes": "Defending champion"},
-    {"name": "France", "code": "FRA", "tier": "T1", "notes": "2022 runner-up, deepest squad"},
-    {"name": "Spain", "code": "ESP", "tier": "T1", "notes": "2024 Euro champion"},
-    {"name": "Brazil", "code": "BRA", "tier": "T1", "notes": "5x champion, hungry for 6th"},
-    {"name": "England", "code": "ENG", "tier": "T1", "notes": "2024 Euro runner-up, Tuchel era"}
+  "groups": {
+    "A": {
+      "seed": "MEX",
+      "teams": ["Mexico", "South Africa", "South Korea", "Czech Republic"],
+      "host": "Mexico"
+    },
+    "B": {
+      "seed": "CAN",
+      "teams": ["Canada", "Bosnia and Herzegovina", "Qatar", "Switzerland"],
+      "host": "Canada"
+    },
+    "C": {
+      "seed": "BRA",
+      "teams": ["Brazil", "Morocco", "Haiti", "Scotland"]
+    },
+    "D": {
+      "seed": "USA",
+      "teams": ["USA", "Paraguay", "Turkey", "Finland"],
+      "host": "USA"
+    },
+    "E": {
+      "seed": "GER",
+      "teams": ["Germany", "Curaçao", "Ivory Coast", "Ecuador"],
+      "debut": ["Curaçao"]
+    },
+    "F": {
+      "seed": "NED",
+      "teams": ["Netherlands", "Japan", "Sweden", "Tunisia"]
+    },
+    "G": {
+      "seed": "BEL",
+      "teams": ["Belgium", "Egypt", "Iran", "New Zealand"]
+    },
+    "H": {
+      "seed": "ESP",
+      "teams": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
+      "debut": ["Cape Verde"]
+    },
+    "I": {
+      "seed": "FRA",
+      "teams": ["France", "Senegal", "Iraq", "Norway"],
+      "death_group": true
+    },
+    "J": {
+      "seed": "ARG",
+      "teams": ["Argentina", "Algeria", "Austria", "Jordan"],
+      "debut": ["Jordan"]
+    },
+    "K": {
+      "seed": "POR",
+      "teams": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
+      "debut": ["Uzbekistan"]
+    },
+    "L": {
+      "seed": "ENG",
+      "teams": ["England", "Croatia", "Ghana", "Panama"]
+    }
+  },
+  "death_groups": [
+    {
+      "letter": "I",
+      "reason": "France (T1) + Norway (Haaland) + Senegal (2022 16 强)"
+    },
+    {
+      "letter": "F",
+      "reason": "Netherlands + Japan + Sweden，三队都强"
+    },
+    {
+      "letter": "H",
+      "reason": "Spain (欧洲杯冠军) + Uruguay (贝尔萨体系)"
+    }
   ],
-  "tier_2": [
-    {"name": "Germany", "code": "GER", "tier": "T2"},
-    {"name": "Portugal", "code": "POR", "tier": "T2", "notes": "Possibly Ronaldo's last WC"},
-    {"name": "Netherlands", "code": "NED", "tier": "T2"},
-    {"name": "Belgium", "code": "BEL", "tier": "T2", "notes": "De Bruyne farewell"},
-    {"name": "USA", "code": "USA", "tier": "T2", "notes": "Host, young squad"},
-    {"name": "Mexico", "code": "MEX", "tier": "T2", "notes": "Host, opener"},
-    {"name": "Canada", "code": "CAN", "tier": "T2", "notes": "Host, best ever squad"},
-    {"name": "Uruguay", "code": "URU", "tier": "T2", "notes": "Bielsa system"}
+  "tier_1_contenders": [
+    "Argentina", "France", "Spain", "Brazil", "England"
   ],
-  "tier_3": [
-    {"name": "Morocco", "code": "MAR", "tier": "T3", "notes": "2022 SF"},
-    {"name": "Japan", "code": "JPN", "tier": "T3"},
-    {"name": "Norway", "code": "NOR", "tier": "T3", "notes": "Haaland + Odegaard"},
-    {"name": "Croatia", "code": "CRO", "tier": "T3"},
-    {"name": "Denmark", "code": "DEN", "tier": "T3"},
-    {"name": "Switzerland", "code": "SUI", "tier": "T3"},
-    {"name": "Serbia", "code": "SRB", "tier": "T3"},
-    {"name": "Senegal", "code": "SEN", "tier": "T3"},
-    {"name": "Egypt", "code": "EGY", "tier": "T3", "notes": "Salah last WC"},
-    {"name": "South Korea", "code": "KOR", "tier": "T3", "notes": "Son last WC"},
-    {"name": "Nigeria", "code": "NGA", "tier": "T3"},
-    {"name": "Poland", "code": "POL", "tier": "T3"},
-    {"name": "Sweden", "code": "SWE", "tier": "T3"},
-    {"name": "Czech Republic", "code": "CZE", "tier": "T3"},
-    {"name": "Italy", "code": "ITA", "tier": "T3", "notes": "Playoff required"}
-  ],
-  "tier_4_long_shots": [
-    "Australia", "Iran", "Saudi Arabia", "Iraq", "Uzbekistan", "Qatar",
-    "Cote d'Ivoire", "Ghana", "Cameroon", "Tunisia", "Algeria",
-    "Costa Rica", "Honduras", "Jamaica", "Panama",
-    "New Zealand", "Chile", "Colombia", "Ecuador", "Paraguay"
-  ],
-  "first_time_qualifiers": [
-    "Uzbekistan", "Jordan", "Curacao", "Cape Verde"
+  "debut_teams": [
+    "Czech Republic", "Curaçao", "Cape Verde", "Jordan", "Uzbekistan"
   ]
 }
