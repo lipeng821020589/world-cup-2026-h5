@@ -24,8 +24,6 @@
       min-height: 100vh;
       padding-bottom: 60px;
     }
-
-    /* 模拟手机外框（可选） */
     body { border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
 
     .header {
@@ -77,8 +75,8 @@
 
     .prob-row { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
     .prob-row:last-child { border: none; }
-    .prob-name { display: inline-block; width: 110px; font-weight: 500; }
-    .bar { display: inline-block; width: 180px; height: 10px; background: #e0e0e0; border-radius: 5px; vertical-align: middle; margin: 0 8px; }
+    .prob-name { display: inline-block; width: 130px; font-weight: 500; }
+    .bar { display: inline-block; width: 160px; height: 10px; background: #e0e0e0; border-radius: 5px; vertical-align: middle; margin: 0 8px; }
     .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 5px; }
     .prob-pct { font-weight: 600; color: var(--primary); font-family: monospace; }
 
@@ -94,10 +92,13 @@
     .tag-t3 { background: #e8f5e9; color: #2e7d32; }
     .tag-t4 { background: #f3e5f5; color: #6a1b9a; }
     .tag-death { background: #ffebee; color: #c62828; font-weight: 600; }
-    .tag-qual { background: #c8e6c9; color: #1b5e20; }
+    .tag-opener { background: #fff8e1; color: #f57c00; font-weight: 600; }
+    .tag-live { background: #ff1744; color: #fff; font-weight: 600; animation: pulse 1.5s infinite; }
+    .tag-ft { background: #e0e0e0; color: #555; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-    .group-card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; transition: transform 0.2s; }
-    .group-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .group-card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .group-card.opener { border: 2px solid var(--primary); background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%); }
     .group-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
     .group-letter { font-size: 22px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
     .team-row { display: flex; align-items: center; padding: 6px 10px; border-radius: 6px; margin-bottom: 4px; font-size: 13px; }
@@ -136,12 +137,10 @@
     .page { display: none; }
     .page.active { display: block; }
 
-    /* 球队列表 */
     .filter-bar { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; background: #fff; margin-bottom: 12px; }
     .filter-chip { padding: 6px 14px; border-radius: 16px; background: #f0f0f0; font-size: 12px; color: #555; border: none; cursor: pointer; white-space: nowrap; }
     .filter-chip.active { background: var(--primary); color: #fff; font-weight: 600; }
-    .team-card { display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; }
-    .team-card:hover { background: #fafafa; }
+    .team-card { display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
     .team-card .flag { font-size: 24px; margin-right: 10px; }
     .team-card .name { flex: 1; font-weight: 600; font-size: 14px; }
     .team-card .tier { font-size: 11px; color: var(--muted); }
@@ -154,26 +153,45 @@
     .odds-row .value { width: 60px; text-align: right; font-weight: 600; }
     .legend { text-align: center; margin-top: 12px; font-size: 11px; color: var(--muted); }
 
-    .back-btn { display: inline-block; padding: 6px 12px; background: var(--primary); color: #fff; border-radius: 6px; font-size: 12px; cursor: pointer; border: none; margin-bottom: 12px; }
+    /* 比赛卡片 */
+    .date-block { font-size: 12px; color: #888; margin: 16rpx 0 8rpx; padding: 6rpx 0; border-bottom: 1rpx solid #ddd; }
+    .fixture { background: #fff; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .fixture.opener { border: 2px solid #f57c00; }
+    .fx-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #888; margin-bottom: 8px; }
+    .fx-time { font-weight: 600; color: var(--primary); }
+    .fx-meta { color: #888; }
+    .fx-body { display: flex; align-items: center; gap: 8px; }
+    .fx-team { flex: 1; display: flex; align-items: center; gap: 6px; }
+    .fx-team .flag { font-size: 22px; }
+    .fx-team .name { font-size: 14px; font-weight: 600; }
+    .fx-vs { font-size: 12px; color: #888; padding: 0 6px; }
+    .fx-foot { margin-top: 6px; font-size: 11px; color: #888; }
   </style>
 </head>
 <body>
   <div class="header">
     <h1>🏆 2026 世界杯数据预览</h1>
-    <p>本地 H5 模拟版 · 与小程序同步</p>
+    <p>实时赛程 + 赔率 + 预测 · 中文版</p>
   </div>
 
   <!-- 首页 -->
   <div id="page-home" class="page active">
     <div class="container">
       <div class="countdown-card">
-        <div class="cd-label">🏆 揭幕战 墨西哥 vs 南非</div>
+        <div class="cd-label" id="cd-label">🏆 揭幕战 墨西哥 vs 南非</div>
         <div class="cd-time" id="cd-opener">
           <span class="cd-num" id="cd-days">--</span><span class="cd-unit">天</span>
           <span class="cd-num" id="cd-hours">--</span><span class="cd-unit">时</span>
           <span class="cd-num" id="cd-mins">--</span><span class="cd-unit">分</span>
+          <span class="cd-num" id="cd-secs" style="font-size:32px;">--</span><span class="cd-unit">秒</span>
         </div>
         <div class="cd-extra">距 2026 世界杯揭幕</div>
+      </div>
+
+      <!-- 今日比赛 -->
+      <div class="card" id="today-card" style="display:none;">
+        <div class="card-title">⚽ 今日比赛 <span class="text-muted" id="today-date"></span></div>
+        <div id="today-fixtures"></div>
       </div>
 
       <div class="card">
@@ -198,7 +216,7 @@
   <!-- 小组页 -->
   <div id="page-groups" class="page">
     <div class="container">
-      <div class="card-title" style="padding: 12px 0;">12 小组</div>
+      <div class="card-title" style="padding: 12px 0;">12 小组预测</div>
       <div id="groups-list"></div>
     </div>
   </div>
@@ -226,30 +244,38 @@
     </div>
   </div>
 
-  <!-- 底部导航 -->
+  <!-- 赛程页 (新增) -->
+  <div id="page-fixtures" class="page">
+    <div class="container">
+      <div class="card-title" style="padding: 12px 0;">📅 全部 72 场赛程</div>
+      <div class="filter-bar" id="fx-filter-bar"></div>
+      <div id="fixtures-list"></div>
+    </div>
+  </div>
+
   <nav class="nav-tabs">
     <button class="nav-tab active" data-page="home"><span class="tab-icon">🏠</span>首页</button>
     <button class="nav-tab" data-page="groups"><span class="tab-icon">📋</span>小组</button>
+    <button class="nav-tab" data-page="fixtures"><span class="tab-icon">⚽</span>赛程</button>
     <button class="nav-tab" data-page="teams"><span class="tab-icon">⚽</span>球队</button>
     <button class="nav-tab" data-page="odds"><span class="tab-icon">💰</span>赔率</button>
   </nav>
 
   <script src="data.js"></script>
   <script>
-    // ====== 数据 (从 data.js 加载) ======
-    const FLAGS = { Argentina:'🇦🇷', France:'🇫🇷', Spain:'🇪🇸', Brazil:'🇧🇷', England:'🏴', Germany:'🇩🇪', Portugal:'🇵🇹', Netherlands:'🇳🇱', Belgium:'🇧🇪', USA:'🇺🇸', Mexico:'🇲🇽', Canada:'🇨🇦', Uruguay:'🇺🇾', Morocco:'🇲🇦', Japan:'🇯🇵', Norway:'🇳🇴', Croatia:'🇭🇷', Switzerland:'🇨🇭', Senegal:'🇸🇳', Egypt:'🇪🇬', 'South Korea':'🇰🇷', Sweden:'🇸🇪', Ecuador:'🇪🇨', 'Czech Republic':'🇨🇿', Turkey:'🇹🇷', Colombia:'🇨🇴', 'Saudi Arabia':'🇸🇦', 'Ivory Coast':'🇨🇮', Tunisia:'🇹🇳', Algeria:'🇩🇿', 'Bosnia and Herzegovina':'🇧🇦', Qatar:'🇶🇦', Iran:'🇮🇷', Ghana:'🇬🇭', Austria:'🇦🇹', Panama:'🇵🇦', Paraguay:'🇵🇾', Finland:'🇫🇮', 'New Zealand':'🇳🇿', Haiti:'🇭🇹', Scotland:'🏴', 'South Africa':'🇿🇦', 'Cape Verde':'🇨🇻', Jordan:'🇯🇴', Iraq:'🇮🇶', Uzbekistan:'🇺🇿', 'DR Congo':'🇨🇩', Curaçao:'🇨🇼' };
-
-    const SCORE = {"Argentina":93,"France":90,"Spain":91,"Brazil":82,"England":91,"Germany":79,"Portugal":80,"Netherlands":78,"Belgium":69,"USA":72,"Mexico":68,"Canada":67,"Uruguay":75,"Morocco":76,"Japan":70,"Norway":69,"Croatia":67,"Denmark":64,"Switzerland":64,"Serbia":62,"Senegal":65,"Egypt":60,"South Korea":62,"Nigeria":58,"Poland":58,"Sweden":62,"Czech Republic":56,"Ecuador":62,"Colombia":60,"Saudi Arabia":56,"Iran":55,"Ivory Coast":58,"Tunisia":52,"Algeria":54,"Ghana":52,"DR Congo":50,"South Africa":48,"Bosnia and Herzegovina":54,"Qatar":50,"Paraguay":53,"Turkey":60,"Finland":48,"Curaçao":38,"Haiti":36,"Cape Verde":45,"Jordan":42,"Uzbekistan":44,"Austria":58,"Iraq":48,"Panama":42,"New Zealand":40};
-
+    // ====== 数据 (从 data.js / fixtures_2026.json 加载) ======
+    const FLAGS = { Argentina:'🇦🇷', France:'🇫🇷', Spain:'🇪🇸', Brazil:'🇧🇷', England:'🏴', Germany:'🇩🇪', Portugal:'🇵🇹', Netherlands:'🇳🇱', Belgium:'🇧🇪', USA:'🇺🇸', Mexico:'🇲🇽', Canada:'🇨🇦', Uruguay:'🇺🇾', Morocco:'🇲🇦', Japan:'🇯🇵', Norway:'🇳🇴', Croatia:'🇭🇷', Switzerland:'🇨🇭', Senegal:'🇸🇳', Egypt:'🇪🇬', 'South Korea':'🇰🇷', Sweden:'🇸🇪', Ecuador:'🇪🇨', 'Czech Republic':'🇨🇿', Turkey:'🇹🇷', Colombia:'🇨🇴', 'Saudi Arabia':'🇸🇦', 'Ivory Coast':'🇨🇮', Tunisia:'🇹🇳', Algeria:'🇩🇿', 'Bosnia and Herzegovina':'🇧🇦', Qatar:'🇶🇦', Iran:'🇮🇷', Ghana:'🇬🇭', Austria:'🇦🇹', Panama:'🇵🇦', Paraguay:'🇵🇾', Finland:'🇫🇮', 'New Zealand':'🇳🇿', Haiti:'🇭🇹', Scotland:'🏴', 'South Africa':'🇿🇦', 'Cape Verde':'🇨🇻', Jordan:'🇯🇴', Iraq:'🇮🇶', Uzbekistan:'🇺🇿', 'DR Congo':'🇨🇩', 'Curaçao':'🇨🇼', Australia:'🇦🇺' };
+    const CN = { Argentina:'阿根廷', France:'法国', Spain:'西班牙', Brazil:'巴西', England:'英格兰', Germany:'德国', Portugal:'葡萄牙', Netherlands:'荷兰', Belgium:'比利时', USA:'美国', Mexico:'墨西哥', Canada:'加拿大', Uruguay:'乌拉圭', Morocco:'摩洛哥', Japan:'日本', Norway:'挪威', Croatia:'克罗地亚', Switzerland:'瑞士', Senegal:'塞内加尔', Egypt:'埃及', 'South Korea':'韩国', Sweden:'瑞典', Ecuador:'厄瓜多尔', 'Czech Republic':'捷克', Turkey:'土耳其', Colombia:'哥伦比亚', 'Saudi Arabia':'沙特', 'Ivory Coast':'科特迪瓦', Tunisia:'突尼斯', Algeria:'阿尔及利亚', Ghana:'加纳', Austria:'奥地利', Iraq:'伊拉克', Jordan:'约旦', 'Cape Verde':'佛得角', 'South Africa':'南非', Qatar:'卡塔尔', Haiti:'海地', Scotland:'苏格兰', Panama:'巴拿马', 'New Zealand':'新西兰', Finland:'芬兰', Poland:'波兰', Iran:'伊朗', Nigeria:'尼日利亚', Denmark:'丹麦', Serbia:'塞尔维亚', 'DR Congo':'刚果（金）', Paraguay:'巴拉圭', Uzbekistan:'乌兹别克', 'Curaçao':'库拉索', 'Bosnia and Herzegovina':'波黑', Australia:'澳大利亚' };
+    const SCORE = {"Argentina":93,"France":90,"Spain":91,"Brazil":82,"England":91,"Germany":79,"Portugal":80,"Netherlands":78,"Belgium":69,"USA":72,"Mexico":68,"Canada":67,"Uruguay":75,"Morocco":76,"Japan":70,"Norway":69,"Croatia":67,"Denmark":64,"Switzerland":64,"Serbia":62,"Senegal":65,"Egypt":60,"South Korea":62,"Nigeria":58,"Poland":58,"Sweden":62,"Czech Republic":56,"Ecuador":62,"Colombia":60,"Saudi Arabia":56,"Iran":55,"Ivory Coast":58,"Tunisia":52,"Algeria":54,"Ghana":52,"DR Congo":50,"South Africa":48,"Bosnia and Herzegovina":54,"Qatar":50,"Paraguay":53,"Turkey":60,"Finland":48,"Curaçao":38,"Haiti":36,"Cape Verde":45,"Jordan":42,"Uzbekistan":44,"Austria":58,"Iraq":48,"Panama":42,"New Zealand":40,"Australia":56};
     const PREDICTIONS = {A:[["Mexico",68],["South Korea",62],["Czech Republic",56],["South Africa",48]],B:[["Canada",67],["Switzerland",64],["Bosnia and Herzegovina",54],["Qatar",50]],C:[["Brazil",82],["Morocco",76],["Scotland",40],["Haiti",36]],D:[["USA",72],["Turkey",60],["Paraguay",53],["Finland",48]],E:[["Germany",79],["Ecuador",62],["Ivory Coast",58],["Curaçao",38]],F:[["Netherlands",78],["Japan",70],["Sweden",62],["Tunisia",52]],G:[["Belgium",69],["Egypt",60],["Iran",55],["New Zealand",40]],H:[["Spain",91],["Uruguay",75],["Saudi Arabia",56],["Cape Verde",45]],I:[["France",90],["Norway",69],["Senegal",65],["Iraq",48]],J:[["Argentina",93],["Austria",58],["Algeria",54],["Jordan",42]],K:[["Portugal",80],["Colombia",60],["DR Congo",50],["Uzbekistan",44]],L:[["England",91],["Croatia",67],["Ghana",52],["Panama",42]]};
-
     const CHAMPION_PROB = {Spain:39.2, Argentina:37.2, England:20.3, France:3.2, Brazil:0.1};
     const DEATH_GROUPS = [{letter:'I',reason:'法国 + 挪威（哈兰德） + 塞内加尔（2022 16 强）'},{letter:'F',reason:'荷兰 + 日本 + 瑞典 三强'},{letter:'H',reason:'西班牙（欧洲杯冠军） + 乌拉圭（贝尔萨体系）'}];
 
-    // ====== 渲染 ======
+    let FIXTURES = [];  // 从 fixtures_2026.json 加载
+
+    // ====== 渲染工具 ======
     function flag(name) { return FLAGS[name] || '🏳'; }
-    const CN = {"Argentina": "阿根廷", "France": "法国", "Spain": "西班牙", "Brazil": "巴西", "England": "英格兰", "Germany": "德国", "Portugal": "葡萄牙", "Netherlands": "荷兰", "Belgium": "比利时", "USA": "美国", "Mexico": "墨西哥", "Canada": "加拿大", "Uruguay": "乌拉圭", "Morocco": "摩洛哥", "Japan": "日本", "Norway": "挪威", "Croatia": "克罗地亚", "Switzerland": "瑞士", "Senegal": "塞内加尔", "Egypt": "埃及", "South Korea": "韩国", "Sweden": "瑞典", "Ecuador": "厄瓜多尔", "Czech Republic": "捷克", "Turkey": "土耳其", "Colombia": "哥伦比亚", "Saudi Arabia": "沙特", "Ivory Coast": "科特迪瓦", "Tunisia": "突尼斯", "Algeria": "阿尔及利亚", "Ghana": "加纳", "Austria": "奥地利", "Iraq": "伊拉克", "Jordan": "约旦", "Cape Verde": "佛得角", "South Africa": "南非", "Qatar": "卡塔尔", "Haiti": "海地", "Scotland": "苏格兰", "Panama": "巴拿马", "New Zealand": "新西兰", "Finland": "芬兰", "Poland": "波兰", "Iran": "伊朗", "Nigeria": "尼日利亚", "Denmark": "丹麦", "Serbia": "塞尔维亚", "DR Congo": "刚果（金）", "Paraguay": "巴拉圭", "Uzbekistan": "乌兹别克", "Curaçao": "库拉索", "Bosnia and Herzegovina": "波黑"};
-    function cn(name) { const c = CN[name]; return c ? `${flag(name)} ${name} (${c})` : `${flag(name)} ${name}`; }
+    function cn(name) { return CN[name] || name; }
     function tier(score) { return score >= 88 ? 'T1' : score >= 78 ? 'T2' : score >= 65 ? 'T3' : 'T4'; }
     function tierLabel(t) { return {T1:'🏆 争冠热门', T2:'🥈 半决赛级', T3:'🥉 16 强级', T4:'🐎 搅局者'}[t] || t; }
     function getGroup(name) {
@@ -259,18 +285,22 @@
       return '?';
     }
 
+    // ====== 倒计时（精确到秒） ======
     function renderCountdown() {
-      const target = new Date('2026-06-11T14:00:00-06:00').getTime();
+      // 揭幕战: 2026-06-12 09:00 北京 = 2026-06-12 01:00 UTC
+      const target = new Date('2026-06-12T01:00:00Z').getTime();
       const now = Date.now();
       const diff = Math.max(0, target - now);
       const days = Math.floor(diff / 86400000);
       const hours = Math.floor((diff % 86400000) / 3600000);
       const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
       document.getElementById('cd-days').textContent = days;
       document.getElementById('cd-hours').textContent = hours;
       document.getElementById('cd-mins').textContent = mins;
+      document.getElementById('cd-secs').textContent = secs;
     }
-    setInterval(renderCountdown, 30000);
+    setInterval(renderCountdown, 1000);
     renderCountdown();
 
     function renderChampion() {
@@ -278,7 +308,7 @@
         .sort((a, b) => b[1] - a[1])
         .map(([name, prob]) => `<div class="prob-row">
           <span class="flag">${flag(name)}</span>
-          <span class="prob-name">${cn(name).replace(flag(name), '').trim()}</span>
+          <span class="prob-name">${cn(name)}</span>
           <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
           <span class="prob-pct">${prob}%</span>
         </div>`).join('');
@@ -306,7 +336,7 @@
             <div class="team-row ${i < 2 ? 'qual' : 'elim'}">
               <span class="qual-mark">${i < 2 ? '✅' : '❌'}</span>
               <span class="flag">${flag(name)}</span>
-              <span class="name">${cn(name).replace(flag(name), '').trim()}</span>
+              <span class="name">${cn(name)}</span>
               <span class="score">${score} 分</span>
             </div>
           `).join('')}
@@ -316,7 +346,6 @@
     }
 
     function renderTeams(filter = 'ALL') {
-      // 过滤条
       const filters = ['ALL', 'T1', 'T2', 'T3', 'T4'];
       const filterHtml = filters.map(f => `
         <button class="filter-chip ${f === filter ? 'active' : ''}" data-tier="${f}">
@@ -325,7 +354,6 @@
       `).join('');
       document.getElementById('filter-bar').innerHTML = filterHtml;
 
-      // 球队列表
       const teams = Object.entries(SCORE)
         .map(([name, score]) => ({ name, score, tier: tier(score), group: getGroup(name) }))
         .filter(t => filter === 'ALL' || t.tier === filter)
@@ -335,48 +363,141 @@
         <div class="team-card">
           <span class="flag">${flag(t.name)}</span>
           <div style="flex: 1;">
-            <div class="name">${cn(t.name).replace(flag(t.name), '').trim()}</div>
+            <div class="name">${cn(t.name)}</div>
             <div class="tier">第 ${t.group} 组 · ${tierLabel(t.tier)}</div>
           </div>
           <div class="score">${t.score} <span style="font-size:11px;color:#888;">分</span></div>
         </div>
       `).join('');
 
-      // 绑定过滤事件
       document.querySelectorAll('.filter-chip').forEach(b => {
         b.onclick = () => renderTeams(b.dataset.tier);
       });
     }
 
     function renderOdds() {
-      // 蒙特卡洛
       const champHtml = Object.entries(CHAMPION_PROB)
         .sort((a, b) => b[1] - a[1])
         .map(([name, prob]) => `<div class="prob-row">
           <span class="flag">${flag(name)}</span>
-          <span class="prob-name">${cn(name).replace(flag(name), '').trim()}</span>
+          <span class="prob-name">${cn(name)}</span>
           <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
           <span class="prob-pct">${prob}%</span>
         </div>`).join('');
       document.getElementById('odds-champ').innerHTML = champHtml;
 
-      // 赔率 (硬编码最新)
       const odds = {"Argentina":8.0,"France":5.5,"Spain":8.0,"Brazil":9.5,"England":7.5,"Germany":12.0,"Portugal":16.0,"Netherlands":18.0,"Belgium":26.0,"USA":36.0,"Mexico":41.0,"Morocco":26.0,"Norway":51.0,"Uruguay":31.0,"Japan":51.0,"Colombia":51.0,"South Korea":101.0,"Switzerland":67.0,"Turkey":67.0,"Sweden":81.0};
       const oddsHtml = Object.entries(odds)
         .sort((a, b) => a[1] - b[1])
         .map(([name, dec]) => {
           const prob = CHAMPION_PROB[name] || 0;
-          const implied = 1 / dec * 100;
           const value = (prob / 100) / (1 / dec);
           const mark = value > 1.0 ? '🟢' : value > 0.7 ? '🟡' : '🔴';
           return `<div class="odds-row">
             <span class="flag">${flag(name)}</span>
-            <span class="name">${cn(name).replace(flag(name), '').trim()}</span>
+            <span class="name">${cn(name)}</span>
             <span class="dec">${dec.toFixed(2)}</span>
             <span class="value">${mark} ${value.toFixed(2)}</span>
           </div>`;
         }).join('');
       document.getElementById('odds-list').innerHTML = oddsHtml;
+    }
+
+    // ====== 赛程页 + 今日比赛 ======
+    function getStatusTag(fx) {
+      if (fx.status === 'FT' || fx.status === 'AET' || fx.status === 'PEN') return '<span class="tag tag-ft">完赛</span>';
+      if (fx.status === '1H' || fx.status === '2H' || fx.status === 'HT' || fx.status === 'LIVE') return '<span class="tag tag-live">● 直播</span>';
+      return '';
+    }
+
+    function fxCardHtml(fx) {
+      const isOpener = fx.is_opener;
+      return `<div class="fixture ${isOpener ? 'opener' : ''}">
+        <div class="fx-head">
+          <span class="fx-time">${fx.weekday} ${fx.time_short}</span>
+          <span class="fx-meta">第 ${fx.group} 组 · ${fx.round === 1 ? '小组赛第1轮' : fx.round === 2 ? '小组赛第2轮' : '小组赛第3轮'} ${getStatusTag(fx)}</span>
+        </div>
+        <div class="fx-body">
+          <div class="fx-team"><span class="flag">${flag(fx.home)}</span><span class="name">${cn(fx.home)}</span></div>
+          <div class="fx-vs">${fx.home_score != null ? `${fx.home_score} - ${fx.away_score}` : 'VS'}</div>
+          <div class="fx-team" style="justify-content:flex-end;"><span class="name">${cn(fx.away)}</span><span class="flag">${flag(fx.away)}</span></div>
+        </div>
+        <div class="fx-foot">🏟 ${fx.venue} · ${fx.city}</div>
+      </div>`;
+    }
+
+    function renderToday() {
+      const todayBJ = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
+      const todayFx = FIXTURES.filter(fx => fx.time_bj.startsWith(todayBJ));
+      if (todayFx.length === 0) {
+        document.getElementById('today-card').style.display = 'none';
+        return;
+      }
+      document.getElementById('today-card').style.display = 'block';
+      document.getElementById('today-date').textContent = ` (${todayBJ})`;
+      document.getElementById('today-fixtures').innerHTML = todayFx.map(fxCardHtml).join('');
+    }
+
+    function renderFixtures(filter = 'ALL') {
+      // 按日期分组
+      const filterFns = {
+        'ALL': () => true,
+        'OPENER': fx => fx.is_opener,
+        'DEATH': fx => ['I','F','H'].includes(fx.group),
+        'TODAY': fx => fx.time_bj.startsWith(new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10)),
+        'WEEK1': fx => fx.round === 1,
+        'WEEK2': fx => fx.round === 2,
+        'WEEK3': fx => fx.round === 3,
+      };
+      const fn = filterFns[filter] || filterFns['ALL'];
+      const filtered = FIXTURES.filter(fn);
+
+      // 分组
+      const groups = {};
+      filtered.forEach(fx => {
+        const date = fx.time_bj.split(' ')[0];
+        if (!groups[date]) groups[date] = [];
+        groups[date].push(fx);
+      });
+
+      const html = Object.entries(groups).map(([date, list]) => `
+        <div class="date-block">📅 ${date} · ${list.length} 场</div>
+        ${list.map(fxCardHtml).join('')}
+      `).join('');
+
+      document.getElementById('fixtures-list').innerHTML = html || '<div class="text-muted" style="text-align:center;padding:20px;">暂无比赛</div>';
+
+      // 过滤按钮
+      const filters = [
+        {k:'ALL',l:'全部'},
+        {k:'TODAY',l:'⚽ 今日'},
+        {k:'OPENER',l:'🏆 揭幕战'},
+        {k:'DEATH',l:'💀 死亡之组'},
+        {k:'WEEK1',l:'第1轮'},
+        {k:'WEEK2',l:'第2轮'},
+        {k:'WEEK3',l:'第3轮'},
+      ];
+      document.getElementById('fx-filter-bar').innerHTML = filters.map(f => `
+        <button class="filter-chip ${f.k === filter ? 'active' : ''}" data-fx-filter="${f.k}">${f.l}</button>
+      `).join('');
+      document.querySelectorAll('[data-fx-filter]').forEach(b => {
+        b.onclick = () => renderFixtures(b.dataset.fxFilter);
+      });
+    }
+
+    // ====== 加载 fixtures ======
+    async function loadFixtures() {
+      try {
+        const resp = await fetch('fixtures_2026.json?t=' + Date.now());
+        const data = await resp.json();
+        FIXTURES = data.matches || [];
+        console.log(`📦 加载 ${FIXTURES.length} 场赛程`);
+        renderToday();
+        renderFixtures('ALL');
+      } catch (err) {
+        console.error('加载赛程失败:', err);
+        document.getElementById('fixtures-list').innerHTML = '<div class="text-muted" style="text-align:center;padding:20px;">⚠️ 加载失败</div>';
+      }
     }
 
     // 切换 Tab
@@ -396,6 +517,7 @@
     renderGroups();
     renderTeams();
     renderOdds();
+    loadFixtures();
 
     // 从 hash 恢复
     const initialPage = location.hash.replace('#', '') || 'home';
