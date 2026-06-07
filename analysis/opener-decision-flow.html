@@ -1,0 +1,146 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>揭幕战决策流程 · 2026 世界杯</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f8fafc;
+    --fg: #172033;
+    --muted: #5b6475;
+    --line: #64748b;
+    --neutral: #e2e8f0;
+    --input: #bfdbfe;
+    --process: #c7d2fe;
+    --storage: #99f6e4;
+    --external: #fde68a;
+    --risk: #fecaca;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --fg: #e5e7eb;
+      --muted: #a3adbd;
+      --line: #94a3b8;
+      --neutral: #334155;
+      --input: #1d4ed8;
+      --process: #4338ca;
+      --storage: #0f766e;
+      --external: #92400e;
+      --risk: #991b1b;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin-bottom: 24px; }
+  .legend { display: flex; gap: 12px; margin: 16px 0; font-size: 12px; flex-wrap: wrap; }
+  .legend span { padding: 4px 10px; border-radius: 6px; border: 1px solid var(--line); }
+  .legend .input { background: var(--input); }
+  .legend .process { background: var(--process); }
+  .legend .storage { background: var(--storage); }
+  .legend .risk { background: var(--risk); }
+  svg { width: 100%; height: auto; display: block; }
+</style>
+<main>
+<h1>🏆 2026 世界杯 揭幕战决策流程</h1>
+<p class="sub">距揭幕 4 天 19 时 · 墨西哥 vs 南非 · 6/12 09:00 北京</p>
+<div class="legend">
+  <span class="input">输入</span>
+  <span class="process">分析</span>
+  <span class="storage">决策</span>
+  <span class="risk">风险</span>
+</div>
+<!-- SVG -->
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- 连接线 (先画, 后画节点) -->
+  <path d="M 150 80 L 350 80" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 500 80 L 700 80" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 850 80 L 850 180" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 850 240 L 500 320" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 200 180 L 200 260" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 500 180 L 500 260" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 800 180 L 800 260" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 200 320 L 450 380" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 500 320 L 500 380" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 800 320 L 550 380" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 500 440 L 500 520" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 200 520 L 800 520" stroke="#64748b" stroke-width="2" fill="none" stroke-dasharray="6 4" />
+  <path d="M 200 580 L 500 640" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 800 580 L 500 640" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+
+  <!-- 第 1 行: 输入数据 -->
+  <rect x="20" y="50" width="260" height="60" rx="8" fill="var(--input)" stroke="#1d4ed8" />
+  <text x="150" y="78" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">📊 TheSportsDB 赛程</text>
+  <text x="150" y="96" text-anchor="middle" font-size="11" fill="#475569">墨西哥 vs 南非 · 6/12 09:00 北京</text>
+
+  <rect x="350" y="50" width="300" height="60" rx="8" fill="var(--input)" stroke="#1d4ed8" />
+  <text x="500" y="78" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">💰 公开博彩公司赔率</text>
+  <text x="500" y="96" text-anchor="middle" font-size="11" fill="#475569">Pinnacle / Bet365 平均 (估算)</text>
+
+  <rect x="700" y="50" width="300" height="60" rx="8" fill="var(--input)" stroke="#1d4ed8" />
+  <text x="850" y="78" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">🎲 蒙特卡洛 1000 次</text>
+  <text x="850" y="96" text-anchor="middle" font-size="11" fill="#475569">基于实力分 + 历史胜负</text>
+
+  <!-- 第 2 行: 实力分析 -->
+  <rect x="50" y="160" width="300" height="60" rx="8" fill="var(--process)" stroke="#4338ca" />
+  <text x="200" y="185" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">⚙️ 实力评分</text>
+  <text x="200" y="205" text-anchor="middle" font-size="11" fill="#475569">墨西哥 68 / 南非 48 (差 20)</text>
+
+  <rect x="370" y="160" width="260" height="60" rx="8" fill="var(--process)" stroke="#4338ca" />
+  <text x="500" y="185" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">📈 赔率推导隐含概率</text>
+  <text x="500" y="205" text-anchor="middle" font-size="11" fill="#475569">去 vig 后真实市场预期</text>
+
+  <rect x="650" y="160" width="300" height="60" rx="8" fill="var(--process)" stroke="#4338ca" />
+  <text x="800" y="185" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">🎯 凯利公式 + EV</text>
+  <text x="800" y="205" text-anchor="middle" font-size="11" fill="#475569">最佳押注金额比例</text>
+
+  <!-- 第 3 行: 我的预测 -->
+  <rect x="50" y="260" width="300" height="80" rx="8" fill="var(--storage)" stroke="#0f766e" />
+  <text x="200" y="285" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">🇲🇽 墨西哥 73.9%</text>
+  <text x="200" y="305" text-anchor="middle" font-size="11" fill="#0f766e">主场 + 实力强 1 档</text>
+  <text x="200" y="320" text-anchor="middle" font-size="11" fill="#0f766e">EV = +0.37 (价值低估)</text>
+
+  <rect x="370" y="260" width="260" height="80" rx="8" fill="var(--neutral)" stroke="#475569" />
+  <text x="500" y="285" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">⚖️ 平 20.0%</text>
+  <text x="500" y="305" text-anchor="middle" font-size="11" fill="#64748b">平局概率 1/5 (正常)</text>
+  <text x="500" y="320" text-anchor="middle" font-size="11" fill="#64748b">赔率 3.50 EV ≈ 0</text>
+
+  <rect x="650" y="260" width="300" height="80" rx="8" fill="var(--risk)" stroke="#991b1b" />
+  <text x="800" y="285" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">🇿🇦 南非 6.1%</text>
+  <text x="800" y="305" text-anchor="middle" font-size="11" fill="#7f1d1d">实力 T4 唯一一次参赛</text>
+  <text x="800" y="320" text-anchor="middle" font-size="11" fill="#7f1d1d">冷门赔率 4.20 EV 略负</text>
+
+  <!-- 第 4 行: 关键判断 -->
+  <rect x="450" y="380" width="300" height="60" rx="8" fill="var(--storage)" stroke="#0f766e" />
+  <text x="600" y="408" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">✅ 最佳押注: 墨西哥胜</text>
+  <text x="600" y="425" text-anchor="middle" font-size="11" fill="#0f766e">赔率 1.85 · 凯利下注 23% 资金</text>
+
+  <!-- 第 5 行: 风险 -->
+  <rect x="50" y="500" width="300" height="80" rx="8" fill="var(--risk)" stroke="#991b1b" />
+  <text x="200" y="525" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">⚠️ 风险 1: 揭幕战</text>
+  <text x="200" y="545" text-anchor="middle" font-size="11" fill="#7f1d1d">南美球队首战常慢热</text>
+  <text x="200" y="560" text-anchor="middle" font-size="11" fill="#7f1d1d">前 30 分钟可能闷平</text>
+
+  <rect x="650" y="500" width="300" height="80" rx="8" fill="var(--risk)" stroke="#991b1b" />
+  <text x="800" y="525" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">⚠️ 风险 2: 数据缺口</text>
+  <text x="800" y="545" text-anchor="middle" font-size="11" fill="#7f1d1d">赔率为静态估算</text>
+  <text x="800" y="560" text-anchor="middle" font-size="11" fill="#7f1d1d">真实赔率比赛前 1h 才准</text>
+
+  <!-- 第 6 行: 行动 -->
+  <rect x="370" y="620" width="260" height="60" rx="8" fill="#22c55e" stroke="#16a34a" />
+  <text x="500" y="645" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">🏆 决策: 跟主队胜</text>
+  <text x="500" y="665" text-anchor="middle" font-size="11" fill="#f0fdf4">凯利 23% · 期望 +0.37</text>
+</svg>
+</main>
