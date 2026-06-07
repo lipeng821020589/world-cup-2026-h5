@@ -244,12 +244,20 @@
     const PREDICTIONS = {A:[["Mexico",68],["South Korea",62],["Czech Republic",56],["South Africa",48]],B:[["Canada",67],["Switzerland",64],["Bosnia and Herzegovina",54],["Qatar",50]],C:[["Brazil",82],["Morocco",76],["Scotland",40],["Haiti",36]],D:[["USA",72],["Turkey",60],["Paraguay",53],["Finland",48]],E:[["Germany",79],["Ecuador",62],["Ivory Coast",58],["Curaçao",38]],F:[["Netherlands",78],["Japan",70],["Sweden",62],["Tunisia",52]],G:[["Belgium",69],["Egypt",60],["Iran",55],["New Zealand",40]],H:[["Spain",91],["Uruguay",75],["Saudi Arabia",56],["Cape Verde",45]],I:[["France",90],["Norway",69],["Senegal",65],["Iraq",48]],J:[["Argentina",93],["Austria",58],["Algeria",54],["Jordan",42]],K:[["Portugal",80],["Colombia",60],["DR Congo",50],["Uzbekistan",44]],L:[["England",91],["Croatia",67],["Ghana",52],["Panama",42]]};
 
     const CHAMPION_PROB = {Spain:39.2, Argentina:37.2, England:20.3, France:3.2, Brazil:0.1};
-    const DEATH_GROUPS = [{letter:'I',reason:'France + Norway (Haaland) + Senegal (2022 16 强)'},{letter:'F',reason:'Netherlands + Japan + Sweden 三强'},{letter:'H',reason:'Spain (欧洲杯冠军) + Uruguay (贝尔萨体系)'}];
+    const DEATH_GROUPS = [{letter:'I',reason:'法国 + 挪威（哈兰德） + 塞内加尔（2022 16 强）'},{letter:'F',reason:'荷兰 + 日本 + 瑞典 三强'},{letter:'H',reason:'西班牙（欧洲杯冠军） + 乌拉圭（贝尔萨体系）'}];
 
     // ====== 渲染 ======
     function flag(name) { return FLAGS[name] || '🏳'; }
+    const CN = {"Argentina": "阿根廷", "France": "法国", "Spain": "西班牙", "Brazil": "巴西", "England": "英格兰", "Germany": "德国", "Portugal": "葡萄牙", "Netherlands": "荷兰", "Belgium": "比利时", "USA": "美国", "Mexico": "墨西哥", "Canada": "加拿大", "Uruguay": "乌拉圭", "Morocco": "摩洛哥", "Japan": "日本", "Norway": "挪威", "Croatia": "克罗地亚", "Switzerland": "瑞士", "Senegal": "塞内加尔", "Egypt": "埃及", "South Korea": "韩国", "Sweden": "瑞典", "Ecuador": "厄瓜多尔", "Czech Republic": "捷克", "Turkey": "土耳其", "Colombia": "哥伦比亚", "Saudi Arabia": "沙特", "Ivory Coast": "科特迪瓦", "Tunisia": "突尼斯", "Algeria": "阿尔及利亚", "Ghana": "加纳", "Austria": "奥地利", "Iraq": "伊拉克", "Jordan": "约旦", "Cape Verde": "佛得角", "South Africa": "南非", "Qatar": "卡塔尔", "Haiti": "海地", "Scotland": "苏格兰", "Panama": "巴拿马", "New Zealand": "新西兰", "Finland": "芬兰", "Poland": "波兰", "Iran": "伊朗", "Nigeria": "尼日利亚", "Denmark": "丹麦", "Serbia": "塞尔维亚", "DR Congo": "刚果（金）", "Paraguay": "巴拉圭", "Uzbekistan": "乌兹别克", "Curaçao": "库拉索", "Bosnia and Herzegovina": "波黑"};
+    function cn(name) { const c = CN[name]; return c ? `${flag(name)} ${name} (${c})` : `${flag(name)} ${name}`; }
     function tier(score) { return score >= 88 ? 'T1' : score >= 78 ? 'T2' : score >= 65 ? 'T3' : 'T4'; }
-    function tierLabel(t) { return {T1:'🏆 T1', T2:'🥈 T2', T3:'🥉 T3', T4:'🐎 T4'}[t] || t; }
+    function tierLabel(t) { return {T1:'🏆 争冠热门', T2:'🥈 半决赛级', T3:'🥉 16 强级', T4:'🐎 搅局者'}[t] || t; }
+    function getGroup(name) {
+      for (const [letter, ranks] of Object.entries(PREDICTIONS)) {
+        if (ranks.some(([n]) => n === name)) return letter;
+      }
+      return '?';
+    }
 
     function renderCountdown() {
       const target = new Date('2026-06-11T14:00:00-06:00').getTime();
@@ -270,7 +278,7 @@
         .sort((a, b) => b[1] - a[1])
         .map(([name, prob]) => `<div class="prob-row">
           <span class="flag">${flag(name)}</span>
-          <span class="prob-name">${name}</span>
+          <span class="prob-name">${cn(name).replace(flag(name), '').trim()}</span>
           <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
           <span class="prob-pct">${prob}%</span>
         </div>`).join('');
@@ -280,7 +288,7 @@
     function renderDeath() {
       document.getElementById('death-list').innerHTML = DEATH_GROUPS.map(d => `
         <div class="row" style="border: 1px solid #ffcdd2; background: #fff5f5; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-          <span class="tag tag-death">Group ${d.letter}</span>
+          <span class="tag tag-death">第 ${d.letter} 组</span>
           <span class="text-muted" style="flex: 1; margin-left: 8px;">${d.reason}</span>
         </div>
       `).join('');
@@ -291,15 +299,15 @@
       const html = Object.entries(PREDICTIONS).map(([letter, ranks]) => `
         <div class="group-card">
           <div class="group-header">
-            <span class="group-letter">Group ${letter}</span>
+            <span class="group-letter">第 ${letter} 组</span>
             ${deathLetters.has(letter) ? '<span class="tag tag-death">💀 死亡之组</span>' : ''}
           </div>
           ${ranks.map(([name, score], i) => `
             <div class="team-row ${i < 2 ? 'qual' : 'elim'}">
               <span class="qual-mark">${i < 2 ? '✅' : '❌'}</span>
               <span class="flag">${flag(name)}</span>
-              <span class="name">${name}</span>
-              <span class="score">${score}</span>
+              <span class="name">${cn(name).replace(flag(name), '').trim()}</span>
+              <span class="score">${score} 分</span>
             </div>
           `).join('')}
         </div>
@@ -319,7 +327,7 @@
 
       // 球队列表
       const teams = Object.entries(SCORE)
-        .map(([name, score]) => ({ name, score, tier: tier(score) }))
+        .map(([name, score]) => ({ name, score, tier: tier(score), group: getGroup(name) }))
         .filter(t => filter === 'ALL' || t.tier === filter)
         .sort((a, b) => b.score - a.score);
 
@@ -327,10 +335,10 @@
         <div class="team-card">
           <span class="flag">${flag(t.name)}</span>
           <div style="flex: 1;">
-            <div class="name">${t.name}</div>
-            <div class="tier">${tierLabel(t.tier)}</div>
+            <div class="name">${cn(t.name).replace(flag(t.name), '').trim()}</div>
+            <div class="tier">第 ${t.group} 组 · ${tierLabel(t.tier)}</div>
           </div>
-          <div class="score">${t.score}</div>
+          <div class="score">${t.score} <span style="font-size:11px;color:#888;">分</span></div>
         </div>
       `).join('');
 
@@ -346,7 +354,7 @@
         .sort((a, b) => b[1] - a[1])
         .map(([name, prob]) => `<div class="prob-row">
           <span class="flag">${flag(name)}</span>
-          <span class="prob-name">${name}</span>
+          <span class="prob-name">${cn(name).replace(flag(name), '').trim()}</span>
           <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
           <span class="prob-pct">${prob}%</span>
         </div>`).join('');
@@ -363,7 +371,7 @@
           const mark = value > 1.0 ? '🟢' : value > 0.7 ? '🟡' : '🔴';
           return `<div class="odds-row">
             <span class="flag">${flag(name)}</span>
-            <span class="name">${name}</span>
+            <span class="name">${cn(name).replace(flag(name), '').trim()}</span>
             <span class="dec">${dec.toFixed(2)}</span>
             <span class="value">${mark} ${value.toFixed(2)}</span>
           </div>`;
