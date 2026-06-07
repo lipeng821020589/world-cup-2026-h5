@@ -8,17 +8,42 @@
 ```
 world-cup-2026/
 ├── README.md           # 本文件
-├── analysis/           # 各队/各组深度分析
-│   ├── tier-list.md    # 球队实力分档
-│   ├── groups.md       # 12 个小组形势
-│   └── dark-horses.md  # 黑马分析
+├── SUMMARY.md          # 交付总览
+├── CHECKLIST.md        # 任务清单
+├── timeline.md         # 关键时间表
+│
 ├── data/               # 数据与表格
-│   ├── teams.json      # 48 队元数据
-│   └── ranking.json    # FIFA 排名等
-├── reports/            # 阶段性报告
-├── scripts/            # 数据处理脚本
-│   └── power_score.py  # 球队实力评分工具
-└── timeline.md         # 关键时间节点
+│   ├── teams.json      # 48 队分组
+│   ├── squads.json     # 240 名关键球员
+│   ├── venues.json     # 16 个主办球场
+│   ├── matches.json    # 16 场重点比赛
+│   ├── odds_baseline.json  # 20 队冠军赔率
+│   ├── odds_history.jsonl  # 赔率历史快照
+│   └── match_odds.jsonl    # 单场赔率历史
+│
+├── scripts/            # 自动化脚本
+│   ├── power_score.py        # 实力评分
+│   ├── group_predict.py      # 12 小组 + 淘汰赛预测 (v3 真实赛制)
+│   ├── odds_tracker.py       # 价值分析 + 凯利公式
+│   ├── odds_monitor.py       # 夺冠赔率监控 (4h 周期)
+│   ├── match_odds_monitor.py # 单场赔率监控
+│   └── countdown.py          # 倒计时工具
+│
+├── analysis/           # 深度分析
+│   ├── tier-list.md         # 4 档实力分档
+│   ├── groups.md            # 12 小组对阵（已核实）
+│   ├── dark-horses.md       # 黑马分析
+│   ├── odds-baseline.md     # 赔率深度分析
+│   ├── odds-monitor-guide.md # 赔率监控指南
+│   ├── opener.md            # 揭幕战专题
+│   └── match-calendar.md    # 比赛日历 (北京时间)
+│
+└── reports/            # 阶段性报告
+    ├── final-prediction.md  # 🆕 终极预测
+    ├── final-prediction.txt # 蒙特卡洛输出
+    ├── odds-analysis.json   # 价值分析 JSON
+    ├── odds-monitor-*.txt   # 赔率监控报告
+    └── match-odds-*.txt     # 单场赔率报告
 ```
 
 ## 实力分档 (Tier List)
@@ -83,8 +108,14 @@ world-cup-2026/
 
 ## 进度
 
-- [x] 实力分档
-- [ ] 12 小组对阵细化
-- [ ] 关键球员数据库
-- [ ] 赔率追踪
-- [ ] 预测模型
+- [x] 实力分档（4 档 48 队）
+- [x] 12 小组对阵细化（已核实 Wikipedia 抽签）
+- [x] 关键球员数据库（240 人，48 队 × 5）
+- [x] 赔率追踪（静态 + 监控框架）
+- [x] 预测模型（v3 真实赛制 + 蒙特卡洛）
+- [x] 比赛日历 + 揭幕战专题
+- [x] 单场赔率价值分析
+- [x] 倒计时工具
+- [x] 终极预测报告
+
+🎉 **全部完成！** 详见 `SUMMARY.md`

@@ -1,0 +1,27 @@
+======================================================================
+  2026 世界杯 终极预测报告
+  生成时间: 2026-06-07
+  基于: 实力分 + 蒙特卡洛 1000 次模拟（±3 实力分扰动）
+  赛制: 48 队 → 32 强 → 16 → 8 → 4 → 决赛
+======================================================================
+
+🏆 冠军 (最可能): Argentina
+   决赛: Spain vs Argentina
+   4 强: Brazil, Spain, Argentina, Senegal
+   8 强: Mexico, Brazil, Germany, Spain, Argentina, England, Senegal, Saudi Arabia
+
+📊 冠军概率 Top 8:
+   Argentina: 38.0%
+   Spain: 37.2%
+   England: 20.8%
+   France: 4.0%
+
+📊 4 强概率 Top 8:
+   Spain: 99.9%
+   Brazil: 90.8%
+   Senegal: 57.4%
+   Argentina: 53.5%
+   England: 37.8%
+   Sweden: 15.3%
+   Norway: 14.8%
+   France: 8.7%
