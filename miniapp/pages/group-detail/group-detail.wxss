@@ -1,0 +1,136 @@
+/* pages/group-detail/group-detail.wxss */
+.header {
+  background: linear-gradient(135deg, #1a472a 0%, #2e7d32 100%);
+  color: #fff;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.group-letter {
+  font-size: 56rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+}
+
+.seed, .meta, .death-reason {
+  font-size: 26rpx;
+  opacity: 0.95;
+  margin-top: 6rpx;
+}
+
+.death-reason {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  margin-top: 12rpx;
+}
+
+.qual-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.qual-row {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background: #e8f5e9;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+
+.qual-mark {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+.flag {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+.qual-name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.qual-score {
+  font-family: monospace;
+  font-weight: 700;
+  color: #1a472a;
+}
+
+.player {
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.player:last-child { border-bottom: none; }
+
+.player-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.p-name {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.p-meta {
+  font-size: 22rpx;
+  color: #888;
+}
+
+.player-notes {
+  font-size: 24rpx;
+  color: #555;
+  margin-top: 4rpx;
+}
+
+.matchup {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.matchup:last-child { border-bottom: none; }
+
+.matchup-num {
+  font-size: 22rpx;
+  color: #888;
+  margin-bottom: 8rpx;
+}
+
+.matchup-teams {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+
+.t-name { flex: 1; text-align: center; }
+.vs { color: #888; font-size: 24rpx; padding: 0 12rpx; }
+
+.matchup-scores {
+  font-size: 24rpx;
+  color: #888;
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 6rpx;
+}
+
+.matchup-verdict {
+  font-size: 24rpx;
+  color: #1a472a;
+  font-weight: 500;
+  text-align: center;
+}

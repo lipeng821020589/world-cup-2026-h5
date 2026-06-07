@@ -1,0 +1,23 @@
+<view class="container">
+  <!-- 档位过滤 -->
+  <view class="filter-bar">
+    <view class="filter-chip {{activeTier === item.key ? 'active' : ''}}"
+          wx:for="{{tiers}}" wx:key="key"
+          data-tier="{{item.key}}"
+          bindtap="filter">{{item.label}}</view>
+  </view>
+
+  <view class="team-card" wx:for="{{teams}}" wx:key="name" data-name="{{item.name}}" bindtap="goDetail">
+    <view class="team-info">
+      <text class="flag">{{item.flag}}</text>
+      <view class="team-meta">
+        <view class="team-name">{{item.name}}</view>
+        <view class="team-tier">Group {{item.group}} · {{item.tier_label}}</view>
+      </view>
+    </view>
+    <view class="team-score">
+      <text class="score-num">{{item.score}}</text>
+      <text class="score-label">实力分</text>
+    </view>
+  </view>
+</view>

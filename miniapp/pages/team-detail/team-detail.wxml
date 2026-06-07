@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header card">
+    <view class="big-flag">{{flag}}</view>
+    <view class="name">{{name}}</view>
+    <view class="meta-row">
+      <text class="tag tag-t1">Group {{group}}</text>
+      <text class="tag {{tier === 'T1' ? 'tag-t1' : tier === 'T2' ? 'tag-t2' : tier === 'T3' ? 'tag-t3' : 'tag-t4'}}">{{tier}}</text>
+      <text class="score-badge">{{score}} 分</text>
+    </view>
+    <view class="rank">小组排名: 第 {{myRank}} / 4</view>
+  </view>
+
+  <!-- 5 大关键球员 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">⭐</text>
+      <text>5 大关键球员</text>
+    </view>
+    <view class="player-row" wx:for="{{players}}" wx:key="name" wx:for-item="p">
+      <view class="player-top">
+        <text class="p-name">{{p.name}}</text>
+        <text class="p-key">{{p.flag_emojis}}</text>
+      </view>
+      <view class="p-meta">{{p.pos}} · {{p.club}} · {{p.age}}岁</view>
+      <view wx:if="{{p.notes}}" class="p-notes">{{p.notes}}</view>
+    </view>
+  </view>
+
+  <!-- 同组对手 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">👥</text>
+      <text>Group {{group}} 同组</text>
+    </view>
+    <view class="opp-row {{item.is_self ? 'self' : ''}}" wx:for="{{groupStandings}}" wx:key="name" wx:for-item="item">
+      <text class="opp-rank">{{item.is_self ? '★' : ''}}</text>
+      <text class="flag">{{item.flag}}</text>
+      <text class="opp-name">{{item.name}}</text>
+      <text class="opp-score">{{item.score}}</text>
+    </view>
+  </view>
+
+  <!-- 首次参赛（如果是） -->
+  <view wx:if="{{group_debut.length > 0}}" class="card">
+    <view class="card-title">
+      <text class="card-title-icon">🆕</text>
+      <text>本组首次参赛</text>
+    </view>
+    <view class="debut-list">
+      <text wx:for="{{group_debut}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+</view>

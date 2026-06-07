@@ -1,0 +1,62 @@
+/* pages/groups/groups.wxss */
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.group-letter {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1a472a;
+  letter-spacing: 2rpx;
+}
+
+.teams-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.team-row.qual {
+  background: #e8f5e9;
+}
+
+.team-row.elim {
+  background: #f5f5f5;
+  opacity: 0.7;
+}
+
+.qual-mark {
+  width: 50rpx;
+}
+
+.flag {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+}
+
+.team-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.team-score {
+  font-size: 24rpx;
+  color: #888;
+  font-family: monospace;
+}
+
+.click-hint {
+  text-align: right;
+  margin-top: 12rpx;
+}

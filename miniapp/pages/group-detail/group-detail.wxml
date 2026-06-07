@@ -1,0 +1,73 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header card">
+    <view class="title-row">
+      <text class="group-letter">Group {{letter}}</text>
+      <text wx:if="{{death}}" class="tag tag-death">💀 死亡之组</text>
+    </view>
+    <view class="seed">种子: {{seed_flag}} {{seed}}</view>
+    <view wx:if="{{host}}" class="meta">🏠 东道主: {{host}}</view>
+    <view wx:if="{{debut.length > 0}}" class="meta">🆕 首次参赛: {{debut.join(', ')}}</view>
+    <view wx:if="{{death}}" class="meta death-reason">💀 {{death_reason}}</view>
+  </view>
+
+  <!-- 出线预测 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">🎯</text>
+      <text>出线预测</text>
+    </view>
+    <view class="qual-block">
+      <view class="qual-row">
+        <text class="qual-mark">🥇</text>
+        <text class="flag">{{teams[0].flag}}</text>
+        <text class="qual-name">{{teams[0].name}}</text>
+        <text class="qual-score">{{teams[0].score}}</text>
+      </view>
+      <view class="qual-row">
+        <text class="qual-mark">🥈</text>
+        <text class="flag">{{teams[1].flag}}</text>
+        <text class="qual-name">{{teams[1].name}}</text>
+        <text class="qual-score">{{teams[1].score}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 4 队详情 -->
+  <view class="card" wx:for="{{teams}}" wx:key="name" wx:for-item="t">
+    <view class="card-title">
+      <text class="flag">{{t.flag}}</text>
+      <text>{{t.name}}</text>
+      <text class="text-muted" style="margin-left: auto;">{{t.tier_label}} · {{t.score}}</text>
+    </view>
+    <view class="player" wx:for="{{t.players}}" wx:key="name" wx:for-item="p">
+      <view class="player-name">
+        <text class="p-name">{{p.name}}</text>
+        <text class="p-meta">{{p.pos}} · {{p.club}} · {{p.age}}岁</text>
+      </view>
+      <view wx:if="{{p.notes}}" class="player-notes">{{p.key}} {{p.notes}}</view>
+    </view>
+  </view>
+
+  <!-- 6 场对决 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">⚔️</text>
+      <text>6 场小组赛对决</text>
+    </view>
+    <view class="matchup" wx:for="{{matchups}}" wx:key="id" wx:for-item="m">
+      <view class="matchup-num">第 {{m.id}} 场</view>
+      <view class="matchup-teams">
+        <text class="flag">{{m.t1_flag}}</text>
+        <text class="t-name">{{m.t1}}</text>
+        <text class="vs">VS</text>
+        <text class="t-name">{{m.t2}}</text>
+        <text class="flag">{{m.t2_flag}}</text>
+      </view>
+      <view class="matchup-scores">
+        <text>{{m.t1_score}} vs {{m.t2_score}}</text>
+      </view>
+      <view class="matchup-verdict">{{m.verdict}}</view>
+    </view>
+  </view>
+</view>

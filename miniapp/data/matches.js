@@ -1,0 +1,189 @@
+// 自动生成 from build_miniapp_data.py
+module.exports = {
+  "metadata": {
+    "name": "2026 FIFA World Cup Matches",
+    "total": 104,
+    "stages": {
+      "group": 72,
+      "r32": 16,
+      "r16": 8,
+      "quarter": 4,
+      "semi": 2,
+      "third_place": 1,
+      "final": 1
+    },
+    "last_updated": "2026-06-07",
+    "note": "完整 104 场赛程，时间均为当地时间。开幕战 6/11 14:00 墨西哥城。完整赛程见 FIFA.com"
+  },
+  "key_matches": [
+    {
+      "id": "M001",
+      "date": "2026-06-11",
+      "time_local": "14:00",
+      "venue": "Estadio Azteca, Mexico City",
+      "stage": "Group A",
+      "team1": "Mexico",
+      "team2": "South Africa",
+      "type": "🏆 Opening match"
+    },
+    {
+      "id": "M002",
+      "date": "2026-06-12",
+      "time_local": "12:00",
+      "venue": "BMO Field, Toronto",
+      "stage": "Group B",
+      "team1": "Canada",
+      "team2": "Bosnia and Herzegovina",
+      "type": "🍁 Canada opener"
+    },
+    {
+      "id": "M005",
+      "date": "2026-06-12",
+      "time_local": "21:00",
+      "venue": "MetLife Stadium",
+      "stage": "Group D",
+      "team1": "USA",
+      "team2": "Paraguay",
+      "type": "🇺🇸 USA opener"
+    },
+    {
+      "id": "M008",
+      "date": "2026-06-13",
+      "time_local": "21:00",
+      "venue": "Hard Rock Stadium, Miami",
+      "stage": "Group C",
+      "team1": "Brazil",
+      "team2": "Morocco",
+      "type": "🌟 T1 揭幕"
+    },
+    {
+      "id": "M011",
+      "date": "2026-06-14",
+      "time_local": "15:00",
+      "venue": "AT&T Stadium, Dallas",
+      "stage": "Group I",
+      "team1": "France",
+      "team2": "Senegal",
+      "type": "💀 死亡之组首战"
+    },
+    {
+      "id": "M012",
+      "date": "2026-06-15",
+      "time_local": "15:00",
+      "venue": "SoFi Stadium, LA",
+      "stage": "Group E",
+      "team1": "Germany",
+      "team2": "Curaçao",
+      "type": "🆕 库拉索首秀"
+    },
+    {
+      "id": "M015",
+      "date": "2026-06-16",
+      "time_local": "20:00",
+      "venue": "NRG Stadium, Houston",
+      "stage": "Group F",
+      "team1": "Netherlands",
+      "team2": "Japan",
+      "type": "⚠️ 隐形死亡之组"
+    },
+    {
+      "id": "M018",
+      "date": "2026-06-17",
+      "time_local": "21:00",
+      "venue": "MetLife Stadium",
+      "stage": "Group J",
+      "team1": "Argentina",
+      "team2": "Algeria",
+      "type": "⭐ 卫冕冠军首秀"
+    },
+    {
+      "id": "M020",
+      "date": "2026-06-18",
+      "time_local": "20:00",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "stage": "Group H",
+      "team1": "Spain",
+      "team2": "Uruguay",
+      "type": "⚠️ 地中海死亡之组"
+    },
+    {
+      "id": "M022",
+      "date": "2026-06-19",
+      "time_local": "20:00",
+      "venue": "Lumen Field, Seattle",
+      "stage": "Group L",
+      "team1": "England",
+      "team2": "Croatia",
+      "type": "🌟 三狮军团首战"
+    },
+    {
+      "id": "M030",
+      "date": "2026-06-20",
+      "time_local": "20:00",
+      "venue": "AT&T Stadium, Dallas",
+      "stage": "Group I",
+      "team1": "France",
+      "team2": "Norway",
+      "type": "💀 死亡之组重头戏"
+    },
+    {
+      "id": "M032",
+      "date": "2026-06-21",
+      "time_local": "21:00",
+      "venue": "MetLife Stadium",
+      "stage": "Group J",
+      "team1": "Argentina",
+      "team2": "Austria",
+      "type": "⭐ 卫冕冠军 vs 奥地利"
+    },
+    {
+      "id": "M040",
+      "date": "2026-06-23",
+      "time_local": "20:00",
+      "venue": "SoFi Stadium, LA",
+      "stage": "Group H",
+      "team1": "Uruguay",
+      "team2": "Saudi Arabia",
+      "type": "⚠️ 沙特搅局？"
+    },
+    {
+      "id": "M045",
+      "date": "2026-06-25",
+      "time_local": "20:00",
+      "venue": "MetLife Stadium",
+      "stage": "Group I",
+      "team1": "France",
+      "team2": "Iraq",
+      "type": "💀 死亡之组末轮"
+    },
+    {
+      "id": "M048",
+      "date": "2026-06-26",
+      "time_local": "20:00",
+      "venue": "Hard Rock Stadium, Miami",
+      "stage": "Group F",
+      "team1": "Sweden",
+      "team2": "Tunisia",
+      "type": "⚠️ 末班车"
+    },
+    {
+      "id": "M050",
+      "date": "2026-06-27",
+      "time_local": "22:00",
+      "venue": "SoFi Stadium, LA",
+      "stage": "Group C",
+      "team1": "Brazil",
+      "team2": "Scotland",
+      "type": "🌟 末轮收官"
+    }
+  ],
+  "knockout_template": {
+    "r32": "2026-06-30 to 2026-07-03 (16 matches)",
+    "r16": "2026-07-04 to 2026-07-07 (8 matches)",
+    "qf": "2026-07-11, 7-12, 7-14, 7-15 (4 matches)",
+    "sf": "2026-07-14, 2026-07-15 (2 matches)",
+    "third": "2026-07-18 (1 match)",
+    "final": "2026-07-19 15:00 EST (1 match) - MetLife Stadium"
+  },
+  "quick_calendar": "完整赛程见 FIFA.com 官方。本表只列 16 场重点场。"
+};

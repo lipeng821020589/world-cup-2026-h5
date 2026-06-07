@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2026 世界杯 · 数据预览</title>
+  <style>
+    :root {
+      --primary: #1a472a;
+      --primary-light: #2e7d32;
+      --bg: #f5f5f5;
+      --card: #fff;
+      --muted: #888;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: #222;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* 模拟手机外框（可选） */
+    body { border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .header h1 { font-size: 20px; margin-bottom: 4px; }
+    .header p { font-size: 12px; opacity: 0.85; }
+
+    .container { padding: 16px; }
+
+    .countdown-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(26,71,42,0.3);
+    }
+    .cd-label { font-size: 14px; opacity: 0.9; margin-bottom: 12px; }
+    .cd-time { display: inline-flex; gap: 8px; align-items: baseline; margin-bottom: 8px; }
+    .cd-num { font-size: 48px; font-weight: 700; font-family: monospace; }
+    .cd-unit { font-size: 14px; opacity: 0.9; }
+    .cd-extra { font-size: 12px; opacity: 0.7; }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .row:last-child { border-bottom: none; }
+    .text-muted { color: var(--muted); font-size: 12px; }
+    .flag { font-size: 18px; }
+
+    .prob-row { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .prob-row:last-child { border: none; }
+    .prob-name { display: inline-block; width: 110px; font-weight: 500; }
+    .bar { display: inline-block; width: 180px; height: 10px; background: #e0e0e0; border-radius: 5px; vertical-align: middle; margin: 0 8px; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 5px; }
+    .prob-pct { font-weight: 600; color: var(--primary); font-family: monospace; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .tag-t1 { background: #fff3e0; color: #e65100; }
+    .tag-t2 { background: #e3f2fd; color: #1565c0; }
+    .tag-t3 { background: #e8f5e9; color: #2e7d32; }
+    .tag-t4 { background: #f3e5f5; color: #6a1b9a; }
+    .tag-death { background: #ffebee; color: #c62828; font-weight: 600; }
+    .tag-qual { background: #c8e6c9; color: #1b5e20; }
+
+    .group-card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; transition: transform 0.2s; }
+    .group-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .group-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .group-letter { font-size: 22px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+    .team-row { display: flex; align-items: center; padding: 6px 10px; border-radius: 6px; margin-bottom: 4px; font-size: 13px; }
+    .team-row.qual { background: #e8f5e9; }
+    .team-row.elim { background: #f5f5f5; opacity: 0.7; }
+    .team-row .flag { margin-right: 6px; }
+    .team-row .name { flex: 1; }
+    .team-row .score { color: var(--muted); font-family: monospace; font-size: 12px; }
+    .qual-mark { width: 22px; }
+
+    .nav-tabs {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      z-index: 10;
+    }
+    .nav-tab {
+      flex: 1;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .nav-tab.active { color: var(--primary); font-weight: 600; }
+    .nav-tab .tab-icon { font-size: 20px; display: block; margin-bottom: 2px; }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* 球队列表 */
+    .filter-bar { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; background: #fff; margin-bottom: 12px; }
+    .filter-chip { padding: 6px 14px; border-radius: 16px; background: #f0f0f0; font-size: 12px; color: #555; border: none; cursor: pointer; white-space: nowrap; }
+    .filter-chip.active { background: var(--primary); color: #fff; font-weight: 600; }
+    .team-card { display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; }
+    .team-card:hover { background: #fafafa; }
+    .team-card .flag { font-size: 24px; margin-right: 10px; }
+    .team-card .name { flex: 1; font-weight: 600; font-size: 14px; }
+    .team-card .tier { font-size: 11px; color: var(--muted); }
+    .team-card .score { font-size: 18px; font-weight: 700; color: var(--primary); font-family: monospace; }
+
+    .odds-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+    .odds-row:last-child { border: none; }
+    .odds-row .name { flex: 1; font-weight: 500; }
+    .odds-row .dec { width: 50px; text-align: right; font-family: monospace; font-weight: 700; color: var(--primary); }
+    .odds-row .value { width: 60px; text-align: right; font-weight: 600; }
+    .legend { text-align: center; margin-top: 12px; font-size: 11px; color: var(--muted); }
+
+    .back-btn { display: inline-block; padding: 6px 12px; background: var(--primary); color: #fff; border-radius: 6px; font-size: 12px; cursor: pointer; border: none; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🏆 2026 世界杯数据预览</h1>
+    <p>本地 H5 模拟版 · 与小程序同步</p>
+  </div>
+
+  <!-- 首页 -->
+  <div id="page-home" class="page active">
+    <div class="container">
+      <div class="countdown-card">
+        <div class="cd-label">🏆 揭幕战 墨西哥 vs 南非</div>
+        <div class="cd-time" id="cd-opener">
+          <span class="cd-num" id="cd-days">--</span><span class="cd-unit">天</span>
+          <span class="cd-num" id="cd-hours">--</span><span class="cd-unit">时</span>
+          <span class="cd-num" id="cd-mins">--</span><span class="cd-unit">分</span>
+        </div>
+        <div class="cd-extra">距 2026 世界杯揭幕</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏆 冠军概率 (蒙特卡洛 1000 次)</div>
+        <div id="champion-list"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💀 死亡之组</div>
+        <div id="death-list"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📅 关键节点</div>
+        <div class="row"><span>🏆 决赛</span><span class="text-muted">7/20 03:00 北京</span></div>
+        <div class="row"><span>💀 法国 vs 挪威</span><span class="text-muted">6/20 04:00 北京</span></div>
+        <div class="row"><span>⭐ 阿根廷 vs 奥地利</span><span class="text-muted">6/21 04:00 北京</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 小组页 -->
+  <div id="page-groups" class="page">
+    <div class="container">
+      <div class="card-title" style="padding: 12px 0;">12 小组</div>
+      <div id="groups-list"></div>
+    </div>
+  </div>
+
+  <!-- 球队页 -->
+  <div id="page-teams" class="page">
+    <div class="container">
+      <div class="filter-bar" id="filter-bar"></div>
+      <div id="teams-list"></div>
+    </div>
+  </div>
+
+  <!-- 赔率页 -->
+  <div id="page-odds" class="page">
+    <div class="container">
+      <div class="card">
+        <div class="card-title">🎲 冠军概率</div>
+        <div id="odds-champ"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💰 夺冠赔率 + 价值</div>
+        <div id="odds-list"></div>
+        <div class="legend">🟢 价值低估 (>1.0) · 🟡 接近公平 · 🔴 高估</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" data-page="home"><span class="tab-icon">🏠</span>首页</button>
+    <button class="nav-tab" data-page="groups"><span class="tab-icon">📋</span>小组</button>
+    <button class="nav-tab" data-page="teams"><span class="tab-icon">⚽</span>球队</button>
+    <button class="nav-tab" data-page="odds"><span class="tab-icon">💰</span>赔率</button>
+  </nav>
+
+  <script src="data.js"></script>
+  <script>
+    // ====== 数据 (从 data.js 加载) ======
+    const FLAGS = { Argentina:'🇦🇷', France:'🇫🇷', Spain:'🇪🇸', Brazil:'🇧🇷', England:'🏴', Germany:'🇩🇪', Portugal:'🇵🇹', Netherlands:'🇳🇱', Belgium:'🇧🇪', USA:'🇺🇸', Mexico:'🇲🇽', Canada:'🇨🇦', Uruguay:'🇺🇾', Morocco:'🇲🇦', Japan:'🇯🇵', Norway:'🇳🇴', Croatia:'🇭🇷', Switzerland:'🇨🇭', Senegal:'🇸🇳', Egypt:'🇪🇬', 'South Korea':'🇰🇷', Sweden:'🇸🇪', Ecuador:'🇪🇨', 'Czech Republic':'🇨🇿', Turkey:'🇹🇷', Colombia:'🇨🇴', 'Saudi Arabia':'🇸🇦', 'Ivory Coast':'🇨🇮', Tunisia:'🇹🇳', Algeria:'🇩🇿', 'Bosnia and Herzegovina':'🇧🇦', Qatar:'🇶🇦', Iran:'🇮🇷', Ghana:'🇬🇭', Austria:'🇦🇹', Panama:'🇵🇦', Paraguay:'🇵🇾', Finland:'🇫🇮', 'New Zealand':'🇳🇿', Haiti:'🇭🇹', Scotland:'🏴', 'South Africa':'🇿🇦', 'Cape Verde':'🇨🇻', Jordan:'🇯🇴', Iraq:'🇮🇶', Uzbekistan:'🇺🇿', 'DR Congo':'🇨🇩', Curaçao:'🇨🇼' };
+
+    const SCORE = {"Argentina":93,"France":90,"Spain":91,"Brazil":82,"England":91,"Germany":79,"Portugal":80,"Netherlands":78,"Belgium":69,"USA":72,"Mexico":68,"Canada":67,"Uruguay":75,"Morocco":76,"Japan":70,"Norway":69,"Croatia":67,"Denmark":64,"Switzerland":64,"Serbia":62,"Senegal":65,"Egypt":60,"South Korea":62,"Nigeria":58,"Poland":58,"Sweden":62,"Czech Republic":56,"Ecuador":62,"Colombia":60,"Saudi Arabia":56,"Iran":55,"Ivory Coast":58,"Tunisia":52,"Algeria":54,"Ghana":52,"DR Congo":50,"South Africa":48,"Bosnia and Herzegovina":54,"Qatar":50,"Paraguay":53,"Turkey":60,"Finland":48,"Curaçao":38,"Haiti":36,"Cape Verde":45,"Jordan":42,"Uzbekistan":44,"Austria":58,"Iraq":48,"Panama":42,"New Zealand":40};
+
+    const PREDICTIONS = {A:[["Mexico",68],["South Korea",62],["Czech Republic",56],["South Africa",48]],B:[["Canada",67],["Switzerland",64],["Bosnia and Herzegovina",54],["Qatar",50]],C:[["Brazil",82],["Morocco",76],["Scotland",40],["Haiti",36]],D:[["USA",72],["Turkey",60],["Paraguay",53],["Finland",48]],E:[["Germany",79],["Ecuador",62],["Ivory Coast",58],["Curaçao",38]],F:[["Netherlands",78],["Japan",70],["Sweden",62],["Tunisia",52]],G:[["Belgium",69],["Egypt",60],["Iran",55],["New Zealand",40]],H:[["Spain",91],["Uruguay",75],["Saudi Arabia",56],["Cape Verde",45]],I:[["France",90],["Norway",69],["Senegal",65],["Iraq",48]],J:[["Argentina",93],["Austria",58],["Algeria",54],["Jordan",42]],K:[["Portugal",80],["Colombia",60],["DR Congo",50],["Uzbekistan",44]],L:[["England",91],["Croatia",67],["Ghana",52],["Panama",42]]};
+
+    const CHAMPION_PROB = {Spain:39.2, Argentina:37.2, England:20.3, France:3.2, Brazil:0.1};
+    const DEATH_GROUPS = [{letter:'I',reason:'France + Norway (Haaland) + Senegal (2022 16 强)'},{letter:'F',reason:'Netherlands + Japan + Sweden 三强'},{letter:'H',reason:'Spain (欧洲杯冠军) + Uruguay (贝尔萨体系)'}];
+
+    // ====== 渲染 ======
+    function flag(name) { return FLAGS[name] || '🏳'; }
+    function tier(score) { return score >= 88 ? 'T1' : score >= 78 ? 'T2' : score >= 65 ? 'T3' : 'T4'; }
+    function tierLabel(t) { return {T1:'🏆 T1', T2:'🥈 T2', T3:'🥉 T3', T4:'🐎 T4'}[t] || t; }
+
+    function renderCountdown() {
+      const target = new Date('2026-06-11T14:00:00-06:00').getTime();
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours;
+      document.getElementById('cd-mins').textContent = mins;
+    }
+    setInterval(renderCountdown, 30000);
+    renderCountdown();
+
+    function renderChampion() {
+      const html = Object.entries(CHAMPION_PROB)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name, prob]) => `<div class="prob-row">
+          <span class="flag">${flag(name)}</span>
+          <span class="prob-name">${name}</span>
+          <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
+          <span class="prob-pct">${prob}%</span>
+        </div>`).join('');
+      document.getElementById('champion-list').innerHTML = html;
+    }
+
+    function renderDeath() {
+      document.getElementById('death-list').innerHTML = DEATH_GROUPS.map(d => `
+        <div class="row" style="border: 1px solid #ffcdd2; background: #fff5f5; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
+          <span class="tag tag-death">Group ${d.letter}</span>
+          <span class="text-muted" style="flex: 1; margin-left: 8px;">${d.reason}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderGroups() {
+      const deathLetters = new Set(DEATH_GROUPS.map(d => d.letter));
+      const html = Object.entries(PREDICTIONS).map(([letter, ranks]) => `
+        <div class="group-card">
+          <div class="group-header">
+            <span class="group-letter">Group ${letter}</span>
+            ${deathLetters.has(letter) ? '<span class="tag tag-death">💀 死亡之组</span>' : ''}
+          </div>
+          ${ranks.map(([name, score], i) => `
+            <div class="team-row ${i < 2 ? 'qual' : 'elim'}">
+              <span class="qual-mark">${i < 2 ? '✅' : '❌'}</span>
+              <span class="flag">${flag(name)}</span>
+              <span class="name">${name}</span>
+              <span class="score">${score}</span>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+      document.getElementById('groups-list').innerHTML = html;
+    }
+
+    function renderTeams(filter = 'ALL') {
+      // 过滤条
+      const filters = ['ALL', 'T1', 'T2', 'T3', 'T4'];
+      const filterHtml = filters.map(f => `
+        <button class="filter-chip ${f === filter ? 'active' : ''}" data-tier="${f}">
+          ${f === 'ALL' ? '全部' : tierLabel(f)}
+        </button>
+      `).join('');
+      document.getElementById('filter-bar').innerHTML = filterHtml;
+
+      // 球队列表
+      const teams = Object.entries(SCORE)
+        .map(([name, score]) => ({ name, score, tier: tier(score) }))
+        .filter(t => filter === 'ALL' || t.tier === filter)
+        .sort((a, b) => b.score - a.score);
+
+      document.getElementById('teams-list').innerHTML = teams.map(t => `
+        <div class="team-card">
+          <span class="flag">${flag(t.name)}</span>
+          <div style="flex: 1;">
+            <div class="name">${t.name}</div>
+            <div class="tier">${tierLabel(t.tier)}</div>
+          </div>
+          <div class="score">${t.score}</div>
+        </div>
+      `).join('');
+
+      // 绑定过滤事件
+      document.querySelectorAll('.filter-chip').forEach(b => {
+        b.onclick = () => renderTeams(b.dataset.tier);
+      });
+    }
+
+    function renderOdds() {
+      // 蒙特卡洛
+      const champHtml = Object.entries(CHAMPION_PROB)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name, prob]) => `<div class="prob-row">
+          <span class="flag">${flag(name)}</span>
+          <span class="prob-name">${name}</span>
+          <div class="bar"><div class="bar-fill" style="width: ${prob * 2}%"></div></div>
+          <span class="prob-pct">${prob}%</span>
+        </div>`).join('');
+      document.getElementById('odds-champ').innerHTML = champHtml;
+
+      // 赔率 (硬编码最新)
+      const odds = {"Argentina":8.0,"France":5.5,"Spain":8.0,"Brazil":9.5,"England":7.5,"Germany":12.0,"Portugal":16.0,"Netherlands":18.0,"Belgium":26.0,"USA":36.0,"Mexico":41.0,"Morocco":26.0,"Norway":51.0,"Uruguay":31.0,"Japan":51.0,"Colombia":51.0,"South Korea":101.0,"Switzerland":67.0,"Turkey":67.0,"Sweden":81.0};
+      const oddsHtml = Object.entries(odds)
+        .sort((a, b) => a[1] - b[1])
+        .map(([name, dec]) => {
+          const prob = CHAMPION_PROB[name] || 0;
+          const implied = 1 / dec * 100;
+          const value = (prob / 100) / (1 / dec);
+          const mark = value > 1.0 ? '🟢' : value > 0.7 ? '🟡' : '🔴';
+          return `<div class="odds-row">
+            <span class="flag">${flag(name)}</span>
+            <span class="name">${name}</span>
+            <span class="dec">${dec.toFixed(2)}</span>
+            <span class="value">${mark} ${value.toFixed(2)}</span>
+          </div>`;
+        }).join('');
+      document.getElementById('odds-list').innerHTML = oddsHtml;
+    }
+
+    // 切换 Tab
+    document.querySelectorAll('.nav-tab').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('page-' + btn.dataset.page).classList.add('active');
+        history.replaceState(null, '', '#' + btn.dataset.page);
+      };
+    });
+
+    // 初始化
+    renderChampion();
+    renderDeath();
+    renderGroups();
+    renderTeams();
+    renderOdds();
+
+    // 从 hash 恢复
+    const initialPage = location.hash.replace('#', '') || 'home';
+    const initBtn = document.querySelector('[data-page="' + initialPage + '"]');
+    if (initBtn) initBtn.click();
+  </script>
+</body>
+</html>

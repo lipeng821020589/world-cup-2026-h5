@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 蒙特卡洛冠军概率 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">🎲</text>
+      <text>冠军概率 (1000 次模拟)</text>
+    </view>
+    <view class="prob-row" wx:for="{{championProb}}" wx:key="name">
+      <text class="flag">{{item.flag}}</text>
+      <text class="prob-name">{{item.name}}</text>
+      <view class="prob-bar-wrap">
+        <view class="bar"><view class="bar-fill" style="width: {{item.prob * 2}}%"></view></view>
+        <text class="prob-pct">{{item.prob}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 赔率 + 价值 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">💰</text>
+      <text>夺冠赔率 + 价值分析</text>
+    </view>
+    <view class="odds-row" wx:for="{{oddsList}}" wx:key="team">
+      <view class="odds-team">
+        <text class="flag">{{item.flag}}</text>
+        <text class="team-name">{{item.team}}</text>
+      </view>
+      <view class="odds-numbers">
+        <text class="dec">{{item.dec}}</text>
+        <text class="american">{{item.american}}</text>
+      </view>
+      <view class="value-cell">
+        <text class="value-mark">{{item.valueMark}}</text>
+        <text class="value-num">{{item.value}}</text>
+      </view>
+    </view>
+    <view class="text-muted legend">
+      🟢 价值低估 (>1.0)  🟡 接近公平  🔴 价值高估
+    </view>
+  </view>
+</view>

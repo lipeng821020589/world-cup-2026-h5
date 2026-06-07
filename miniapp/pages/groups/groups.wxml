@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="card" wx:for="{{cards}}" wx:key="letter" bindtap="goToDetail" data-letter="{{item.letter}}">
+    <view class="group-header">
+      <text class="group-letter">Group {{item.letter}}</text>
+      <text wx:if="{{item.death}}" class="tag tag-death">💀 死亡之组</text>
+      <text wx:if="{{item.host}}" class="tag tag-t1">🏠 {{item.host}}</text>
+    </view>
+    <view class="teams-grid">
+      <view class="team-row {{team.qual ? 'qual' : 'elim'}}" wx:for="{{item.teams}}" wx:for-item="team" wx:key="name">
+        <text class="qual-mark">{{team.qual ? '✅' : '❌'}}</text>
+        <text class="flag">{{team.flag}}</text>
+        <text class="team-name">{{team.name}}</text>
+        <text class="team-score">{{team.score}}</text>
+      </view>
+    </view>
+    <view class="text-muted click-hint">点击查看详情 →</view>
+  </view>
+</view>

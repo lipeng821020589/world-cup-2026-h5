@@ -1,0 +1,81 @@
+/* pages/teams/teams.wxss */
+.filter-bar {
+  display: flex;
+  gap: 12rpx;
+  padding: 20rpx 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: #fff;
+  margin-bottom: 16rpx;
+}
+
+.filter-chip {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  border-radius: 32rpx;
+  background: #f0f0f0;
+  font-size: 26rpx;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.filter-chip.active {
+  background: #1a472a;
+  color: #fff;
+  font-weight: 600;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.team-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.flag {
+  font-size: 40rpx;
+}
+
+.team-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.team-tier {
+  font-size: 22rpx;
+  color: #888;
+}
+
+.team-score {
+  text-align: right;
+}
+
+.score-num {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a472a;
+  font-family: monospace;
+}
+
+.score-label {
+  display: block;
+  font-size: 20rpx;
+  color: #888;
+}

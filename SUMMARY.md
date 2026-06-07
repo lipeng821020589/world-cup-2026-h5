@@ -29,17 +29,20 @@ world-cup-2026/
 │   ├── group_predict.py               # 🆕 v3 真实赛制预测
 │   ├── odds_tracker.py                # 静态赔率分析 + 凯利公式
 │   ├── odds_monitor.py                # 夺冠赔率监控
-│   ├── match_odds_monitor.py          # 🆕 单场赔率监控 + 价值分析
-│   └── countdown.py                   # 🆕 倒计时工具
+│   ├── match_odds_monitor.py          # 单场赔率监控 + 价值分析
+│   ├── countdown.py                   # 倒计时工具
+│   └── group_analysis_gen.py          # 12 小组分析生成器
 │
 ├── analysis/                          # 分析层
 │   ├── tier-list.md                   # 4 档实力分档
 │   ├── groups.md                      # 12 小组对阵（已核实）
+│   ├── group-A.md ~ group-L.md        # 12 份小组深度分析
 │   ├── dark-horses.md                 # 黑马分析
 │   ├── odds-baseline.md               # 赔率基线深度分析
 │   ├── odds-monitor-guide.md          # 赔率监控使用指南
-│   ├── opener.md                      # 🆕 揭幕战专题
-│   └── match-calendar.md              # 🆕 比赛日历（北京时间）
+│   ├── opener.md                      # 揭幕战专题
+│   ├── match-calendar.md              # 比赛日历（北京时间）
+│   └── pre-kickoff-checklist.md       # 揭幕前 24h 行动清单
 │
 └── reports/                           # 输出层
     ├── power-score-2026-06-06.txt     # 实力评分报告

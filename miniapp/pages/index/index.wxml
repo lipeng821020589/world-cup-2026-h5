@@ -1,0 +1,83 @@
+<view class="container">
+  <!-- 倒计时大卡片 -->
+  <view class="countdown-card">
+    <view class="cd-label">{{nextEvent.name}}</view>
+    <view class="cd-time">
+      <text class="cd-num">{{nextEvent.days}}</text>
+      <text class="cd-unit">天</text>
+      <text class="cd-num">{{nextEvent.hours}}</text>
+      <text class="cd-unit">时</text>
+      <text class="cd-num">{{nextEvent.mins}}</text>
+      <text class="cd-unit">分</text>
+    </view>
+    <view class="cd-extra">距 2026 世界杯揭幕</view>
+  </view>
+
+  <!-- 今日比赛 -->
+  <view class="card" wx:if="{{todayMatches.length > 0}}">
+    <view class="card-title">
+      <text class="card-title-icon">⚽</text>
+      <text>今日比赛</text>
+    </view>
+    <view class="match" wx:for="{{todayMatches}}" wx:key="id">
+      <view class="match-time">{{item.time_local}}</view>
+      <view class="match-teams">{{item.team1}} vs {{item.team2}}</view>
+      <view class="match-stage">{{item.stage}} · {{item.venue}}</view>
+    </view>
+  </view>
+
+  <!-- 冠军预测 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">🏆</text>
+      <text>冠军概率 (蒙特卡洛 1000 次)</text>
+    </view>
+    <view class="prob-row" wx:for="{{championProb}}" wx:key="name">
+      <view class="prob-name">
+        <text class="flag">{{item.flag}}</text>
+        <text class="name">{{item.name}}</text>
+      </view>
+      <view class="prob-bar-wrap">
+        <view class="bar"><view class="bar-fill" style="width: {{item.bar_width}}%"></view></view>
+        <text class="prob-pct">{{item.prob}}%</text>
+      </view>
+    </view>
+    <view class="text-muted" style="margin-top: 16rpx;">
+      最可能冠军: {{topPick}}
+    </view>
+    <view class="btn" bindtap="goToOdds">查看完整赔率分析 →</view>
+  </view>
+
+  <!-- 死亡之组快捷入口 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">💀</text>
+      <text>死亡之组</text>
+    </view>
+    <view class="death-group" wx:for="{{deathGroups}}" wx:key="letter" bindtap="goToGroup" data-letter="{{item.letter}}">
+      <view class="dg-letter">Group {{item.letter}}</view>
+      <view class="dg-reason">{{item.reason}}</view>
+      <view class="text-muted">点击查看详情 →</view>
+    </view>
+  </view>
+
+  <!-- 关键事件 -->
+  <view class="card">
+    <view class="card-title">
+      <text class="card-title-icon">📅</text>
+      <text>关键节点</text>
+    </view>
+    <view class="row">
+      <text>🏆 决赛</text>
+      <text class="text-muted">7/19 北京 03:00</text>
+    </view>
+    <view class="row">
+      <text>💀 法国 vs 挪威</text>
+      <text class="text-muted">6/20 北京 04:00</text>
+    </view>
+    <view class="row">
+      <text>⭐ 阿根廷 vs 奥地利</text>
+      <text class="text-muted">6/21 北京 04:00</text>
+    </view>
+  </view>
+</view>
