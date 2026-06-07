@@ -12,7 +12,7 @@
       <text class="flag">{{item.flag}}</text>
       <view class="team-meta">
         <view class="team-name">{{item.name}}</view>
-        <view class="team-tier">Group {{item.group}} · {{item.tier_label}}</view>
+        <view class="team-tier">第 {{item.group}} 组 · {{item.tier_label}}</view>
       </view>
     </view>
     <view class="team-score">

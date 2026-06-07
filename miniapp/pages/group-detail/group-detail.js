@@ -63,7 +63,7 @@ Page({
       flag: flagOf(name),
       score,
       qual: i < 2,
-      tier_label: score >= 88 ? 'T1 争冠' : score >= 78 ? 'T2 半决赛' : score >= 65 ? 'T3 16 强' : 'T4 搅局',
+      tier_label: score >= 88 ? '争冠' : score >= 78 ? '半决赛' : score >= 65 ? '16 强' : '搅局',
       players: topPlayers(name, 3).map(p => ({
         name: p.name, pos: p.pos, club: p.club, age: p.age,
         key: p.key, notes: p.notes,
@@ -84,6 +84,6 @@ Page({
       matchups,
     });
     
-    wx.setNavigationBarTitle({ title: `Group ${letter}` });
+    wx.setNavigationBarTitle({ title: `第 ${letter} 组 ` });
   },
 });

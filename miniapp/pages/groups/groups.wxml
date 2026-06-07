@@ -1,7 +1,7 @@
 <view class="container">
   <view class="card" wx:for="{{cards}}" wx:key="letter" bindtap="goToDetail" data-letter="{{item.letter}}">
     <view class="group-header">
-      <text class="group-letter">Group {{item.letter}}</text>
+      <text class="group-letter">第 {{item.letter}} 组</text>
       <text wx:if="{{item.death}}" class="tag tag-death">💀 死亡之组</text>
       <text wx:if="{{item.host}}" class="tag tag-t1">🏠 {{item.host}}</text>
     </view>

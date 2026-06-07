@@ -4,7 +4,7 @@
     <view class="big-flag">{{flag}}</view>
     <view class="name">{{name}}</view>
     <view class="meta-row">
-      <text class="tag tag-t1">Group {{group}}</text>
+      <text class="tag tag-t1">第 {{group}} 组</text>
       <text class="tag {{tier === 'T1' ? 'tag-t1' : tier === 'T2' ? 'tag-t2' : tier === 'T3' ? 'tag-t3' : 'tag-t4'}}">{{tier}}</text>
       <text class="score-badge">{{score}} 分</text>
     </view>
@@ -31,7 +31,7 @@
   <view class="card">
     <view class="card-title">
       <text class="card-title-icon">👥</text>
-      <text>Group {{group}} 同组</text>
+      <text>第 {{group}} 组 同组</text>
     </view>
     <view class="opp-row {{item.is_self ? 'self' : ''}}" wx:for="{{groupStandings}}" wx:key="name" wx:for-item="item">
       <text class="opp-rank">{{item.is_self ? '★' : ''}}</text>

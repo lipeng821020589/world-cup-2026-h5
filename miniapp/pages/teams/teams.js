@@ -1,7 +1,7 @@
 // pages/teams/teams.js
 const teamsList = require('../../data/teams_list.js');
 
-const TIER_NAMES = { T1: 'T1 争冠', T2: 'T2 半决赛', T3: 'T3 16 强', T4: 'T4 搅局' };
+const TIER_NAMES = { T1: '争冠', T2: '半决赛', T3: '16 强', T4: '搅局' };
 
 Page({
   data: {

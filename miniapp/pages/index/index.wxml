@@ -55,7 +55,7 @@
       <text>死亡之组</text>
     </view>
     <view class="death-group" wx:for="{{deathGroups}}" wx:key="letter" bindtap="goToGroup" data-letter="{{item.letter}}">
-      <view class="dg-letter">Group {{item.letter}}</view>
+      <view class="dg-letter">第 {{item.letter}} 组</view>
       <view class="dg-reason">{{item.reason}}</view>
       <view class="text-muted">点击查看详情 →</view>
     </view>

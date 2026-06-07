@@ -2,7 +2,7 @@
   <!-- 头部 -->
   <view class="header card">
     <view class="title-row">
-      <text class="group-letter">Group {{letter}}</text>
+      <text class="group-letter">第 {{letter}} 组</text>
       <text wx:if="{{death}}" class="tag tag-death">💀 死亡之组</text>
     </view>
     <view class="seed">种子: {{seed_flag}} {{seed}}</view>
