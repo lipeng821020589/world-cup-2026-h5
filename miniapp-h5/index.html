@@ -244,6 +244,30 @@
     </div>
   </div>
 
+  <!-- 预测页 (新增 v1) -->
+  <div id="page-predict" class="page">
+    <div class="container">
+      <div class="card" id="predict-meta-card">
+        <div class="card-title">🎯 单场胜负预测 · v1.0</div>
+        <div id="predict-meta" class="text-muted" style="font-size:12px;line-height:1.6;"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ 即将开始 (按时间)</div>
+        <div id="predict-upcoming"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏆 高置信推荐 Top 10</div>
+        <div id="predict-top"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📅 按日期浏览</div>
+        <div class="filter-bar" id="predict-filter-bar"></div>
+        <div id="predict-list"></div>
+      </div>
+      <div class="legend">算法: 50% 实力分 (TEAM_SCORE logistic) + 50% 市场隐含 (赔率反推) · 置信: ≥65% 高 / ≥50% 中 / 其他低</div>
+    </div>
+  </div>
+
   <!-- 赛程页 (新增) -->
   <div id="page-fixtures" class="page">
     <div class="container">
@@ -259,6 +283,7 @@
     <button class="nav-tab" data-page="fixtures"><span class="tab-icon">⚽</span>赛程</button>
     <button class="nav-tab" data-page="teams"><span class="tab-icon">⚽</span>球队</button>
     <button class="nav-tab" data-page="odds"><span class="tab-icon">💰</span>赔率</button>
+    <button class="nav-tab" data-page="predict"><span class="tab-icon">🎯</span>预测</button>
   </nav>
 
   <script src="data.js"></script>
@@ -485,6 +510,127 @@
       });
     }
 
+    // ====== 预测页 v1.0 =====
+    let PREDICTIONS_DATA = [];
+    let PREDICT_FILTER = 'UPCOMING';
+
+    function confBadge(c) { return c === '高' ? '🔥' : c === '中' ? '⚡' : '⚪'; }
+    function pickIcon(p) { return p === '1' ? '🏠胜' : p === 'X' ? '🤝平' : '✈️胜'; }
+
+    function predCardHtml(p) {
+      const mkt = p.market;
+      const bl = p.blend;
+      const oddsLine = mkt.source === 'real' && mkt.odds_1
+        ? `赔率 ${mkt.odds_1} / ${mkt.odds_x} / ${mkt.odds_2}`
+        : `赔率估算`;
+      const k = p.kelly;
+      const maxKelly = Math.max(k.home, k.draw, k.away);
+      const kellyLine = maxKelly > 0.001
+        ? `💰 凯利: ${(maxKelly*100).toFixed(1)}% 仓位${k.home>=k.draw&&k.home>=k.away?'主':k.draw>=k.home&&k.draw>=k.away?'平':'客'}`
+        : '';
+      return `<div class="card" style="margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="font-size:13px;color:#666;">${p.time_bj} · ${p.group ? p.group+'组' : ''} · ${p.venue||''}</div>
+          <div style="font-size:11px;color:#999;">${mkt.source === 'real' ? '📊真实赔率' : '🧮估算'}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+          <div style="flex:1;text-align:center;">
+            <div style="font-size:16px;font-weight:600;">${flag(p.home)} ${p.home_cn}</div>
+            <div style="font-size:11px;color:#999;margin-top:2px;">主</div>
+          </div>
+          <div style="flex:0 0 auto;text-align:center;color:#999;font-size:14px;padding:0 8px;">VS</div>
+          <div style="flex:1;text-align:center;">
+            <div style="font-size:16px;font-weight:600;">${p.away_cn} ${flag(p.away)}</div>
+            <div style="font-size:11px;color:#999;margin-top:2px;">客</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-around;padding:6px 0;font-size:12px;">
+          <div style="text-align:center;">
+            <div style="color:#888;">主胜</div>
+            <div style="font-weight:600;color:${p.pick==='1'?'var(--primary)':'#444'};">${(bl.home*100).toFixed(0)}%</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="color:#888;">平局</div>
+            <div style="font-weight:600;color:${p.pick==='X'?'var(--primary)':'#444'};">${(bl.draw*100).toFixed(0)}%</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="color:#888;">客胜</div>
+            <div style="font-weight:600;color:${p.pick==='2'?'var(--primary)':'#444'};">${(bl.away*100).toFixed(0)}%</div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(90deg,var(--primary-light) 0%,var(--primary) 100%);color:white;padding:8px 12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+          <span style="font-size:13px;">🎯 ${p.pick_label}</span>
+          <span style="font-size:12px;">${confBadge(p.confidence)} ${(p.pick_prob*100).toFixed(0)}% · ${p.confidence}置信</span>
+        </div>
+        ${kellyLine ? `<div style="font-size:11px;color:#666;margin-top:4px;text-align:right;">${kellyLine}</div>` : ''}
+        <div style="font-size:10px;color:#aaa;margin-top:4px;">${oddsLine}</div>
+      </div>`;
+    }
+
+    function renderPredict() {
+      const data = PREDICTIONS_DATA;
+      if (!data || data.length === 0) {
+        document.getElementById('predict-upcoming').innerHTML = '<div class="text-muted" style="text-align:center;padding:20px;">加载中…</div>';
+        return;
+      }
+      // 元信息
+      const meta = PREDICTIONS_META;
+      document.getElementById('predict-meta').innerHTML =
+        `生成: ${meta.generated_at} · 待预测 ${meta.upcoming} 场 · ${meta.algorithm}`;
+
+      // 即将开始：未来 7 天
+      const now = Date.now();
+      const week = now + 7 * 86400000;
+      const upcoming = data.filter(p => {
+        const t = new Date(p.date_utc).getTime();
+        return t >= now - 86400000 && t <= week;
+      });
+      document.getElementById('predict-upcoming').innerHTML = upcoming.length
+        ? upcoming.slice(0, 12).map(predCardHtml).join('')
+        : '<div class="text-muted" style="text-align:center;padding:20px;">未来 7 天暂无比赛</div>';
+
+      // Top 10
+      const top = [...data].sort((a, b) => b.pick_prob - a.pick_prob).slice(0, 10);
+      document.getElementById('predict-top').innerHTML = top.map(predCardHtml).join('');
+
+      // 按日期筛选
+      const dates = [...new Set(data.map(p => (p.time_bj || '').split(' ')[0]))].sort();
+      const filters = [{k:'UPCOMING',l:'⚡ 即将开始'}].concat(
+        dates.map(d => ({k: d, l: d}))
+      );
+      document.getElementById('predict-filter-bar').innerHTML = filters.map(f =>
+        `<button class="filter-chip ${f.k===PREDICT_FILTER?'active':''}" data-pred-filter="${f.k}">${f.l}</button>`
+      ).join('');
+      document.querySelectorAll('[data-pred-filter]').forEach(b => {
+        b.onclick = () => { PREDICT_FILTER = b.dataset.predFilter; renderPredict(); };
+      });
+
+      // 列表
+      let list = data;
+      if (PREDICT_FILTER !== 'UPCOMING') {
+        list = data.filter(p => (p.time_bj || '').startsWith(PREDICT_FILTER));
+      } else {
+        list = upcoming;
+      }
+      document.getElementById('predict-list').innerHTML = list.length
+        ? list.map(predCardHtml).join('')
+        : '<div class="text-muted" style="text-align:center;padding:20px;">暂无比赛</div>';
+    }
+
+    async function loadPredictions() {
+      try {
+        const resp = await fetch('match_predictions.json?t=' + Date.now());
+        const data = await resp.json();
+        PREDICTIONS_DATA = data.matches || [];
+        PREDICTIONS_META = data._meta || {};
+        console.log(`🎯 加载 ${PREDICTIONS_DATA.length} 场预测`);
+        renderPredict();
+      } catch (err) {
+        console.error('加载预测失败:', err);
+        document.getElementById('predict-upcoming').innerHTML = '<div class="text-muted" style="text-align:center;padding:20px;">⚠️ 加载失败</div>';
+      }
+    }
+
     // ====== 加载 fixtures ======
     async function loadFixtures() {
       try {
@@ -518,6 +664,7 @@
     renderTeams();
     renderOdds();
     loadFixtures();
+    loadPredictions();
 
     // 从 hash 恢复
     const initialPage = location.hash.replace('#', '') || 'home';
