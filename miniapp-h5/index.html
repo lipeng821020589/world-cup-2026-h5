@@ -256,6 +256,10 @@
         <div id="predict-upcoming"></div>
       </div>
       <div class="card">
+        <div class="card-title">💸 高价值押注 (凯利 > 5%)</div>
+        <div id="predict-value"></div>
+      </div>
+      <div class="card">
         <div class="card-title">🏆 高置信推荐 Top 10</div>
         <div id="predict-top"></div>
       </div>
@@ -525,8 +529,9 @@
         : `赔率估算`;
       const k = p.kelly;
       const maxKelly = Math.max(k.home, k.draw, k.away);
+      const pickKelly = p.pick === '1' ? k.home : p.pick === 'X' ? k.draw : k.away;
       const kellyLine = maxKelly > 0.001
-        ? `💰 凯利: ${(maxKelly*100).toFixed(1)}% 仓位${k.home>=k.draw&&k.home>=k.away?'主':k.draw>=k.home&&k.draw>=k.away?'平':'客'}`
+        ? `💰 凯利: ${(maxKelly*100).toFixed(1)}% 仓位${k.home>=k.draw&&k.home>=k.away?'主':k.draw>=k.home&&k.draw>=k.away?'平':'客'}${p.pick === 'X' ? '  ⚠️ 平局慎选' : ''}`
         : '';
       return `<div class="card" style="margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
@@ -592,6 +597,20 @@
       // Top 10
       const top = [...data].sort((a, b) => b.pick_prob - a.pick_prob).slice(0, 10);
       document.getElementById('predict-top').innerHTML = top.map(predCardHtml).join('');
+
+      // 高价值押注 (凯利 > 5%)
+      const valueBets = data
+        .map(p => {
+          const k = p.kelly;
+          const maxK = Math.max(k.home, k.draw, k.away);
+          return { p, maxK };
+        })
+        .filter(x => x.maxK > 0.05)
+        .sort((a, b) => b.maxK - a.maxK)
+        .slice(0, 10);
+      document.getElementById('predict-value').innerHTML = valueBets.length
+        ? valueBets.map(x => predCardHtml(x.p)).join('')
+        : '<div class="text-muted" style="text-align:center;padding:20px;">本轮暂未发现高价值押注机会</div>';
 
       // 按日期筛选
       const dates = [...new Set(data.map(p => (p.time_bj || '').split(' ')[0]))].sort();

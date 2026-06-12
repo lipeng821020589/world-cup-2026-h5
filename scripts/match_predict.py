@@ -275,19 +275,25 @@ def main():
     latest_path = DATA_DIR / 'match_odds_latest.json'
     if latest_path.exists():
         odds_data = json.loads(latest_path.read_text()).get('matches', {})
-        for mid, m in odds_data.items():
-            # 按 (home, away) 做键，方便 fixtures 查
-            key = (m['team1'], m['team2'])
-            match_odds_map[key] = m
+        for k, m in odds_data.items():
+            # 兼容两种 key 格式: "home|away" 字符串 或 ("home","away") tuple
+            if isinstance(k, str) and '|' in k:
+                home, away = k.split('|', 1)
+            else:
+                home, away = m['team1'], m['team2']
+            match_odds_map[(home, away)] = m
     else:
         odds_path = DATA_DIR / 'match_odds.jsonl'
         if odds_path.exists():
             lines = odds_path.read_text().strip().split('\n')
             if lines:
                 last = json.loads(lines[-1])
-                for mid, m in last.get('matches', {}).items():
-                    key = (m['team1'], m['team2'])
-                    match_odds_map[key] = m
+                for k, m in last.get('matches', {}).items():
+                    if isinstance(k, str) and '|' in k:
+                        home, away = k.split('|', 1)
+                    else:
+                        home, away = m['team1'], m['team2']
+                    match_odds_map[(home, away)] = m
 
     # 过滤：跳过已完赛 (FT / AET / PEN)
     upcoming = [m for m in matches if m.get('status') not in ('FT', 'AET', 'PEN')]

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-12T21:38:51",
+    "generated_at": "2026-06-12T22:10:26",
     "model_version": "v1.0",
     "algorithm": "hybrid: 0.5*strength(TEAM_SCORE logistic) + 0.5*market(odds implied)",
     "total_matches": 72,
@@ -70,25 +70,25 @@
         "away": 0.1432
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7232,
-        "draw": 0.1569,
-        "away": 0.1199
+        "source": "real",
+        "odds_1": 2.15,
+        "odds_x": 3.26,
+        "odds_2": 4.0,
+        "home": 0.4188,
+        "draw": 0.2762,
+        "away": 0.2251
       },
       "blend": {
-        "home": 0.6719,
-        "draw": 0.1966,
-        "away": 0.1315
+        "home": 0.5413,
+        "draw": 0.2669,
+        "away": 0.1918
       },
       "pick": "1",
       "pick_label": "美国 胜",
-      "pick_prob": 0.6719,
-      "confidence": "高",
+      "pick_prob": 0.5413,
+      "confidence": "中",
       "kelly": {
-        "home": 0,
+        "home": 0.1425,
         "draw": 0,
         "away": 0
       }
@@ -113,26 +113,26 @@
         "away": 0.4882
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1814,
-        "draw": 0.1895,
-        "away": 0.6291
+        "source": "real",
+        "odds_1": 13.81,
+        "odds_x": 6.62,
+        "odds_2": 1.23,
+        "home": 0.0643,
+        "draw": 0.1341,
+        "away": 0.7216
       },
       "blend": {
-        "home": 0.2079,
-        "draw": 0.2334,
-        "away": 0.5587
+        "home": 0.1556,
+        "draw": 0.2143,
+        "away": 0.6301
       },
       "pick": "2",
       "pick_label": "瑞士 胜",
-      "pick_prob": 0.5587,
+      "pick_prob": 0.6301,
       "confidence": "中",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0897,
+        "draw": 0.0745,
         "away": 0
       }
     },
@@ -157,26 +157,26 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 2.46,
+        "odds_1": 1.63,
         "odds_x": 3.91,
-        "odds_2": 3.87,
-        "home": 0.4062,
-        "draw": 0.2556,
-        "away": 0.2582
+        "odds_2": 5.92,
+        "home": 0.5437,
+        "draw": 0.2266,
+        "away": 0.1497
       },
       "blend": {
-        "home": 0.4516,
-        "draw": 0.2822,
-        "away": 0.2662
+        "home": 0.5232,
+        "draw": 0.2672,
+        "away": 0.2097
       },
       "pick": "1",
       "pick_label": "巴西 胜",
-      "pick_prob": 0.4516,
-      "confidence": "低",
+      "pick_prob": 0.5232,
+      "confidence": "中",
       "kelly": {
-        "home": 0.0759,
-        "draw": 0.0356,
-        "away": 0.0105
+        "home": 0,
+        "draw": 0.0153,
+        "away": 0.049
       }
     },
     {
@@ -199,26 +199,26 @@
         "away": 0.3487
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.102,
-        "draw": 0.1479,
-        "away": 0.7502
+        "source": "real",
+        "odds_1": 5.83,
+        "odds_x": 4.2,
+        "odds_2": 1.59,
+        "home": 0.1519,
+        "draw": 0.2109,
+        "away": 0.5571
       },
       "blend": {
-        "home": 0.2141,
-        "draw": 0.2364,
-        "away": 0.5494
+        "home": 0.2491,
+        "draw": 0.2791,
+        "away": 0.4718
       },
       "pick": "2",
       "pick_label": "苏格兰 胜",
-      "pick_prob": 0.5494,
-      "confidence": "中",
+      "pick_prob": 0.4718,
+      "confidence": "低",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0936,
+        "draw": 0.0539,
         "away": 0
       }
     },
@@ -242,22 +242,22 @@
         "away": 0.565
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1819,
-        "draw": 0.1898,
-        "away": 0.6283
+        "source": "real",
+        "odds_1": 5.04,
+        "odds_x": 3.81,
+        "odds_2": 1.74,
+        "home": 0.1763,
+        "draw": 0.2332,
+        "away": 0.5106
       },
       "blend": {
-        "home": 0.1819,
-        "draw": 0.2214,
-        "away": 0.5967
+        "home": 0.1866,
+        "draw": 0.2532,
+        "away": 0.5602
       },
       "pick": "2",
       "pick_label": "土耳其 胜",
-      "pick_prob": 0.5967,
+      "pick_prob": 0.5602,
       "confidence": "中",
       "kelly": {
         "home": 0,
@@ -329,26 +329,26 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 2.36,
-        "odds_x": 3.98,
-        "odds_2": 4.09,
-        "home": 0.424,
-        "draw": 0.2514,
-        "away": 0.2446
+        "odds_1": 1.99,
+        "odds_x": 3.66,
+        "odds_2": 3.86,
+        "home": 0.4468,
+        "draw": 0.2429,
+        "away": 0.2303
       },
       "blend": {
-        "home": 0.4751,
-        "draw": 0.2754,
-        "away": 0.2495
+        "home": 0.487,
+        "draw": 0.271,
+        "away": 0.2421
       },
       "pick": "1",
       "pick_label": "荷兰 胜",
-      "pick_prob": 0.4751,
+      "pick_prob": 0.487,
       "confidence": "低",
       "kelly": {
-        "home": 0.0891,
-        "draw": 0.0322,
-        "away": 0.0067
+        "home": 0,
+        "draw": 0,
+        "away": 0
       }
     },
     {
@@ -371,25 +371,25 @@
         "away": 0.3487
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.3675,
-        "draw": 0.2923,
-        "away": 0.3402
+        "source": "real",
+        "odds_1": 3.69,
+        "odds_x": 2.82,
+        "odds_2": 2.45,
+        "home": 0.2412,
+        "draw": 0.3156,
+        "away": 0.3632
       },
       "blend": {
-        "home": 0.3469,
-        "draw": 0.3087,
-        "away": 0.3445
+        "home": 0.2955,
+        "draw": 0.3336,
+        "away": 0.3708
       },
-      "pick": "1",
-      "pick_label": "科特迪瓦 胜",
-      "pick_prob": 0.3469,
+      "pick": "2",
+      "pick_label": "厄瓜多尔 胜",
+      "pick_prob": 0.3708,
       "confidence": "低",
       "kelly": {
-        "home": 0,
+        "home": 0.0337,
         "draw": 0,
         "away": 0
       }
@@ -415,26 +415,26 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 2.26,
-        "odds_x": 4.05,
-        "odds_2": 4.33,
-        "home": 0.4423,
-        "draw": 0.2468,
-        "away": 0.2309
+        "odds_1": 1.89,
+        "odds_x": 3.57,
+        "odds_2": 4.42,
+        "home": 0.4701,
+        "draw": 0.2489,
+        "away": 0.201
       },
       "blend": {
-        "home": 0.4985,
-        "draw": 0.2685,
-        "away": 0.233
+        "home": 0.513,
+        "draw": 0.2696,
+        "away": 0.2174
       },
       "pick": "1",
       "pick_label": "瑞典 胜",
-      "pick_prob": 0.4985,
-      "confidence": "低",
+      "pick_prob": 0.513,
+      "confidence": "中",
       "kelly": {
-        "home": 0.1005,
-        "draw": 0.0287,
-        "away": 0.0026
+        "home": 0,
+        "draw": 0,
+        "away": 0
       }
     },
     {
@@ -457,26 +457,26 @@
         "away": 0.0297
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8672,
-        "draw": 0.12,
-        "away": 0.0128
+        "source": "real",
+        "odds_1": 1.08,
+        "odds_x": 11.65,
+        "odds_2": 28.37,
+        "home": 0.8136,
+        "draw": 0.0754,
+        "away": 0.031
       },
       "blend": {
-        "home": 0.8232,
-        "draw": 0.1555,
-        "away": 0.0213
+        "home": 0.8296,
+        "draw": 0.1388,
+        "away": 0.0316
       },
       "pick": "1",
       "pick_label": "西班牙 胜",
-      "pick_prob": 0.8232,
+      "pick_prob": 0.8296,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.0579,
         "away": 0
       }
     },
@@ -500,27 +500,27 @@
         "away": 0.2254
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7018,
-        "draw": 0.1642,
-        "away": 0.1341
+        "source": "real",
+        "odds_1": 1.61,
+        "odds_x": 4.09,
+        "odds_2": 5.9,
+        "home": 0.552,
+        "draw": 0.2173,
+        "away": 0.1506
       },
       "blend": {
-        "home": 0.6017,
-        "draw": 0.2186,
-        "away": 0.1797
+        "home": 0.5488,
+        "draw": 0.2554,
+        "away": 0.1958
       },
       "pick": "1",
       "pick_label": "比利时 胜",
-      "pick_prob": 0.6017,
+      "pick_prob": 0.5488,
       "confidence": "中",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0144,
+        "away": 0.0317
       }
     },
     {
@@ -543,26 +543,26 @@
         "away": 0.5529
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1004,
-        "draw": 0.1471,
-        "away": 0.7525
+        "source": "real",
+        "odds_1": 8.2,
+        "odds_x": 4.52,
+        "odds_2": 1.44,
+        "home": 0.1081,
+        "draw": 0.1962,
+        "away": 0.6157
       },
       "blend": {
-        "home": 0.1453,
-        "draw": 0.2019,
-        "away": 0.6527
+        "home": 0.1554,
+        "draw": 0.2359,
+        "away": 0.6087
       },
       "pick": "2",
       "pick_label": "乌拉圭 胜",
-      "pick_prob": 0.6527,
-      "confidence": "高",
+      "pick_prob": 0.6087,
+      "confidence": "中",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0381,
+        "draw": 0.0189,
         "away": 0
       }
     },
@@ -586,25 +586,25 @@
         "away": 0.1737
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.6692,
-        "draw": 0.1754,
-        "away": 0.1554
+        "source": "real",
+        "odds_1": 1.85,
+        "odds_x": 3.52,
+        "odds_2": 4.73,
+        "home": 0.48,
+        "draw": 0.2523,
+        "away": 0.1877
       },
       "blend": {
-        "home": 0.623,
-        "draw": 0.2124,
-        "away": 0.1646
+        "home": 0.5504,
+        "draw": 0.2613,
+        "away": 0.1883
       },
       "pick": "1",
       "pick_label": "伊朗 胜",
-      "pick_prob": 0.623,
+      "pick_prob": 0.5504,
       "confidence": "中",
       "kelly": {
-        "home": 0,
+        "home": 0.0215,
         "draw": 0,
         "away": 0
       }
@@ -630,25 +630,25 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 1.78,
-        "odds_x": 4.54,
-        "odds_2": 7.23,
-        "home": 0.5616,
-        "draw": 0.2202,
-        "away": 0.1383
+        "odds_1": 1.48,
+        "odds_x": 4.46,
+        "odds_2": 7.29,
+        "home": 0.5994,
+        "draw": 0.1989,
+        "away": 0.1217
       },
       "blend": {
-        "home": 0.6442,
-        "draw": 0.2294,
-        "away": 0.1264
+        "home": 0.664,
+        "draw": 0.2183,
+        "away": 0.1178
       },
       "pick": "1",
       "pick_label": "法国 胜",
-      "pick_prob": 0.6442,
-      "confidence": "中",
+      "pick_prob": 0.664,
+      "confidence": "高",
       "kelly": {
-        "home": 0.1881,
-        "draw": 0.0117,
+        "home": 0,
+        "draw": 0,
         "away": 0
       }
     },
@@ -672,26 +672,26 @@
         "away": 0.5768
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0704,
-        "draw": 0.1325,
-        "away": 0.7971
+        "source": "real",
+        "odds_1": 14.4,
+        "odds_x": 7.3,
+        "odds_2": 1.2,
+        "home": 0.0614,
+        "draw": 0.1212,
+        "away": 0.7373
       },
       "blend": {
-        "home": 0.1221,
-        "draw": 0.191,
-        "away": 0.6869
+        "home": 0.1225,
+        "draw": 0.193,
+        "away": 0.6845
       },
       "pick": "2",
       "pick_label": "挪威 胜",
-      "pick_prob": 0.6869,
+      "pick_prob": 0.6845,
       "confidence": "高",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.057,
+        "draw": 0.065,
         "away": 0
       }
     },
@@ -716,25 +716,25 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 1.57,
-        "odds_x": 4.9,
-        "odds_2": 12.8,
-        "home": 0.6375,
-        "draw": 0.2043,
-        "away": 0.0782
+        "odds_1": 1.41,
+        "odds_x": 4.55,
+        "odds_2": 9.05,
+        "home": 0.6277,
+        "draw": 0.1945,
+        "away": 0.0978
       },
       "blend": {
-        "home": 0.7262,
-        "draw": 0.2091,
-        "away": 0.0647
+        "home": 0.7211,
+        "draw": 0.204,
+        "away": 0.0749
       },
       "pick": "1",
       "pick_label": "阿根廷 胜",
-      "pick_prob": 0.7262,
+      "pick_prob": 0.7211,
       "confidence": "高",
       "kelly": {
-        "home": 0.2459,
-        "draw": 0.0063,
+        "home": 0.0408,
+        "draw": 0,
         "away": 0
       }
     },
@@ -758,27 +758,27 @@
         "away": 0.1658
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7054,
-        "draw": 0.1629,
-        "away": 0.1317
+        "source": "real",
+        "odds_1": 1.34,
+        "odds_x": 5.46,
+        "odds_2": 9.07,
+        "home": 0.6604,
+        "draw": 0.1621,
+        "away": 0.0976
       },
       "blend": {
-        "home": 0.6468,
-        "draw": 0.2044,
-        "away": 0.1487
+        "home": 0.6503,
+        "draw": 0.2125,
+        "away": 0.1371
       },
       "pick": "1",
       "pick_label": "奥地利 胜",
-      "pick_prob": 0.6468,
-      "confidence": "中",
+      "pick_prob": 0.6503,
+      "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0359,
+        "away": 0.0302
       }
     },
     {
@@ -801,26 +801,26 @@
         "away": 0.0788
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8288,
-        "draw": 0.1223,
-        "away": 0.0489
+        "source": "real",
+        "odds_1": 1.27,
+        "odds_x": 5.92,
+        "odds_2": 11.88,
+        "home": 0.6962,
+        "draw": 0.1494,
+        "away": 0.0744
       },
       "blend": {
-        "home": 0.77,
-        "draw": 0.1661,
-        "away": 0.0639
+        "home": 0.7331,
+        "draw": 0.1871,
+        "away": 0.0798
       },
       "pick": "1",
       "pick_label": "葡萄牙 胜",
-      "pick_prob": 0.77,
+      "pick_prob": 0.7331,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.0219,
         "away": 0
       }
     },
@@ -845,25 +845,25 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 1.8,
-        "odds_x": 4.51,
-        "odds_2": 6.96,
-        "home": 0.555,
-        "draw": 0.2215,
-        "away": 0.1435
+        "odds_1": 1.73,
+        "odds_x": 3.9,
+        "odds_2": 4.96,
+        "home": 0.5133,
+        "draw": 0.2277,
+        "away": 0.179
       },
       "blend": {
-        "home": 0.6365,
-        "draw": 0.2313,
-        "away": 0.1322
+        "home": 0.6148,
+        "draw": 0.2345,
+        "away": 0.1507
       },
       "pick": "1",
       "pick_label": "英格兰 胜",
-      "pick_prob": 0.6365,
+      "pick_prob": 0.6148,
       "confidence": "中",
       "kelly": {
-        "home": 0.1822,
-        "draw": 0.0123,
+        "home": 0.0872,
+        "draw": 0,
         "away": 0
       }
     },
@@ -887,25 +887,25 @@
         "away": 0.2164
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5772,
-        "draw": 0.2083,
-        "away": 0.2144
+        "source": "real",
+        "odds_1": 2.18,
+        "odds_x": 3.51,
+        "odds_2": 3.45,
+        "home": 0.4084,
+        "draw": 0.2536,
+        "away": 0.258
       },
       "blend": {
-        "home": 0.546,
-        "draw": 0.2386,
-        "away": 0.2154
+        "home": 0.4808,
+        "draw": 0.2721,
+        "away": 0.2471
       },
       "pick": "1",
       "pick_label": "加纳 胜",
-      "pick_prob": 0.546,
-      "confidence": "中",
+      "pick_prob": 0.4808,
+      "confidence": "低",
       "kelly": {
-        "home": 0,
+        "home": 0.0408,
         "draw": 0,
         "away": 0
       }
@@ -930,26 +930,26 @@
         "away": 0.5148
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0852,
-        "draw": 0.1396,
-        "away": 0.7752
+        "source": "real",
+        "odds_1": 9.17,
+        "odds_x": 4.73,
+        "odds_2": 1.39,
+        "home": 0.0965,
+        "draw": 0.187,
+        "away": 0.6365
       },
       "blend": {
-        "home": 0.1508,
-        "draw": 0.2042,
-        "away": 0.645
+        "home": 0.163,
+        "draw": 0.2374,
+        "away": 0.5996
       },
       "pick": "2",
       "pick_label": "哥伦比亚 胜",
-      "pick_prob": 0.645,
+      "pick_prob": 0.5996,
       "confidence": "中",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0605,
+        "draw": 0.033,
         "away": 0
       }
     },
@@ -973,27 +973,27 @@
         "away": 0.2345
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5772,
-        "draw": 0.2083,
-        "away": 0.2144
+        "source": "real",
+        "odds_1": 1.73,
+        "odds_x": 3.88,
+        "odds_2": 4.82,
+        "home": 0.5098,
+        "draw": 0.2273,
+        "away": 0.183
       },
       "blend": {
-        "home": 0.5327,
-        "draw": 0.2428,
-        "away": 0.2245
+        "home": 0.5198,
+        "draw": 0.2628,
+        "away": 0.2174
       },
       "pick": "1",
       "pick_label": "捷克 胜",
-      "pick_prob": 0.5327,
+      "pick_prob": 0.5198,
       "confidence": "中",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0069,
+        "away": 0.0126
       }
     },
     {
@@ -1059,27 +1059,27 @@
         "away": 0.158
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.3684,
-        "draw": 0.2919,
-        "away": 0.3397
+        "source": "real",
+        "odds_1": 1.29,
+        "odds_x": 5.11,
+        "odds_2": 9.8,
+        "home": 0.6647,
+        "draw": 0.1678,
+        "away": 0.0875
       },
       "blend": {
-        "home": 0.4839,
-        "draw": 0.2672,
-        "away": 0.2489
+        "home": 0.6584,
+        "draw": 0.2137,
+        "away": 0.1279
       },
       "pick": "1",
       "pick_label": "加拿大 胜",
-      "pick_prob": 0.4839,
-      "confidence": "低",
+      "pick_prob": 0.6584,
+      "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0224,
+        "away": 0.0288
       }
     },
     {
@@ -1102,23 +1102,23 @@
         "away": 0.2529
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5747,
-        "draw": 0.2093,
-        "away": 0.216
+        "source": "real",
+        "odds_1": 2.02,
+        "odds_x": 3.37,
+        "odds_2": 4.04,
+        "home": 0.4382,
+        "draw": 0.2627,
+        "away": 0.2191
       },
       "blend": {
-        "home": 0.5178,
-        "draw": 0.2478,
-        "away": 0.2345
+        "home": 0.4682,
+        "draw": 0.2859,
+        "away": 0.2458
       },
       "pick": "1",
       "pick_label": "墨西哥 胜",
-      "pick_prob": 0.5178,
-      "confidence": "中",
+      "pick_prob": 0.4682,
+      "confidence": "低",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -1145,25 +1145,25 @@
         "away": 0.0701
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7526,
-        "draw": 0.1471,
-        "away": 0.1003
+        "source": "real",
+        "odds_1": 1.7,
+        "odds_x": 3.95,
+        "odds_2": 4.31,
+        "home": 0.5042,
+        "draw": 0.217,
+        "away": 0.1989
       },
       "blend": {
-        "home": 0.738,
-        "draw": 0.1768,
-        "away": 0.0852
+        "home": 0.6393,
+        "draw": 0.2206,
+        "away": 0.1401
       },
       "pick": "1",
       "pick_label": "美国 胜",
-      "pick_prob": 0.738,
-      "confidence": "高",
+      "pick_prob": 0.6393,
+      "confidence": "中",
       "kelly": {
-        "home": 0,
+        "home": 0.1241,
         "draw": 0,
         "away": 0
       }
@@ -1188,27 +1188,27 @@
         "away": 0.7113
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.207,
-        "draw": 0.204,
-        "away": 0.589
+        "source": "real",
+        "odds_1": 4.05,
+        "odds_x": 3.18,
+        "odds_2": 1.97,
+        "home": 0.2125,
+        "draw": 0.2706,
+        "away": 0.4369
       },
       "blend": {
-        "home": 0.1429,
-        "draw": 0.207,
-        "away": 0.6501
+        "home": 0.1517,
+        "draw": 0.2503,
+        "away": 0.598
       },
       "pick": "2",
       "pick_label": "摩洛哥 胜",
-      "pick_prob": 0.6501,
-      "confidence": "高",
+      "pick_prob": 0.598,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
-        "away": 0
+        "away": 0.1835
       }
     },
     {
@@ -1231,26 +1231,26 @@
         "away": 0.0297
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8727,
-        "draw": 0.12,
-        "away": 0.0073
+        "source": "real",
+        "odds_1": 1.07,
+        "odds_x": 12.0,
+        "odds_2": 29.0,
+        "home": 0.817,
+        "draw": 0.0728,
+        "away": 0.0301
       },
       "blend": {
-        "home": 0.826,
-        "draw": 0.1555,
-        "away": 0.0185
+        "home": 0.8314,
+        "draw": 0.1374,
+        "away": 0.0312
       },
       "pick": "1",
       "pick_label": "巴西 胜",
-      "pick_prob": 0.826,
+      "pick_prob": 0.8314,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.059,
         "away": 0
       }
     },
@@ -1274,23 +1274,23 @@
         "away": 0.2437
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.6156,
-        "draw": 0.1943,
-        "away": 0.19
+        "source": "real",
+        "odds_1": 2.17,
+        "odds_x": 3.14,
+        "odds_2": 3.47,
+        "home": 0.3972,
+        "draw": 0.2745,
+        "away": 0.2484
       },
       "blend": {
-        "home": 0.5451,
-        "draw": 0.2381,
-        "away": 0.2168
+        "home": 0.454,
+        "draw": 0.2897,
+        "away": 0.2563
       },
       "pick": "1",
       "pick_label": "土耳其 胜",
-      "pick_prob": 0.5451,
-      "confidence": "中",
+      "pick_prob": 0.454,
+      "confidence": "低",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -1317,22 +1317,22 @@
         "away": 0.1658
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.6898,
-        "draw": 0.1683,
-        "away": 0.1419
+        "source": "real",
+        "odds_1": 1.61,
+        "odds_x": 4.02,
+        "odds_2": 4.95,
+        "home": 0.5331,
+        "draw": 0.2135,
+        "away": 0.1734
       },
       "blend": {
-        "home": 0.639,
-        "draw": 0.2071,
-        "away": 0.1538
+        "home": 0.5841,
+        "draw": 0.2393,
+        "away": 0.1766
       },
       "pick": "1",
       "pick_label": "荷兰 胜",
-      "pick_prob": 0.639,
+      "pick_prob": 0.5841,
       "confidence": "中",
       "kelly": {
         "home": 0,
@@ -1360,23 +1360,23 @@
         "away": 0.1293
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7973,
-        "draw": 0.1324,
-        "away": 0.0703
+        "source": "real",
+        "odds_1": 1.52,
+        "odds_x": 4.31,
+        "odds_2": 5.41,
+        "home": 0.5632,
+        "draw": 0.1986,
+        "away": 0.1582
       },
       "blend": {
-        "home": 0.7188,
-        "draw": 0.1814,
-        "away": 0.0998
+        "home": 0.6268,
+        "draw": 0.2234,
+        "away": 0.1497
       },
       "pick": "1",
       "pick_label": "德国 胜",
-      "pick_prob": 0.7188,
-      "confidence": "高",
+      "pick_prob": 0.6268,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -1403,27 +1403,27 @@
         "away": 0.1103
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7687,
-        "draw": 0.1418,
-        "away": 0.0896
+        "source": "real",
+        "odds_1": 1.18,
+        "odds_x": 7.22,
+        "odds_2": 11.86,
+        "home": 0.7285,
+        "draw": 0.1191,
+        "away": 0.0725
       },
       "blend": {
-        "home": 0.7179,
-        "draw": 0.1822,
-        "away": 0.0999
+        "home": 0.7269,
+        "draw": 0.1779,
+        "away": 0.0952
       },
       "pick": "1",
       "pick_label": "厄瓜多尔 胜",
-      "pick_prob": 0.7179,
+      "pick_prob": 0.7269,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0458,
+        "away": 0.0119
       }
     },
     {
@@ -1446,22 +1446,22 @@
         "away": 0.5405
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.149,
-        "draw": 0.172,
-        "away": 0.679
+        "source": "real",
+        "odds_1": 5.26,
+        "odds_x": 3.57,
+        "odds_2": 1.66,
+        "home": 0.1631,
+        "draw": 0.2403,
+        "away": 0.5167
       },
       "blend": {
-        "home": 0.1739,
-        "draw": 0.2163,
-        "away": 0.6097
+        "home": 0.1885,
+        "draw": 0.2609,
+        "away": 0.5506
       },
       "pick": "2",
       "pick_label": "日本 胜",
-      "pick_prob": 0.6097,
+      "pick_prob": 0.5506,
       "confidence": "中",
       "kelly": {
         "home": 0,
@@ -1489,27 +1489,27 @@
         "away": 0.0587
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8548,
-        "draw": 0.12,
-        "away": 0.0252
+        "source": "real",
+        "odds_1": 1.09,
+        "odds_x": 10.32,
+        "odds_2": 21.91,
+        "home": 0.7963,
+        "draw": 0.0841,
+        "away": 0.0396
       },
       "blend": {
-        "home": 0.797,
-        "draw": 0.161,
-        "away": 0.042
+        "home": 0.7998,
+        "draw": 0.149,
+        "away": 0.0512
       },
       "pick": "1",
       "pick_label": "西班牙 胜",
-      "pick_prob": 0.797,
+      "pick_prob": 0.7998,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0577,
+        "away": 0.0058
       }
     },
     {
@@ -1532,27 +1532,27 @@
         "away": 0.1819
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7893,
-        "draw": 0.135,
-        "away": 0.0757
+        "source": "real",
+        "odds_1": 1.38,
+        "odds_x": 4.58,
+        "odds_2": 7.6,
+        "home": 0.6204,
+        "draw": 0.1869,
+        "away": 0.1127
       },
       "blend": {
-        "home": 0.6772,
-        "draw": 0.194,
-        "away": 0.1288
+        "home": 0.6174,
+        "draw": 0.2292,
+        "away": 0.1534
       },
       "pick": "1",
       "pick_label": "比利时 胜",
-      "pick_prob": 0.6772,
-      "confidence": "高",
+      "pick_prob": 0.6174,
+      "confidence": "中",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0139,
+        "away": 0.0252
       }
     },
     {
@@ -1575,22 +1575,22 @@
         "away": 0.0788
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8307,
-        "draw": 0.1217,
-        "away": 0.0476
+        "source": "real",
+        "odds_1": 1.38,
+        "odds_x": 4.57,
+        "odds_2": 7.52,
+        "home": 0.6193,
+        "draw": 0.187,
+        "away": 0.1137
       },
       "blend": {
-        "home": 0.771,
-        "draw": 0.1658,
-        "away": 0.0632
+        "home": 0.693,
+        "draw": 0.2067,
+        "away": 0.1002
       },
       "pick": "1",
       "pick_label": "乌拉圭 胜",
-      "pick_prob": 0.771,
+      "pick_prob": 0.693,
       "confidence": "高",
       "kelly": {
         "home": 0,
@@ -1618,23 +1618,23 @@
         "away": 0.565
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.102,
-        "draw": 0.1479,
-        "away": 0.7502
+        "source": "real",
+        "odds_1": 4.33,
+        "odds_x": 3.81,
+        "odds_2": 1.73,
+        "home": 0.1983,
+        "draw": 0.2254,
+        "away": 0.4963
       },
       "blend": {
-        "home": 0.1419,
-        "draw": 0.2005,
-        "away": 0.6576
+        "home": 0.198,
+        "draw": 0.2492,
+        "away": 0.5528
       },
       "pick": "2",
       "pick_label": "埃及 胜",
-      "pick_prob": 0.6576,
-      "confidence": "高",
+      "pick_prob": 0.5528,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -1662,25 +1662,25 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 1.61,
-        "odds_x": 4.81,
-        "odds_2": 10.79,
-        "home": 0.62,
-        "draw": 0.2075,
-        "away": 0.0925
+        "odds_1": 1.6,
+        "odds_x": 3.72,
+        "odds_2": 5.54,
+        "home": 0.5352,
+        "draw": 0.2302,
+        "away": 0.1546
       },
       "blend": {
-        "home": 0.7079,
-        "draw": 0.2133,
-        "away": 0.0787
+        "home": 0.6638,
+        "draw": 0.2251,
+        "away": 0.1111
       },
       "pick": "1",
       "pick_label": "阿根廷 胜",
-      "pick_prob": 0.7079,
+      "pick_prob": 0.6638,
       "confidence": "高",
       "kelly": {
-        "home": 0.2291,
-        "draw": 0.0068,
+        "home": 0.1034,
+        "draw": 0,
         "away": 0
       }
     },
@@ -1705,25 +1705,25 @@
       },
       "market": {
         "source": "real",
-        "odds_1": 1.54,
-        "odds_x": 4.96,
-        "odds_2": 14.6,
-        "home": 0.6497,
-        "draw": 0.2017,
-        "away": 0.0685
+        "odds_1": 1.11,
+        "odds_x": 8.17,
+        "odds_2": 24.44,
+        "home": 0.7788,
+        "draw": 0.1058,
+        "away": 0.0354
       },
       "blend": {
-        "home": 0.7382,
-        "draw": 0.2062,
-        "away": 0.0556
+        "home": 0.8054,
+        "draw": 0.1563,
+        "away": 0.0383
       },
       "pick": "1",
       "pick_label": "法国 胜",
-      "pick_prob": 0.7382,
+      "pick_prob": 0.8054,
       "confidence": "高",
       "kelly": {
-        "home": 0.2533,
-        "draw": 0.0058,
+        "home": 0,
+        "draw": 0.0386,
         "away": 0
       }
     },
@@ -1747,22 +1747,22 @@
         "away": 0.2715
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5259,
-        "draw": 0.2276,
-        "away": 0.2465
+        "source": "real",
+        "odds_1": 2.09,
+        "odds_x": 3.51,
+        "odds_2": 3.28,
+        "home": 0.4121,
+        "draw": 0.2454,
+        "away": 0.2626
       },
       "blend": {
-        "home": 0.4794,
-        "draw": 0.2616,
-        "away": 0.259
+        "home": 0.4401,
+        "draw": 0.2818,
+        "away": 0.2781
       },
       "pick": "1",
       "pick_label": "挪威 胜",
-      "pick_prob": 0.4794,
+      "pick_prob": 0.4401,
       "confidence": "低",
       "kelly": {
         "home": 0,
@@ -1790,26 +1790,26 @@
         "away": 0.4608
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.2355,
-        "draw": 0.2209,
-        "away": 0.5436
+        "source": "real",
+        "odds_1": 6.2,
+        "odds_x": 4.17,
+        "odds_2": 1.48,
+        "home": 0.1378,
+        "draw": 0.2049,
+        "away": 0.5773
       },
       "blend": {
-        "home": 0.2442,
-        "draw": 0.2536,
-        "away": 0.5022
+        "home": 0.2035,
+        "draw": 0.2558,
+        "away": 0.5407
       },
       "pick": "2",
       "pick_label": "阿尔及利亚 胜",
-      "pick_prob": 0.5022,
+      "pick_prob": 0.5407,
       "confidence": "中",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0503,
+        "draw": 0.0211,
         "away": 0
       }
     },
@@ -1833,26 +1833,26 @@
         "away": 0.0553
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8547,
-        "draw": 0.12,
-        "away": 0.0253
+        "source": "real",
+        "odds_1": 1.21,
+        "odds_x": 6.36,
+        "odds_2": 10.89,
+        "home": 0.707,
+        "draw": 0.1345,
+        "away": 0.0786
       },
       "blend": {
-        "home": 0.7994,
-        "draw": 0.1604,
-        "away": 0.0403
+        "home": 0.7557,
+        "draw": 0.1746,
+        "away": 0.0697
       },
       "pick": "1",
       "pick_label": "葡萄牙 胜",
-      "pick_prob": 0.7994,
+      "pick_prob": 0.7557,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.0206,
         "away": 0
       }
     },
@@ -1876,22 +1876,22 @@
         "away": 0.046
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8506,
-        "draw": 0.12,
-        "away": 0.0294
+        "source": "real",
+        "odds_1": 1.3,
+        "odds_x": 5.25,
+        "odds_2": 8.71,
+        "home": 0.6586,
+        "draw": 0.1631,
+        "away": 0.0983
       },
       "blend": {
-        "home": 0.8037,
-        "draw": 0.1586,
-        "away": 0.0377
+        "home": 0.7372,
+        "draw": 0.1876,
+        "away": 0.0752
       },
       "pick": "1",
       "pick_label": "英格兰 胜",
-      "pick_prob": 0.8037,
+      "pick_prob": 0.7372,
       "confidence": "高",
       "kelly": {
         "home": 0,
@@ -1919,23 +1919,23 @@
         "away": 0.6206
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1072,
-        "draw": 0.1505,
-        "away": 0.7423
+        "source": "real",
+        "odds_1": 6.29,
+        "odds_x": 3.68,
+        "odds_2": 1.55,
+        "home": 0.1359,
+        "draw": 0.2324,
+        "away": 0.5517
       },
       "blend": {
-        "home": 0.1252,
-        "draw": 0.1934,
-        "away": 0.6815
+        "home": 0.1454,
+        "draw": 0.2441,
+        "away": 0.6106
       },
       "pick": "2",
       "pick_label": "克罗地亚 胜",
-      "pick_prob": 0.6815,
-      "confidence": "高",
+      "pick_prob": 0.6106,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -1962,27 +1962,27 @@
         "away": 0.2164
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7042,
-        "draw": 0.1633,
-        "away": 0.1325
+        "source": "real",
+        "odds_1": 1.43,
+        "odds_x": 4.23,
+        "odds_2": 7.22,
+        "home": 0.5989,
+        "draw": 0.2025,
+        "away": 0.1186
       },
       "blend": {
-        "home": 0.6095,
-        "draw": 0.2161,
-        "away": 0.1744
+        "home": 0.5801,
+        "draw": 0.2454,
+        "away": 0.1745
       },
       "pick": "1",
       "pick_label": "哥伦比亚 胜",
-      "pick_prob": 0.6095,
+      "pick_prob": 0.5801,
       "confidence": "中",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0118,
+        "away": 0.0418
       }
     },
     {
@@ -2005,27 +2005,27 @@
         "away": 0.335
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.6574,
-        "draw": 0.1795,
-        "away": 0.1631
+        "source": "real",
+        "odds_1": 2.1,
+        "odds_x": 3.33,
+        "odds_2": 3.44,
+        "home": 0.4105,
+        "draw": 0.2589,
+        "away": 0.2506
       },
       "blend": {
-        "home": 0.4962,
-        "draw": 0.2548,
-        "away": 0.2491
+        "home": 0.3883,
+        "draw": 0.3067,
+        "away": 0.305
       },
       "pick": "1",
       "pick_label": "瑞士 胜",
-      "pick_prob": 0.4962,
+      "pick_prob": 0.3883,
       "confidence": "低",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0092,
+        "away": 0.0202
       }
     },
     {
@@ -2091,22 +2091,22 @@
         "away": 0.0433
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.8478,
-        "draw": 0.12,
-        "away": 0.0322
+        "source": "real",
+        "odds_1": 1.29,
+        "odds_x": 5.11,
+        "odds_2": 9.23,
+        "home": 0.6608,
+        "draw": 0.1668,
+        "away": 0.0924
       },
       "blend": {
-        "home": 0.8042,
-        "draw": 0.1581,
-        "away": 0.0377
+        "home": 0.7403,
+        "draw": 0.189,
+        "away": 0.0706
       },
       "pick": "1",
       "pick_label": "摩洛哥 胜",
-      "pick_prob": 0.8042,
+      "pick_prob": 0.7403,
       "confidence": "高",
       "kelly": {
         "home": 0,
@@ -2134,22 +2134,22 @@
         "away": 0.744
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0624,
-        "draw": 0.1286,
-        "away": 0.8089
+        "source": "real",
+        "odds_1": 5.68,
+        "odds_x": 4.93,
+        "odds_2": 1.43,
+        "home": 0.1502,
+        "draw": 0.1731,
+        "away": 0.5967
       },
       "blend": {
-        "home": 0.0588,
-        "draw": 0.1647,
-        "away": 0.7765
+        "home": 0.107,
+        "draw": 0.1947,
+        "away": 0.6983
       },
       "pick": "2",
       "pick_label": "巴西 胜",
-      "pick_prob": 0.7765,
+      "pick_prob": 0.6983,
       "confidence": "高",
       "kelly": {
         "home": 0,
@@ -2177,26 +2177,26 @@
         "away": 0.4882
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1481,
-        "draw": 0.1715,
-        "away": 0.6804
+        "source": "real",
+        "odds_1": 5.62,
+        "odds_x": 3.88,
+        "odds_2": 1.57,
+        "home": 0.1526,
+        "draw": 0.2211,
+        "away": 0.5463
       },
       "blend": {
-        "home": 0.1913,
-        "draw": 0.2244,
-        "away": 0.5843
+        "home": 0.2016,
+        "draw": 0.2596,
+        "away": 0.5388
       },
       "pick": "2",
       "pick_label": "韩国 胜",
-      "pick_prob": 0.5843,
+      "pick_prob": 0.5388,
       "confidence": "中",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0288,
+        "draw": 0.0025,
         "away": 0
       }
     },
@@ -2220,25 +2220,25 @@
         "away": 0.4608
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1494,
-        "draw": 0.1722,
-        "away": 0.6783
+        "source": "real",
+        "odds_1": 4.42,
+        "odds_x": 3.49,
+        "odds_2": 1.79,
+        "home": 0.1943,
+        "draw": 0.246,
+        "away": 0.4797
       },
       "blend": {
-        "home": 0.2012,
-        "draw": 0.2293,
-        "away": 0.5696
+        "home": 0.2329,
+        "draw": 0.2773,
+        "away": 0.4898
       },
       "pick": "2",
       "pick_label": "墨西哥 胜",
-      "pick_prob": 0.5696,
-      "confidence": "中",
+      "pick_prob": 0.4898,
+      "confidence": "低",
       "kelly": {
-        "home": 0,
+        "home": 0.0086,
         "draw": 0,
         "away": 0
       }
@@ -2263,26 +2263,26 @@
         "away": 0.565
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.102,
-        "draw": 0.1479,
-        "away": 0.7502
+        "source": "real",
+        "odds_1": 11.54,
+        "odds_x": 6.47,
+        "odds_2": 1.2,
+        "home": 0.0742,
+        "draw": 0.1323,
+        "away": 0.7135
       },
       "blend": {
-        "home": 0.1419,
-        "draw": 0.2005,
-        "away": 0.6576
+        "home": 0.1334,
+        "draw": 0.2007,
+        "away": 0.6659
       },
       "pick": "2",
       "pick_label": "科特迪瓦 胜",
-      "pick_prob": 0.6576,
+      "pick_prob": 0.6659,
       "confidence": "高",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0512,
+        "draw": 0.0546,
         "away": 0
       }
     },
@@ -2306,23 +2306,23 @@
         "away": 0.5278
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0805,
-        "draw": 0.1373,
-        "away": 0.7822
+        "source": "real",
+        "odds_1": 4.39,
+        "odds_x": 3.66,
+        "odds_2": 1.75,
+        "home": 0.1954,
+        "draw": 0.2344,
+        "away": 0.4902
       },
       "blend": {
-        "home": 0.144,
-        "draw": 0.201,
-        "away": 0.655
+        "home": 0.2099,
+        "draw": 0.2599,
+        "away": 0.5302
       },
       "pick": "2",
       "pick_label": "德国 胜",
-      "pick_prob": 0.655,
-      "confidence": "高",
+      "pick_prob": 0.5302,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -2349,23 +2349,23 @@
         "away": 0.6306
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0626,
-        "draw": 0.1288,
-        "away": 0.8086
+        "source": "real",
+        "odds_1": 6.28,
+        "odds_x": 4.22,
+        "odds_2": 1.47,
+        "home": 0.1361,
+        "draw": 0.2025,
+        "away": 0.5814
       },
       "blend": {
-        "home": 0.0994,
-        "draw": 0.181,
-        "away": 0.7196
+        "home": 0.1418,
+        "draw": 0.227,
+        "away": 0.6313
       },
       "pick": "2",
       "pick_label": "荷兰 胜",
-      "pick_prob": 0.7196,
-      "confidence": "高",
+      "pick_prob": 0.6313,
+      "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
@@ -2392,22 +2392,22 @@
         "away": 0.2345
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.4755,
-        "draw": 0.2473,
-        "away": 0.2772
+        "source": "real",
+        "odds_1": 2.07,
+        "odds_x": 3.37,
+        "odds_2": 3.47,
+        "home": 0.4161,
+        "draw": 0.2556,
+        "away": 0.2482
       },
       "blend": {
-        "home": 0.4818,
-        "draw": 0.2623,
-        "away": 0.2558
+        "home": 0.471,
+        "draw": 0.2776,
+        "away": 0.2514
       },
       "pick": "1",
       "pick_label": "日本 胜",
-      "pick_prob": 0.4818,
+      "pick_prob": 0.471,
       "confidence": "低",
       "kelly": {
         "home": 0,
@@ -2435,25 +2435,25 @@
         "away": 0.1903
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.4181,
-        "draw": 0.2707,
-        "away": 0.3112
+        "source": "real",
+        "odds_1": 2.09,
+        "odds_x": 3.19,
+        "odds_2": 3.64,
+        "home": 0.4127,
+        "draw": 0.2704,
+        "away": 0.2369
       },
       "blend": {
-        "home": 0.4855,
-        "draw": 0.2638,
-        "away": 0.2508
+        "home": 0.5029,
+        "draw": 0.2746,
+        "away": 0.2225
       },
       "pick": "1",
       "pick_label": "巴拉圭 胜",
-      "pick_prob": 0.4855,
-      "confidence": "低",
+      "pick_prob": 0.5029,
+      "confidence": "中",
       "kelly": {
-        "home": 0,
+        "home": 0.0469,
         "draw": 0,
         "away": 0
       }
@@ -2478,27 +2478,27 @@
         "away": 0.4608
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.2766,
-        "draw": 0.2469,
-        "away": 0.4766
+        "source": "real",
+        "odds_1": 2.49,
+        "odds_x": 3.54,
+        "odds_2": 2.62,
+        "home": 0.3467,
+        "draw": 0.2438,
+        "away": 0.3295
       },
       "blend": {
-        "home": 0.2647,
-        "draw": 0.2666,
-        "away": 0.4687
+        "home": 0.3123,
+        "draw": 0.2761,
+        "away": 0.4116
       },
       "pick": "2",
       "pick_label": "美国 胜",
-      "pick_prob": 0.4687,
+      "pick_prob": 0.4116,
       "confidence": "低",
       "kelly": {
         "home": 0,
         "draw": 0,
-        "away": 0
+        "away": 0.0484
       }
     },
     {
@@ -2521,22 +2521,22 @@
         "away": 0.5768
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1304,
-        "draw": 0.1623,
-        "away": 0.7073
+        "source": "real",
+        "odds_1": 4.16,
+        "odds_x": 3.54,
+        "odds_2": 1.83,
+        "home": 0.2068,
+        "draw": 0.243,
+        "away": 0.4701
       },
       "blend": {
-        "home": 0.1521,
-        "draw": 0.2059,
-        "away": 0.6421
+        "home": 0.1982,
+        "draw": 0.2565,
+        "away": 0.5453
       },
       "pick": "2",
       "pick_label": "法国 胜",
-      "pick_prob": 0.6421,
+      "pick_prob": 0.5453,
       "confidence": "中",
       "kelly": {
         "home": 0,
@@ -2564,27 +2564,27 @@
         "away": 0.158
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.7375,
-        "draw": 0.1521,
-        "away": 0.1104
+        "source": "real",
+        "odds_1": 1.36,
+        "odds_x": 4.66,
+        "odds_2": 7.89,
+        "home": 0.6283,
+        "draw": 0.1834,
+        "away": 0.1083
       },
       "blend": {
-        "home": 0.6685,
-        "draw": 0.1973,
-        "away": 0.1342
+        "home": 0.6394,
+        "draw": 0.2219,
+        "away": 0.1387
       },
       "pick": "1",
       "pick_label": "塞内加尔 胜",
-      "pick_prob": 0.6685,
-      "confidence": "高",
+      "pick_prob": 0.6394,
+      "confidence": "中",
       "kelly": {
         "home": 0,
-        "draw": 0,
-        "away": 0
+        "draw": 0.0092,
+        "away": 0.0137
       }
     },
     {
@@ -2607,27 +2607,27 @@
         "away": 0.4469
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.2667,
-        "draw": 0.2404,
-        "away": 0.4929
+        "source": "real",
+        "odds_1": 2.35,
+        "odds_x": 3.39,
+        "odds_2": 2.89,
+        "home": 0.3671,
+        "draw": 0.2545,
+        "away": 0.2985
       },
       "blend": {
-        "home": 0.2644,
-        "draw": 0.2657,
-        "away": 0.4699
+        "home": 0.3277,
+        "draw": 0.2841,
+        "away": 0.3882
       },
       "pick": "2",
       "pick_label": "沙特 胜",
-      "pick_prob": 0.4699,
+      "pick_prob": 0.3882,
       "confidence": "低",
       "kelly": {
         "home": 0,
         "draw": 0,
-        "away": 0
+        "away": 0.0645
       }
     },
     {
@@ -2650,25 +2650,25 @@
         "away": 0.5148
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.1772,
-        "draw": 0.1872,
-        "away": 0.6357
+        "source": "real",
+        "odds_1": 5.15,
+        "odds_x": 3.87,
+        "odds_2": 1.61,
+        "home": 0.1664,
+        "draw": 0.2214,
+        "away": 0.5322
       },
       "blend": {
-        "home": 0.1968,
-        "draw": 0.228,
-        "away": 0.5752
+        "home": 0.1994,
+        "draw": 0.2553,
+        "away": 0.5453
       },
       "pick": "2",
       "pick_label": "西班牙 胜",
-      "pick_prob": 0.5752,
+      "pick_prob": 0.5453,
       "confidence": "中",
       "kelly": {
-        "home": 0,
+        "home": 0.0064,
         "draw": 0,
         "away": 0
       }
@@ -2693,22 +2693,22 @@
         "away": 0.2622
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5278,
-        "draw": 0.2269,
-        "away": 0.2453
+        "source": "real",
+        "odds_1": 2.22,
+        "odds_x": 2.99,
+        "odds_2": 3.55,
+        "home": 0.3885,
+        "draw": 0.2885,
+        "away": 0.243
       },
       "blend": {
-        "home": 0.4873,
-        "draw": 0.2589,
-        "away": 0.2537
+        "home": 0.4351,
+        "draw": 0.3018,
+        "away": 0.2631
       },
       "pick": "1",
       "pick_label": "埃及 胜",
-      "pick_prob": 0.4873,
+      "pick_prob": 0.4351,
       "confidence": "低",
       "kelly": {
         "home": 0,
@@ -2736,26 +2736,26 @@
         "away": 0.6586
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.024,
-        "draw": 0.12,
-        "away": 0.856
+        "source": "real",
+        "odds_1": 9.66,
+        "odds_x": 5.73,
+        "odds_2": 1.25,
+        "home": 0.0883,
+        "draw": 0.1489,
+        "away": 0.6827
       },
       "blend": {
-        "home": 0.0702,
-        "draw": 0.1725,
-        "away": 0.7573
+        "home": 0.1066,
+        "draw": 0.1948,
+        "away": 0.6986
       },
       "pick": "2",
       "pick_label": "比利时 胜",
-      "pick_prob": 0.7573,
+      "pick_prob": 0.6986,
       "confidence": "高",
       "kelly": {
-        "home": 0,
-        "draw": 0,
+        "home": 0.0035,
+        "draw": 0.0245,
         "away": 0
       }
     },
@@ -2779,22 +2779,22 @@
         "away": 0.1737
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.6156,
-        "draw": 0.1943,
-        "away": 0.19
+        "source": "real",
+        "odds_1": 1.6,
+        "odds_x": 3.78,
+        "odds_2": 5.51,
+        "home": 0.5369,
+        "draw": 0.2272,
+        "away": 0.1559
       },
       "blend": {
-        "home": 0.5962,
-        "draw": 0.2219,
-        "away": 0.1819
+        "home": 0.58,
+        "draw": 0.2483,
+        "away": 0.1717
       },
       "pick": "1",
       "pick_label": "克罗地亚 胜",
-      "pick_prob": 0.5962,
+      "pick_prob": 0.58,
       "confidence": "中",
       "kelly": {
         "home": 0,
@@ -2822,26 +2822,26 @@
         "away": 0.7708
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.014,
-        "draw": 0.12,
-        "away": 0.866
+        "source": "real",
+        "odds_1": 7.57,
+        "odds_x": 6.39,
+        "odds_2": 1.27,
+        "home": 0.1129,
+        "draw": 0.1338,
+        "away": 0.6732
       },
       "blend": {
-        "home": 0.0249,
-        "draw": 0.1567,
-        "away": 0.8184
+        "home": 0.0775,
+        "draw": 0.1704,
+        "away": 0.7521
       },
       "pick": "2",
       "pick_label": "英格兰 胜",
-      "pick_prob": 0.8184,
+      "pick_prob": 0.7521,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.0165,
         "away": 0
       }
     },
@@ -2865,27 +2865,27 @@
         "away": 0.565
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.2021,
-        "draw": 0.2012,
-        "away": 0.5966
+        "source": "real",
+        "odds_1": 3.46,
+        "odds_x": 3.27,
+        "odds_2": 2.12,
+        "home": 0.2493,
+        "draw": 0.2638,
+        "away": 0.4069
       },
       "blend": {
-        "home": 0.192,
-        "draw": 0.2271,
-        "away": 0.5808
+        "home": 0.2246,
+        "draw": 0.2692,
+        "away": 0.5062
       },
       "pick": "2",
       "pick_label": "葡萄牙 胜",
-      "pick_prob": 0.5808,
+      "pick_prob": 0.5062,
       "confidence": "中",
       "kelly": {
         "home": 0,
         "draw": 0,
-        "away": 0
+        "away": 0.0653
       }
     },
     {
@@ -2908,22 +2908,22 @@
         "away": 0.2529
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.5282,
-        "draw": 0.2268,
-        "away": 0.245
+        "source": "real",
+        "odds_1": 2.29,
+        "odds_x": 3.32,
+        "odds_2": 3.05,
+        "home": 0.377,
+        "draw": 0.26,
+        "away": 0.283
       },
       "blend": {
-        "home": 0.4945,
-        "draw": 0.2565,
-        "away": 0.249
+        "home": 0.4363,
+        "draw": 0.2845,
+        "away": 0.2791
       },
       "pick": "1",
       "pick_label": "民主刚果 胜",
-      "pick_prob": 0.4945,
+      "pick_prob": 0.4363,
       "confidence": "低",
       "kelly": {
         "home": 0,
@@ -2951,25 +2951,25 @@
         "away": 0.3487
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.2671,
-        "draw": 0.2407,
-        "away": 0.4922
+        "source": "real",
+        "odds_1": 3.74,
+        "odds_x": 3.03,
+        "odds_2": 2.13,
+        "home": 0.2306,
+        "draw": 0.2846,
+        "away": 0.4048
       },
       "blend": {
-        "home": 0.2967,
-        "draw": 0.2829,
-        "away": 0.4205
+        "home": 0.29,
+        "draw": 0.3175,
+        "away": 0.3925
       },
       "pick": "2",
       "pick_label": "奥地利 胜",
-      "pick_prob": 0.4205,
+      "pick_prob": 0.3925,
       "confidence": "低",
       "kelly": {
-        "home": 0,
+        "home": 0.0309,
         "draw": 0,
         "away": 0
       }
@@ -2994,26 +2994,26 @@
         "away": 0.7766
       },
       "market": {
-        "source": "estimate",
-        "odds_1": null,
-        "odds_x": null,
-        "odds_2": null,
-        "home": 0.0122,
-        "draw": 0.12,
-        "away": 0.8678
+        "source": "real",
+        "odds_1": 13.38,
+        "odds_x": 7.16,
+        "odds_2": 1.16,
+        "home": 0.0639,
+        "draw": 0.1194,
+        "away": 0.7368
       },
       "blend": {
-        "home": 0.0219,
-        "draw": 0.1559,
-        "away": 0.8222
+        "home": 0.0498,
+        "draw": 0.162,
+        "away": 0.7882
       },
       "pick": "2",
       "pick_label": "阿根廷 胜",
-      "pick_prob": 0.8222,
+      "pick_prob": 0.7882,
       "confidence": "高",
       "kelly": {
         "home": 0,
-        "draw": 0,
+        "draw": 0.026,
         "away": 0
       }
     }

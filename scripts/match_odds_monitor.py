@@ -23,6 +23,17 @@ from datetime import datetime
 from pathlib import Path
 import math
 
+# 加载 .env (from ~/.openclaw/workspace/.env)
+ENV_PATH = Path('/home/peng/.openclaw/workspace/.env')
+if ENV_PATH.exists():
+    for line in ENV_PATH.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' in line:
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k.strip(), v.strip())
+
 DATA_DIR = Path('/Work/world-cup-2026/data')
 REPORTS_DIR = Path('/Work/world-cup-2026/reports')
 MATCH_ODDS_PATH = DATA_DIR / 'match_odds.jsonl'
@@ -113,54 +124,65 @@ def fetch_from_odds_api():
 def normalize_odds_api(events, focus_matches):
     """
     把 The Odds API 返回的 events 转成我们的格式
-    匹配规则：按主客队名匹配
+    匹配规则：主客队名双向包含
+    返回: {(home, away): {odds, source, ...}} 供 match_predict.py 用
+
+    Bookmaker 优先级: pinnacle > bet365 > williamhill > 平均
     """
-    name_map = {m[1].lower(): m[0] for m in focus_matches}
-    name_map.update({m[2].lower(): m[0] for m in focus_matches})
+    PRIORITY = ['pinnacle', 'bet365', 'williamhill', 'betfair', 'ladbrokes', 'unibet']
+
+    def pick_bookmaker(bookmakers):
+        """按优先级选一家"""
+        for key in PRIORITY:
+            for bk in bookmakers:
+                if bk.get('key') == key:
+                    markets = bk.get('markets', [])
+                    if any(m.get('key') == 'h2h' for m in markets):
+                        return bk
+        # fallback: 第一家
+        for bk in bookmakers:
+            markets = bk.get('markets', [])
+            if any(m.get('key') == 'h2h' for m in markets):
+                return bk
+        return None
 
     out = {}
     for ev in events or []:
         home = ev.get('home_team', '')
         away = ev.get('away_team', '')
-        # 模糊匹配
-        match_id = None
-        for n, mid in name_map.items():
-            if n in home.lower() or n in away.lower():
-                match_id = mid
-                break
-        if not match_id:
+        if not home or not away:
             continue
 
-        # 取第一家 bookmaker 的 h2h
         bookmakers = ev.get('bookmakers', [])
         if not bookmakers:
             continue
-        markets = bookmakers[0].get('markets', [])
-        if not markets:
+        chosen_bk = pick_bookmaker(bookmakers)
+        if not chosen_bk:
             continue
-        outcomes = markets[0].get('outcomes', [])
-        if len(outcomes) < 2:
-            continue
+        h2h = next(m for m in chosen_bk['markets'] if m.get('key') == 'h2h')
+        outcomes = h2h.get('outcomes', [])
 
-        # outcomes: [{name: 'Home', price: 1.85}, {name: 'Draw', price: 3.5}, {name: 'Away', price: 4.2}]
         odds = {}
         for o in outcomes:
-            n = o.get('name', '').lower()
+            n = o.get('name', '')
             p = o.get('price', 0)
-            if 'home' in n or n == 'draw' or 'away' in n:
-                pass
-            if 'draw' in n:
+            if n == 'Draw':
                 odds['X'] = p
-            elif 'home' in n or n == home.lower():
+            elif n == home:
                 odds['1'] = p
-            elif 'away' in n or n == away.lower():
+            elif n == away:
                 odds['2'] = p
+        if '1' not in odds or '2' not in odds or 'X' not in odds:
+            continue
+        # 过滤异常：X 赔率超过 12.0 或 主队 < 1.01 都不取
+        if odds['X'] > 12.0 or odds['1'] < 1.01 or odds['2'] < 1.01:
+            continue
 
-        if '1' in odds and '2' in odds and 'X' in odds:
-            out[match_id] = {
-                'team1': home, 'team2': away,
-                'odds': odds, 'source': 'the_odds_api'
-            }
+        out[(home, away)] = {
+            'team1': home, 'team2': away,
+            'odds': odds, 'source': f'the_odds_api:{chosen_bk.get("key", "?")}',
+            'commence': ev.get('commence_time'),
+        }
     return out
 
 
@@ -217,13 +239,14 @@ def estimate_odds(team1, team2):
 def fetch_with_fallback(focus_matches):
     """
     多源 fallback：API → Chrome → 估算
+    返回: {(home, away): {team1, team2, odds, source, ...}}
     """
     # 1. The Odds API
     api_data, api_err = fetch_from_odds_api()
     if api_data:
         result = normalize_odds_api(api_data, focus_matches)
         if result:
-            print(f"✅ The Odds API: {len(result)} 场")
+            print(f"✅ The Odds API: {len(result)} 场真实赔率")
             return result, "the_odds_api", api_err
     print(f"⚠️  The Odds API: {api_err}")
 
@@ -234,11 +257,11 @@ def fetch_with_fallback(focus_matches):
         return ch_data, "chrome_scrape", ch_err
     print(f"⚠️  Chrome 抓取: {ch_err}")
 
-    # 3. 估算
+    # 3. 估算（只覆盖 focus_matches）
     print("📐 使用实力分估算（兜底）")
     result = {}
     for mid, t1, t2, stage, date in focus_matches:
-        result[mid] = {
+        result[(t1, t2)] = {
             'team1': t1, 'team2': t2, 'stage': stage, 'date': date,
             'odds': estimate_odds(t1, t2),
             'source': 'strength_estimate',
@@ -291,6 +314,20 @@ def main():
     matches, source, err = fetch_with_fallback(FOCUS_MATCHES)
     print(f"\n📋 抓取结果: {len(matches)} 场 (来源: {source})\n")
 
+    # 匹配 fixtures 拿 stage/date 上下文
+    fixtures_path = DATA_DIR / 'fixtures_2026.json'
+    fixtures_by_pair = {}
+    if fixtures_path.exists():
+        fx = json.loads(fixtures_path.read_text())
+        for m in fx.get('matches', []):
+            if m.get('status') in ('FT', 'AET', 'PEN'):
+                continue
+            fixtures_by_pair[(m['home'], m['away'])] = m
+    # 补充 focus meta
+    for mid, t1, t2, stage, date in FOCUS_MATCHES:
+        if (t1, t2) not in fixtures_by_pair:
+            fixtures_by_pair[(t1, t2)] = {'group': stage, 'time_bj': date, 'venue': ''}
+
     # 加载历史
     history = []
     if MATCH_ODDS_PATH.exists():
@@ -313,22 +350,38 @@ def main():
         "",
     ]
 
-    print("🎯 价值分析")
+    print("🎯 价值分析 (Top 价值优先)")
     print("-" * 70)
-    for mid, m in matches.items():
+
+    # 全部计算后按 EV 排序，只打 Top
+    enriched = []
+    for key, m in matches.items():
         odds = m['odds']
         v = compute_match_value(odds['1'], odds['X'], odds['2'], m['team1'], m['team2'])
-        best = v['best']
-        # 对比上一次
+        meta = fixtures_by_pair.get(key, {})
         prev_odds = None
-        if last and mid in last.get('matches', {}):
-            prev_odds = last['matches'][mid].get('odds')
+        if last:
+            for prev_key, prev_m in last.get('matches', {}).items():
+                if prev_m.get('team1') == m['team1'] and prev_m.get('team2') == m['team2']:
+                    prev_odds = prev_m.get('odds')
+                    break
         change_str = ""
         if prev_odds:
             d1 = odds['1'] - prev_odds.get('1', odds['1'])
             change_str = f"  Δ1={d1:+.2f}"
+        enriched.append({
+            'key': key, 'm': m, 'meta': meta,
+            'odds': odds, 'v': v, 'change_str': change_str,
+        })
 
-        print(f"  [{m['date']}] {m['team1']:<20} vs {m['team2']:<20} ({m.get('stage', '')}){change_str}")
+    # 按最佳 EV 降序
+    enriched.sort(key=lambda x: -x['v']['best'][1])
+    for e in enriched[:30]:  # 只列 Top 30
+        m, odds, v, meta = e['m'], e['odds'], e['v'], e['meta']
+        time_str = meta.get('time_bj', '') or meta.get('date', '')
+        group = meta.get('group', '')
+        best = v['best']
+        print(f"  [{time_str}] {m['team1']:<20} vs {m['team2']:<20} ({group}){e['change_str']}")
         print(f"    赔率: 1={odds['1']:.2f}  X={odds['X']:.2f}  2={odds['2']:.2f}  [{m.get('source', source)}]")
         print(f"    实力: {v['p1']}% / {v['px']}% / {v['p2']}%")
         print(f"    凯利: {v['kelly_1']}% / {v['kelly_x']}% / {v['kelly_2']}%")
@@ -336,7 +389,7 @@ def main():
         print()
 
         lines.extend([
-            f"[{m['date']}] {m['team1']} vs {m['team2']} ({m.get('stage', '')}){change_str}",
+            f"[{time_str}] {m['team1']} vs {m['team2']} ({group}){e['change_str']}",
             f"  赔率: 1={odds['1']:.2f}  X={odds['X']:.2f}  2={odds['2']:.2f}  [{m.get('source', source)}]",
             f"  实力: {v['p1']}% / {v['px']}% / {v['p2']}%",
             f"  凯利: {v['kelly_1']}% / {v['kelly_x']}% / {v['kelly_2']}%",
@@ -344,11 +397,12 @@ def main():
             "",
         ])
 
-    # 保存 jsonl 历史
+    # 保存 jsonl 历史（key 转字符串，jsonl 不支持 tuple key）
+    matches_serializable = {f"{k[0]}|{k[1]}": v for k, v in matches.items()}
     record = {
         'timestamp': datetime.now().isoformat(timespec='seconds'),
         'source': source,
-        'matches': matches,
+        'matches': matches_serializable,
     }
     with open(MATCH_ODDS_PATH, 'a') as f:
         f.write(json.dumps(record, ensure_ascii=False) + '\n')
