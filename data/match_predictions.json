@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-12T21:28:25",
+    "generated_at": "2026-06-12T21:38:51",
     "model_version": "v1.0",
     "algorithm": "hybrid: 0.5*strength(TEAM_SCORE logistic) + 0.5*market(odds implied)",
     "total_matches": 72,
