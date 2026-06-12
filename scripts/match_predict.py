@@ -180,11 +180,12 @@ def predict_match(match, match_odds_map):
     # 1) 实力模型
     p_h, p_d, p_a = strength_1x2(home, away)
 
-    # 2) 市场赔率（如果有真实单场赔率）
+    # 2) 市场赔率（按 (home, away) 查）
     market_odds = None
-    if match_id in match_odds_map:
-        odds_obj = match_odds_map[match_id].get('odds', {})
-        if odds_obj and odds_obj.get('1', 1) > 1.01:  # 排除占位 1.85 全场相同
+    key = (home, away)
+    if key in match_odds_map:
+        odds_obj = match_odds_map[key].get('odds', {})
+        if odds_obj and odds_obj.get('1', 1) > 1.01:
             market_odds = (odds_obj['1'], odds_obj.get('X', 3.2), odds_obj['2'])
 
     if market_odds:
@@ -269,14 +270,24 @@ def main():
     fixtures = json.loads((DATA_DIR / 'fixtures_2026.json').read_text())
     matches = fixtures.get('matches', [])
 
-    # 加载最新单场赔率（用 history 末条）
-    match_odds_map = {}
-    odds_path = DATA_DIR / 'match_odds.jsonl'
-    if odds_path.exists():
-        lines = odds_path.read_text().strip().split('\n')
-        if lines:
-            last = json.loads(lines[-1])
-            match_odds_map = last.get('matches', {})
+    # 加载最新单场赔率（优先 match_odds_latest.json，否则用 history 末条）
+    match_odds_map = {}  # {team_pair_tuple: {odds, source}}
+    latest_path = DATA_DIR / 'match_odds_latest.json'
+    if latest_path.exists():
+        odds_data = json.loads(latest_path.read_text()).get('matches', {})
+        for mid, m in odds_data.items():
+            # 按 (home, away) 做键，方便 fixtures 查
+            key = (m['team1'], m['team2'])
+            match_odds_map[key] = m
+    else:
+        odds_path = DATA_DIR / 'match_odds.jsonl'
+        if odds_path.exists():
+            lines = odds_path.read_text().strip().split('\n')
+            if lines:
+                last = json.loads(lines[-1])
+                for mid, m in last.get('matches', {}).items():
+                    key = (m['team1'], m['team2'])
+                    match_odds_map[key] = m
 
     # 过滤：跳过已完赛 (FT / AET / PEN)
     upcoming = [m for m in matches if m.get('status') not in ('FT', 'AET', 'PEN')]
