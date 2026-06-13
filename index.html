@@ -251,6 +251,10 @@
         <div class="card-title">🎯 单场胜负预测 · v1.0</div>
         <div id="predict-meta" class="text-muted" style="font-size:12px;line-height:1.6;"></div>
       </div>
+      <div class="card" id="predict-finished-card" style="display:none;">
+        <div class="card-title">🏁 已完赛 (验证预测命中率)</div>
+        <div id="predict-finished"></div>
+      </div>
       <div class="card">
         <div class="card-title">⚡ 即将开始 (按时间)</div>
         <div id="predict-upcoming"></div>
@@ -533,7 +537,29 @@
       const kellyLine = maxKelly > 0.001
         ? `💰 凯利: ${(maxKelly*100).toFixed(1)}% 仓位${k.home>=k.draw&&k.home>=k.away?'主':k.draw>=k.home&&k.draw>=k.away?'平':'客'}${p.pick === 'X' ? '  ⚠️ 平局慎选' : ''}`
         : '';
+
+      // 完赛/进行中 状态条
+      const st = p.status || 'NS';
+      let statusBar = '';
+      if (st === 'FT' && p.home_score != null && p.away_score != null) {
+        const hs = parseInt(p.home_score), as = parseInt(p.away_score);
+        const actualPick = hs > as ? '1' : hs < as ? '2' : 'X';
+        const hit = actualPick === p.pick;
+        const actualTxt = actualPick === '1' ? '主胜' : actualPick === 'X' ? '平局' : '客胜';
+        statusBar = `<div style="background:${hit ? 'var(--primary)' : '#c62828'};color:white;padding:8px 12px;border-radius:6px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:15px;font-weight:700;">FT · ${p.home_cn} ${hs} - ${as} ${p.away_cn}</span>
+          <span style="font-size:13px;">${hit ? '✅ 命中' : '❌ 未中'} (实际${actualTxt})</span>
+        </div>`;
+      } else if (st === '1H' || st === '2H' || st === 'HT' || st === 'LIVE') {
+        const hs = p.home_score != null ? p.home_score : '?';
+        const as = p.away_score != null ? p.away_score : '?';
+        statusBar = `<div style="background:#ff9800;color:white;padding:6px 12px;border-radius:6px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;font-weight:700;">🔴 LIVE · ${p.home_cn} ${hs} - ${as} ${p.away_cn}</span>
+          <span style="font-size:12px;">${st}</span>
+        </div>`;
+      }
       return `<div class="card" style="margin-bottom:10px;">
+        ${statusBar}
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
           <div style="font-size:13px;color:#666;">${p.time_bj} · ${p.group ? p.group+'组' : ''} · ${p.venue||''}</div>
           <div style="font-size:11px;color:#999;">${mkt.source === 'real' ? '📊真实赔率' : '🧮估算'}</div>
@@ -583,13 +609,26 @@
       document.getElementById('predict-meta').innerHTML =
         `生成: ${meta.generated_at} · 待预测 ${meta.upcoming} 场 · ${meta.algorithm}`;
 
-      // 即将开始：未来 7 天
+      // 即将开始：未来 7 天 (排除已完赛)
       const now = Date.now();
       const week = now + 7 * 86400000;
+      const finished = data.filter(p => p.status === 'FT' || p.status === 'AET' || p.status === 'PEN');
       const upcoming = data.filter(p => {
+        const st = p.status || 'NS';
+        if (st === 'FT' || st === 'AET' || st === 'PEN') return false;
         const t = new Date(p.date_utc).getTime();
         return t >= now - 86400000 && t <= week;
       });
+      // 渲染已完赛区
+      const finCard = document.getElementById('predict-finished-card');
+      if (finished.length > 0) {
+        finCard.style.display = '';
+        document.getElementById('predict-finished').innerHTML = finished
+          .sort((a, b) => new Date(b.date_utc) - new Date(a.date_utc))
+          .map(predCardHtml).join('');
+      } else {
+        finCard.style.display = 'none';
+      }
       document.getElementById('predict-upcoming').innerHTML = upcoming.length
         ? upcoming.slice(0, 12).map(predCardHtml).join('')
         : '<div class="text-muted" style="text-align:center;padding:20px;">未来 7 天暂无比赛</div>';
