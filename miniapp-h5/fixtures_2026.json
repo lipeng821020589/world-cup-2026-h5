@@ -1,6 +1,6 @@
 {
   "_note": "2026 世界杯 真实赛程 (来源: TheSportsDB 公开 API)",
-  "_fetched_at": "2026-06-09T02:02:38",
+  "_fetched_at": "2026-06-13T21:02:14",
   "_source": "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4429",
   "_count": 72,
   "matches": [
@@ -21,9 +21,9 @@
       "venue": "Estadio Azteca",
       "city": "Mexico City, MX",
       "country": "Mexico",
-      "status": "NS",
-      "home_score": null,
-      "away_score": null,
+      "status": "FT",
+      "home_score": "2",
+      "away_score": "0",
       "poster": "https://r2.thesportsdb.com/images/media/event/poster/yok37q1775110706.jpg",
       "is_opener": true
     },
@@ -44,9 +44,9 @@
       "venue": "Estadio Akron",
       "city": "Zapopan, JA",
       "country": "Mexico",
-      "status": "NS",
-      "home_score": null,
-      "away_score": null,
+      "status": "FT",
+      "home_score": "2",
+      "away_score": "1",
       "poster": "https://r2.thesportsdb.com/images/media/event/poster/1lvv8d1775110757.jpg"
     },
     {
@@ -66,9 +66,9 @@
       "venue": "BMO Field",
       "city": "Toronto, ON",
       "country": "Canada",
-      "status": "NS",
-      "home_score": null,
-      "away_score": null,
+      "status": "FT",
+      "home_score": "1",
+      "away_score": "1",
       "poster": "https://r2.thesportsdb.com/images/media/event/poster/5ioorn1775110758.jpg"
     },
     {
@@ -88,9 +88,9 @@
       "venue": "SoFi Stadium",
       "city": "Inglewood, CA",
       "country": "United States",
-      "status": "NS",
-      "home_score": null,
-      "away_score": null,
+      "status": "FT",
+      "home_score": "4",
+      "away_score": "1",
       "poster": "https://r2.thesportsdb.com/images/media/event/poster/qd0c3x1775110707.jpg"
     },
     {
