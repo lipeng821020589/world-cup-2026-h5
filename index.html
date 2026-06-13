@@ -279,7 +279,7 @@
   <!-- 赛程页 (新增) -->
   <div id="page-fixtures" class="page">
     <div class="container">
-      <div class="card-title" style="padding: 12px 0;">📅 全部 72 场赛程</div>
+      <div class="card-title" style="padding: 12px 0;" id="fixtures-title">📅 全部 72 场赛程</div>
       <div class="filter-bar" id="fx-filter-bar"></div>
       <div id="fixtures-list"></div>
     </div>
@@ -445,14 +445,19 @@
 
     function fxCardHtml(fx) {
       const isOpener = fx.is_opener;
-      return `<div class="fixture ${isOpener ? 'opener' : ''}">
+      const isFinished = fx.status === 'FT' || fx.status === 'AET' || fx.status === 'PEN';
+      const isLive = fx.status === '1H' || fx.status === '2H' || fx.status === 'HT' || fx.status === 'LIVE';
+      // 完赛/进行中 卡片加高亮
+      const style = isFinished ? 'background:#f0f7f0;border-left:4px solid var(--primary);' :
+                    isLive ? 'background:#fff8e1;border-left:4px solid #ff9800;' : '';
+      return `<div class="fixture ${isOpener ? 'opener' : ''}" style="${style}">
         <div class="fx-head">
           <span class="fx-time">${fx.weekday} ${fx.time_short}</span>
           <span class="fx-meta">第 ${fx.group} 组 · ${fx.round === 1 ? '小组赛第1轮' : fx.round === 2 ? '小组赛第2轮' : '小组赛第3轮'} ${getStatusTag(fx)}</span>
         </div>
         <div class="fx-body">
           <div class="fx-team"><span class="flag">${flag(fx.home)}</span><span class="name">${cn(fx.home)}</span></div>
-          <div class="fx-vs">${fx.home_score != null ? `${fx.home_score} - ${fx.away_score}` : 'VS'}</div>
+          <div class="fx-vs" style="${isFinished ? 'color:var(--primary);font-weight:700;font-size:18px;' : isLive ? 'color:#ff9800;font-weight:700;' : ''}">${fx.home_score != null ? `${fx.home_score} - ${fx.away_score}` : 'VS'}</div>
           <div class="fx-team" style="justify-content:flex-end;"><span class="name">${cn(fx.away)}</span><span class="flag">${flag(fx.away)}</span></div>
         </div>
         <div class="fx-foot">🏟 ${fx.venue} · ${fx.city}</div>
@@ -485,9 +490,27 @@
       const fn = filterFns[filter] || filterFns['ALL'];
       const filtered = FIXTURES.filter(fn);
 
-      // 分组
+      // 动态 header 统计
+      const ftCount = FIXTURES.filter(fx => fx.status === 'FT' || fx.status === 'AET' || fx.status === 'PEN').length;
+      const liveCount = FIXTURES.filter(fx => fx.status === '1H' || fx.status === '2H' || fx.status === 'HT' || fx.status === 'LIVE').length;
+      const nsCount = FIXTURES.length - ftCount - liveCount;
+      document.getElementById('fixtures-title').innerHTML =
+        `📅 全部 ${FIXTURES.length} 场赛程 <span style="font-size:13px;color:#888;font-weight:normal;">· 🏁 ${ftCount} 完赛 · 🔴 ${liveCount} 直播 · ⚡ ${nsCount} 未开始</span>`;
+
+      // 已完赛区 (顶部)
+      const finishedList = filtered.filter(fx => fx.status === 'FT' || fx.status === 'AET' || fx.status === 'PEN');
+      let finishedSection = '';
+      if (finishedList.length > 0) {
+        finishedSection = `
+          <div class="date-block" style="background:linear-gradient(90deg,var(--primary-light) 0%,var(--primary) 100%);color:white;padding:10px 14px;border-radius:8px;margin:12px 0 8px;font-weight:600;">🏁 已完赛 · ${finishedList.length} 场</div>
+          ${finishedList.sort((a, b) => new Date(b.date_utc) - new Date(a.date_utc)).map(fxCardHtml).join('')}
+        `;
+      }
+
+      // 未完赛按日期分组
+      const upcomingList = filtered.filter(fx => !(fx.status === 'FT' || fx.status === 'AET' || fx.status === 'PEN'));
       const groups = {};
-      filtered.forEach(fx => {
+      upcomingList.forEach(fx => {
         const date = fx.time_bj.split(' ')[0];
         if (!groups[date]) groups[date] = [];
         groups[date].push(fx);
@@ -498,7 +521,7 @@
         ${list.map(fxCardHtml).join('')}
       `).join('');
 
-      document.getElementById('fixtures-list').innerHTML = html || '<div class="text-muted" style="text-align:center;padding:20px;">暂无比赛</div>';
+      document.getElementById('fixtures-list').innerHTML = (finishedSection + html) || '<div class="text-muted" style="text-align:center;padding:20px;">暂无比赛</div>';
 
       // 过滤按钮
       const filters = [
