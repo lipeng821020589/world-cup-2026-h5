@@ -211,6 +211,50 @@
         <div class="row"><span>⭐ 阿根廷 vs 奥地利</span><span class="text-muted">6/21 04:00 北京</span></div>
       </div>
     </div>
+
+    <!-- 🎫 竞彩官方购买 (合规) -->
+    <div class="card" id="touzhu-card" style="background:linear-gradient(135deg,#fff8e1 0%,#fff3c4 100%);border-left:4px solid #d4a017;">
+      <div class="card-title" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>🎫 竞彩官方购买</span>
+        <button onclick="document.getElementById('touzhu-detail').style.display=document.getElementById('touzhu-detail').style.display==='none'?'block':'none';this.textContent=this.textContent==='展开 ▾'?'收起 ▴':'展开 ▾';" style="background:transparent;border:1px solid #d4a017;color:#b8860b;padding:3px 10px;border-radius:4px;font-size:11px;cursor:pointer;">展开 ▾</button>
+      </div>
+      <div style="font-size:12px;color:#666;line-height:1.7;padding:6px 0;">
+        本平台仅展示赛事数据与赔率分析，<b>不提供任何下注/购买服务</b>。购彩请前往 <b>中国体育彩票官方渠道</b>：
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;">
+        <a href="https://www.sporttery.cn/" target="_blank" rel="noopener" style="flex:1;min-width:120px;text-align:center;background:#d4a017;color:white;padding:8px 12px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600;">🏛️ 体彩官网</a>
+        <a href="https://static.sporttery.cn/download/sporttery.apk" target="_blank" rel="noopener" style="flex:1;min-width:120px;text-align:center;background:#1a472a;color:white;padding:8px 12px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600;">📱 体彩 App 下载</a>
+      </div>
+      <!-- 玩法说明 (默认收起) -->
+      <div id="touzhu-detail" style="display:none;margin-top:10px;padding-top:10px;border-top:1px dashed #d4a017;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#1a472a;">📖 竞彩玩法说明 (4 种)</div>
+        <div style="font-size:12px;line-height:1.8;color:#444;">
+          <div style="margin-bottom:10px;padding:8px;background:white;border-radius:6px;">
+            <b style="color:#d4a017;">① 胜平负 (3 选 1)</b> · 赔率 ~1.5–4.0<br>
+            猜 90 分钟（含补时）全场结果：主胜 / 平 / 客胜。点球大战不算。<br>
+            <span style="color:#888;">示例：美国 vs 巴拉圭 → 选 "主胜" 命中</span>
+          </div>
+          <div style="margin-bottom:10px;padding:8px;background:white;border-radius:6px;">
+            <b style="color:#d4a017;">② 让球胜平负 (-1, -0.5, +1)</b> · 赔率 ~1.7–3.5<br>
+            强队带 "让球" 优惠；如主队 -1 表示先减 1 球再算胜负。<br>
+            <span style="color:#888;">示例：巴西 -1 vs 摩洛哥 → 实际 1-0 算 "主胜"</span>
+          </div>
+          <div style="margin-bottom:10px;padding:8px;background:white;border-radius:6px;">
+            <b style="color:#d4a017;">③ 比分 (固定赔率)</b> · 赔率 ~3.0–500+<br>
+            猜 90 分钟全场比分，常见比分赔率 1X1 约 6–8 倍，0X0 约 8–10 倍。<br>
+            <span style="color:#888;">示例：猜 2-1 命中赔率约 7.5 倍</span>
+          </div>
+          <div style="margin-bottom:10px;padding:8px;background:white;border-radius:6px;">
+            <b style="color:#d4a017;">④ 总进球数 (0–7+)</b> · 赔率 ~2.0–6.0<br>
+            猜两队进球总数 (0/1/2/3/4/5/6/7+)。<br>
+            <span style="color:#888;">示例：4-1 总 5 球 → 选 "5球" 命中</span>
+          </div>
+        </div>
+        <div style="background:#fff3cd;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:11px;color:#856404;line-height:1.6;">
+          ⚠️ <b>理性购彩提示</b>：竞彩是概率游戏，长期负 EV。未成年人不得购买。建议设置预算、遵守 "输不起就不投" 原则。
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 小组页 -->
@@ -280,6 +324,9 @@
   <div id="page-fixtures" class="page">
     <div class="container">
       <div class="card-title" style="padding: 12px 0;" id="fixtures-title">📅 全部 72 场赛程</div>
+      <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:8px 12px;margin:4px 0 12px;font-size:12px;color:#5d4037;line-height:1.6;">
+        🎫 <b>购彩请走官方</b>：本平台仅展示数据。点击比赛卡片的 “去体彩官方购买” 按钮跳转 <a href="https://www.sporttery.cn/" target="_blank" rel="noopener" style="color:#d4a017;">sporttery.cn</a>，或到线下体彩店购买。未开赛比赛可购买，完赛比赛仅供查看。
+      </div>
       <div class="filter-bar" id="fx-filter-bar"></div>
       <div id="fixtures-list"></div>
     </div>
@@ -450,6 +497,13 @@
       // 完赛/进行中 卡片加高亮
       const style = isFinished ? 'background:#f0f7f0;border-left:4px solid var(--primary);' :
                     isLive ? 'background:#fff8e1;border-left:4px solid #ff9800;' : '';
+      // 完赛比赛不显示购买入口
+      const buyBtn = isFinished ? '' : `
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <a href="https://www.sporttery.cn/" target="_blank" rel="noopener" style="flex:1;min-width:120px;text-align:center;background:var(--primary);color:white;padding:7px 10px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;display:inline-block;">🎫 去体彩官方购买</a>
+          <button onclick="navigator.clipboard.writeText('${fx.id}');this.textContent='✅ 已复制';" style="flex:0 0 auto;background:#f0f0f0;border:1px solid #ddd;padding:7px 10px;border-radius:6px;font-size:12px;cursor:pointer;">📋 赛事号 ${fx.id}</button>
+        </div>
+      `;
       return `<div class="fixture ${isOpener ? 'opener' : ''}" style="${style}">
         <div class="fx-head">
           <span class="fx-time">${fx.weekday} ${fx.time_short}</span>
@@ -461,6 +515,7 @@
           <div class="fx-team" style="justify-content:flex-end;"><span class="name">${cn(fx.away)}</span><span class="flag">${flag(fx.away)}</span></div>
         </div>
         <div class="fx-foot">🏟 ${fx.venue} · ${fx.city}</div>
+        ${buyBtn}
       </div>`;
     }
 
@@ -618,6 +673,10 @@
         </div>
         ${kellyLine ? `<div style="font-size:11px;color:#666;margin-top:4px;text-align:right;">${kellyLine}</div>` : ''}
         <div style="font-size:10px;color:#aaa;margin-top:4px;">${oddsLine}</div>
+        ${st === 'FT' ? '' : `<div style="display:flex;gap:6px;margin-top:8px;">
+          <a href="https://www.sporttery.cn/" target="_blank" rel="noopener" style="flex:1;text-align:center;background:var(--primary);color:white;padding:7px 10px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;display:inline-block;">🎫 去体彩官方购买</a>
+          <button onclick="navigator.clipboard.writeText('${p.match_id}');this.textContent='✅ 已复制';" style="flex:0 0 auto;background:#f0f0f0;border:1px solid #ddd;padding:7px 10px;border-radius:6px;font-size:12px;cursor:pointer;">📋 赛事号 ${p.match_id}</button>
+        </div>`}
       </div>`;
     }
 
