@@ -1,6 +1,6 @@
 {
   "_note": "2026 世界杯 真实赛程 (来源: TheSportsDB 公开 API)",
-  "_fetched_at": "2026-06-13T11:05:07",
+  "_fetched_at": "2026-06-13T11:10:10",
   "_source": "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4429",
   "_count": 72,
   "matches": [
@@ -88,7 +88,7 @@
       "venue": "SoFi Stadium",
       "city": "Inglewood, CA",
       "country": "United States",
-      "status": "2H",
+      "status": "FT",
       "home_score": "4",
       "away_score": "1",
       "poster": "https://r2.thesportsdb.com/images/media/event/poster/qd0c3x1775110707.jpg"
