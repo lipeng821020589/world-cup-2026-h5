@@ -1,6 +1,6 @@
 {
   "_note": "2026 世界杯 真实赛程 (来源: TheSportsDB 公开 API)",
-  "_fetched_at": "2026-06-13T08:03:40",
+  "_fetched_at": "2026-06-13T08:05:10",
   "_source": "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4429",
   "_count": 72,
   "matches": [
