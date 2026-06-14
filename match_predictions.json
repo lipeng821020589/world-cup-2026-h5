@@ -149,9 +149,9 @@
       "date_utc": "2026-06-13T22:00:00",
       "time_bj": "2026-06-14 12:00",
       "venue": "MetLife Stadium",
-      "status": "NS",
-      "home_score": null,
-      "away_score": null,
+      "status": "FT",
+      "home_score": "1",
+      "away_score": "1",
       "strength": {
         "home": 0.4608,
         "draw": 0.2863,
